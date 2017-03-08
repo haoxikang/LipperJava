@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by qqq34 on 2017/3/8.
  */
 
-public class LoginPresenter extends BasePresenter {
+public class LoginPresenter extends BasePresenter{
 
     private DribbbleModel mDribbbleModel;
     private LoginView mLoginView;

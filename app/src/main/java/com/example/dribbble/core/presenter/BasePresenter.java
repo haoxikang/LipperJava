@@ -6,7 +6,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * Created by qqq34 on 2017/3/8.
  */
 
-public abstract class BasePresenter implements Presenter{
+public abstract class BasePresenter implements Contract.Presenter{
     protected CompositeDisposable mCompositeDisposable;
 
     @Override
