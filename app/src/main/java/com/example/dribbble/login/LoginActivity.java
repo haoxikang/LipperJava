@@ -24,14 +24,12 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     protected void initView(@Nullable Bundle savedInstanceState) {
         mActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        MDStatusBarCompat.setImageTranslucent(this);
+        MDStatusBarCompat.setImageTransparent(this);
         mPresenterList.add(mLoginPresenter);
-        Log.d("ddd","dddd");
     }
 
     @Override
     protected void initListeners() {
-
 
 
     }
@@ -43,8 +41,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
                 .loginModule(mLoginModule).build().inject(this);
     }
 
-    public void setLoginModule(LoginModule loginModule){
-       this.mLoginModule=loginModule;
+    public void setLoginModule(LoginModule loginModule) {
+        this.mLoginModule = loginModule;
     }
 
     @Override
