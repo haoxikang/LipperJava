@@ -10,6 +10,7 @@ import com.example.dribbble.R;
 import com.example.dribbble.core.activity.BaseActivity;
 import com.example.dribbble.data.databean.ShotBean;
 import com.example.dribbble.databinding.ActivityLoginBinding;
+import com.example.dribbble.utils.MDStatusBarCompat;
 
 import javax.inject.Inject;
 
@@ -23,7 +24,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     protected void initView(@Nullable Bundle savedInstanceState) {
         mActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-
+        MDStatusBarCompat.setImageTranslucent(this);
         mPresenterList.add(mLoginPresenter);
         Log.d("ddd","dddd");
     }

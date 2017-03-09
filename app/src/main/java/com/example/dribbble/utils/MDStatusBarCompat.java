@@ -20,7 +20,7 @@ public class MDStatusBarCompat {
      * @param activity
      */
     public static void setOrdinaryToolBar(Activity activity) {
-            activity.getWindow().setStatusBarColor(ContextCompat.getColor(activity, R.color.colorPrimaryDark));
+            activity.getWindow().setStatusBarColor(ContextCompat.getColor(activity, R.color.primary_dark));
     }
 
     /**
@@ -49,7 +49,7 @@ public class MDStatusBarCompat {
      * @param activity
      */
     public static void setToolbarTabLayout(Activity activity) {
-            activity.getWindow().setStatusBarColor(ContextCompat.getColor(activity, R.color.colorPrimaryDark));
+            activity.getWindow().setStatusBarColor(ContextCompat.getColor(activity, R.color.primary_dark));
     }
 
 
