@@ -1,6 +1,6 @@
 package com.example.dribbble.data.network.model;
 
-import com.example.dribbble.data.network.Test;
+import com.example.dribbble.data.databean.ShotBean;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ import io.reactivex.Flowable;
  */
 
 public interface DribbbleModel {
-    Flowable<List<Test>> getShot(String list, String timeframe, String access_token);
+    Flowable<List<ShotBean>> getShot(String list, String timeframe, String access_token);
 }

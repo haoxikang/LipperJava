@@ -3,6 +3,7 @@ package com.example.dribbble.core.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,5 +49,15 @@ public abstract class BaseFragment extends Fragment implements Contract.BaseView
     @Override
     public void showToast(String s) {
         Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showErrorLog(String TAG, String message) {
+        Log.e(TAG, message);
+    }
+
+    @Override
+    public void showDebugLog(String TAG, String message) {
+        Log.d(TAG, message);
     }
 }

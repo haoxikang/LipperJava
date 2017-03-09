@@ -29,11 +29,9 @@ public class LoginPresenter extends BasePresenter{
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe( testList-> {
-                    Log.d("tag",""+testList.size());
-                    Log.d("TAG",testList.get(2).getTitle());
+                    mLoginView.onDataFetch(testList.get(0));
 
                 },throwable -> {
-                    Log.d("TAG",throwable.getMessage());
                 });
         mCompositeDisposable.add(disposable);
 

@@ -38,6 +38,10 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.1'
 
 
+    //fresco
+    compile 'com.facebook.fresco:fresco:1.1.0'
+    compile 'com.facebook.fresco:animated-gif:1.1.0'
+
     //网络相关
     compile'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'

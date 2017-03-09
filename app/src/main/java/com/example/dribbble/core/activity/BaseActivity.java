@@ -3,6 +3,7 @@ package com.example.dribbble.core.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.dribbble.core.presenter.Contract;
@@ -47,5 +48,15 @@ public abstract class BaseActivity extends AppCompatActivity implements Contract
     @Override
     public void showToast(String s) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showErrorLog(String TAG, String message) {
+        Log.e(TAG, message);
+    }
+
+    @Override
+    public void showDebugLog(String TAG, String message) {
+        Log.d(TAG, message);
     }
 }

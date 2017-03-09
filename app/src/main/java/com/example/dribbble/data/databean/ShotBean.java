@@ -1,4 +1,4 @@
-package com.example.dribbble.data.network;
+package com.example.dribbble.data.databean;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import java.util.List;
  * Created by qqq34 on 2017/3/8.
  */
 
-public class Test {
+public class ShotBean {
 
 
     /**

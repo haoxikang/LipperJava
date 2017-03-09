@@ -1,5 +1,7 @@
 package com.example.dribbble.data.network;
 
+import com.example.dribbble.data.databean.ShotBean;
+
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -12,5 +14,5 @@ import retrofit2.http.Query;
 
 public interface DribbbleService {
     @GET("shots")
-    Flowable<List<Test>> getShot(@Query("list")String list, @Query("timeframe")String timeframe, @Query("access_token")String access_token);
+    Flowable<List<ShotBean>> getShot(@Query("list")String list, @Query("timeframe")String timeframe, @Query("access_token")String access_token);
 }

@@ -2,7 +2,7 @@ package com.example.dribbble.data.network.model.impl;
 
 import com.example.dribbble.data.network.DribbbleService;
 import com.example.dribbble.data.network.HttpMethods;
-import com.example.dribbble.data.network.Test;
+import com.example.dribbble.data.databean.ShotBean;
 import com.example.dribbble.data.network.model.DribbbleModel;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class DribbbleModelImpl implements DribbbleModel {
     }
 
     @Override
-    public Flowable<List<Test>> getShot(String list, String timeframe, String access_token) {
+    public Flowable<List<ShotBean>> getShot(String list, String timeframe, String access_token) {
         return mDribbbleService.getShot(list, timeframe, access_token);
     }
 }

@@ -5,12 +5,19 @@ package com.example.dribbble.core.presenter;
  */
 
 public interface Contract {
-     interface BaseView {
+    interface BaseView {
         void showToast(String s);
+
+        void showErrorLog(String TAG, String message);
+
+        void showDebugLog(String TAG, String message);
     }
-     interface Presenter {
+
+    interface Presenter {
         void attach();
+
         void detach();
+
         void onPresenterCreate();
     }
 }
