@@ -27,7 +27,7 @@
                 android:text="@string/login_e"
                 android:textColor="@color/primary_dark"
 
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -48,19 +48,20 @@
             android:layout_above="@+id/linearLayout"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/long_distance"
+            android:layout_marginBottom="@dimen/longer_distance"
             android:elevation="4dp"
             android:visibility="invisible"
             app:fabSize="normal"/>
 
 
         <Button
+            android:textSize="12sp"
             android:id="@+id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/normal_button_height"
             android:layout_below="@+id/linearLayout"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/common_distance"
+            android:layout_marginTop="@dimen/longer_distance"
             android:background="@drawable/button_ripple_oval"
             android:paddingLeft="@dimen/longer_distance"
             android:paddingRight="@dimen/longer_distance"
