@@ -5,6 +5,6 @@
     <string name="login_e">SIGN IN</string>
     <string name="go_to_dribbble_login">前往dribbble登录</string>
     <string name="need_login">你需要先去dribbble授权才能使用此app</string>
-
+    <string name="sign_in_now">SIGN IN NOW</string>
 
 </resources>

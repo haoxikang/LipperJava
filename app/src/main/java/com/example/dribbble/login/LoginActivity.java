@@ -5,7 +5,9 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -26,11 +28,12 @@ public class LoginActivity extends BaseActivity {
     @Inject
     LoginPresenter mLoginPresenter;
 
-    private LoginModule mLoginModule;
 
+    private LoginModule mLoginModule;
     private FloatingActionButton mRotateButton;
     private Button mLoginButton;
     private RelativeLayout mRelativeLayout;
+
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState) {
@@ -49,9 +52,8 @@ public class LoginActivity extends BaseActivity {
         mRotateButton = mActivityLoginBinding.rotateButton;
         mLoginButton = mActivityLoginBinding.loginButton;
         mRelativeLayout = mActivityLoginBinding.rlLayout;
-        mRotateButton.post(() -> {
-            startAnimation();
-        });
+     mRotateButton.post(() -> startAnimation());
+
 
     }
 
@@ -64,6 +66,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initListeners() {
+
 
         mLoginButton.setOnClickListener(v -> {
             mLoginPresenter.onLoginClick();
@@ -86,28 +89,36 @@ public class LoginActivity extends BaseActivity {
 
     private void startAnimation() {
 
+      int duration = 700;
+        int maxValue = 1000;
+
         float distanceRotateButton = beforeRotateButtonAnimation();
         float distanceLoginButton = beforeLoginButtonAnimation();
 
 
-        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, 1000);
+
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, maxValue);
         valueAnimator.setInterpolator(new OvershootInterpolator(0.8f));
         valueAnimator.addUpdateListener(animation -> {
             float value = (Float) animation.getAnimatedValue();
-            float YRotateButton = (0 - mRotateButton.getHeight()) + distanceRotateButton * value / 1000;
+            float YRotateButton = (0 - mRotateButton.getHeight()) + distanceRotateButton * value / maxValue;
 
-            float YLoginButton = (mLoginButton.getHeight() + mRelativeLayout.getHeight()) - distanceLoginButton * value / 1000;
+            float YLoginButton = (mLoginButton.getHeight() + mRelativeLayout.getHeight()) - distanceLoginButton * value / maxValue;
 
 
             mRotateButton.setY(YRotateButton);
             mLoginButton.setY(YLoginButton);
 
-            if (value == 1000) {
+            if (value == maxValue) {
                 valueAnimator.removeAllUpdateListeners();
             }
 
+
+
         });
-        valueAnimator.setDuration(600).start();
+
+        valueAnimator.setDuration(duration).start();
+
     }
 
     private float beforeRotateButtonAnimation() {
@@ -130,4 +141,5 @@ public class LoginActivity extends BaseActivity {
         mLoginButton.setVisibility(View.VISIBLE);
         return distance;
     }
+
 }

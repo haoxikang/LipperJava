@@ -18,18 +18,30 @@ public class PresenterLifecycleHelper {
 
     public void onPresenterCreate(){
         if (checkList()) {
-            mPresenterList.stream().filter(presenter -> presenter != null).forEach(Contract.Presenter::onPresenterCreate);
+            for (Contract.Presenter presenter:mPresenterList){
+                if (presenter!=null){
+                    presenter.onPresenterCreate();
+                }
+            }
         }
     }
 
     public void destroyPresenter(){
         if (checkList()) {
-            mPresenterList.stream().filter(presenter -> presenter != null).forEach(Contract.Presenter::detach);
+            for (Contract.Presenter presenter:mPresenterList){
+                if (presenter!=null){
+                    presenter.detach();
+                }
+            }
         }
     }
     public void attach() {
         if (checkList()) {
-            mPresenterList.stream().filter(presenter -> presenter != null).forEach(Contract.Presenter::attach);
+            for (Contract.Presenter presenter:mPresenterList){
+                if (presenter!=null){
+                    presenter.attach();
+                }
+            }
         }
     }
 

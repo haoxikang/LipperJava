@@ -8,7 +8,7 @@
         android:id="@+id/rl_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
+        android:background="@mipmap/login_bg"
         android:fitsSystemWindows="false"
         tools:context="com.example.dribbble.login.LoginActivity">
 
@@ -27,13 +27,13 @@
                 android:text="@string/login_e"
                 android:textColor="@color/primary_dark"
 
-                android:textSize="22sp"
+                android:textSize="24sp"
                 android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/short_distance"
+                android:layout_marginTop="@dimen/common_distance"
                 android:gravity="center"
                 android:text="@string/need_login"
                 android:textColor="@color/primary"
@@ -42,16 +42,17 @@
         </LinearLayout>
 
         <android.support.design.widget.FloatingActionButton
+            android:src="@mipmap/login_float_bg"
+            app:backgroundTint="@android:color/white"
             android:id="@+id/rotate_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/linearLayout"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/longer_distance"
+            android:layout_marginBottom="48dp"
             android:elevation="4dp"
-            android:visibility="invisible"
-            app:fabSize="normal"/>
+            app:fabSize="normal"
+            android:layout_above="@+id/linearLayout"
+            android:layout_centerHorizontal="true"/>
 
 
         <Button
@@ -61,11 +62,11 @@
             android:layout_height="@dimen/normal_button_height"
             android:layout_below="@+id/linearLayout"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/longer_distance"
+            android:layout_marginTop="@dimen/big_distance"
             android:background="@drawable/button_ripple_oval"
             android:paddingLeft="@dimen/longer_distance"
             android:paddingRight="@dimen/longer_distance"
-            android:text="SIGN IN NOW"
+            android:text="@string/sign_in_now"
             android:textColor="@color/primary_dark"
             android:translationZ="4dp"
             android:visibility="invisible"/>
