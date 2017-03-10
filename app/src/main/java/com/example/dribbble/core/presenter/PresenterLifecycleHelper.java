@@ -27,7 +27,7 @@ public class PresenterLifecycleHelper {
             mPresenterList.stream().filter(presenter -> presenter != null).forEach(Contract.Presenter::detach);
         }
     }
-    public void attachl() {
+    public void attach() {
         if (checkList()) {
             mPresenterList.stream().filter(presenter -> presenter != null).forEach(Contract.Presenter::attach);
         }

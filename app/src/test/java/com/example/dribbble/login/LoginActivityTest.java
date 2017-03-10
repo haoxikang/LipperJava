@@ -1,7 +1,10 @@
 package com.example.dribbble.login;
 
+import android.widget.Button;
+
 import com.example.dribbble.BuildConfig;
 import com.example.dribbble.DribbbleApplication;
+import com.example.dribbble.R;
 import com.example.dribbble.core.BaseTest;
 import com.example.dribbble.core.MyRobolectricTestRunner;
 import com.example.dribbble.data.network.model.DribbbleModel;
@@ -34,9 +37,11 @@ public class LoginActivityTest extends BaseTest {
 
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
-    @Mock LoginView mockLoginView;
+    @Mock
+    LoginView mockLoginView;
 
-    @Mock   LoginPresenter mockLoginPresenter;
+    @Mock
+    LoginPresenter mockLoginPresenter;
 
 
     @Test
@@ -48,13 +53,18 @@ public class LoginActivityTest extends BaseTest {
         LoginModule mockLoginModule = spy(new LoginModule(mockLoginView));
         loginActivity.setLoginModule(mockLoginModule);
 
+
         when(mockLoginModule.provideLoginPresenter(any(DribbbleModel.class))).thenReturn(mockLoginPresenter);
 
 
-
         controller.create();
-        verify(mockLoginPresenter).onPresenterCreate();
         verify(mockLoginPresenter).attach();
+        verify(mockLoginPresenter).onPresenterCreate();
+
+        Button loginButton = (Button) loginActivity.findViewById(R.id.login_button);
+      System.out.print(""+loginButton.performClick());
+        verify(mockLoginPresenter).onLoginClick();
+
 
         controller.destroy();
         verify(mockLoginPresenter).detach();

@@ -37,4 +37,6 @@ public class LoginPresenter extends BasePresenter{
 
     }
 
+    public void onLoginClick() {
+    }
 }

@@ -2,8 +2,9 @@
     <string name="app_name">逐波</string>
     <string name="app_title">lipper</string>
     <string name="login">登录</string>
-    <string name="log_up">SIGN IN</string>
+    <string name="login_e">SIGN IN</string>
     <string name="go_to_dribbble_login">前往dribbble登录</string>
+    <string name="need_login">你需要先去dribbble授权才能使用此app</string>
 
 
 </resources>

@@ -3,6 +3,7 @@
     <string name="app_name">lipper</string>
     <string name="app_title">lipper</string>
     <string name="login">Login</string>
-    <string name="log_up">SIGN IN</string>
+    <string name="login_e">SIGN IN</string>
     <string name="go_to_dribbble_login">Go to dribbble login</string>
+    <string name="need_login">You need to be authorized in dribbble\n prior to use this app</string>
 </resources>
