@@ -10,8 +10,8 @@ import com.example.dribbble.core.presenter.Contract;
  * Created by qqq34 on 2017/3/10.
  */
 
-public class BaseViewModel implements Contract.BaseView {
-    private Context mContext;
+public abstract class BaseViewModel implements Contract.BaseView {
+    public Context mContext;
 
     public BaseViewModel(Context context) {
         mContext = context;

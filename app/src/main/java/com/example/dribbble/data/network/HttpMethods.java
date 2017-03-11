@@ -7,12 +7,13 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.example.dribbble.core.constants.BaseUrl.BASE_URL;
+
 /**
  * Created by qqq34 on 2017/3/8.
  */
 
 public class HttpMethods {
-    public static final String BASE_URL = "https://api.dribbble.com/v1/";
     private static final int DEFAULT_TIMEOUT = 5;
     private DribbbleService mDribbbleService;
     private Retrofit retrofit;

@@ -11,6 +11,8 @@ public interface Contract {
         void showErrorLog(String TAG, String message);
 
         void showDebugLog(String TAG, String message);
+
+        void GoWebActivityForResult();
     }
 
     interface Presenter {

@@ -1,6 +1,8 @@
 package com.example.dribbble.login;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 
 import com.example.dribbble.core.presenter.Contract;
 import com.example.dribbble.core.viewmodel.BaseViewModel;
@@ -19,5 +21,10 @@ public class LoginViewModel extends BaseViewModel implements LoginView {
     @Override
     public void onDataFetch(ShotBean test) {
 
+    }
+
+    @Override
+    public void GoWebActivityForResult() {
+        ((Activity) mContext).startActivityForResult(new Intent(mContext, LoginWebActivity.class), LoginActivity.LOGIN_REQUEST_CODE);
     }
 }

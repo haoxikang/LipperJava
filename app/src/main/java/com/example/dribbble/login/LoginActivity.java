@@ -1,7 +1,9 @@
 package com.example.dribbble.login;
 
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +24,10 @@ import javax.inject.Inject;
 
 public class LoginActivity extends BaseActivity {
 
+    public static final int LOGIN_REQUEST_CODE = 100;
+    public static final String LOGIN_CODE_KEY = "LoginActivity.code.key";
+
+
     private LoginViewModel mLoginViewModel;
 
     ActivityLoginBinding mActivityLoginBinding;
@@ -37,6 +43,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState) {
+        mLoginViewModel = new LoginViewModel(this);
         if (mLoginModule == null) {
             mLoginModule = new LoginModule(mLoginViewModel);
         }
@@ -45,14 +52,14 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void initView(@Nullable Bundle savedInstanceState) {
         mActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        mLoginViewModel = new LoginViewModel(this);
+
         MDStatusBarCompat.setImageTranslucent(this);
 
 
         mRotateButton = mActivityLoginBinding.rotateButton;
         mLoginButton = mActivityLoginBinding.loginButton;
         mRelativeLayout = mActivityLoginBinding.rlLayout;
-     mRotateButton.post(() -> startAnimation());
+        mRotateButton.post(() -> startAnimation());
 
 
     }
@@ -89,12 +96,11 @@ public class LoginActivity extends BaseActivity {
 
     private void startAnimation() {
 
-      int duration = 700;
+        int duration = 700;
         int maxValue = 1000;
 
         float distanceRotateButton = beforeRotateButtonAnimation();
         float distanceLoginButton = beforeLoginButtonAnimation();
-
 
 
         ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, maxValue);
@@ -112,7 +118,6 @@ public class LoginActivity extends BaseActivity {
             if (value == maxValue) {
                 valueAnimator.removeAllUpdateListeners();
             }
-
 
 
         });
@@ -142,4 +147,19 @@ public class LoginActivity extends BaseActivity {
         return distance;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == LOGIN_REQUEST_CODE) {
+            switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
+                case RESULT_OK:
+                    Bundle b = data.getExtras(); //data为B中回传的Intent
+                    String url = b.getString(LOGIN_CODE_KEY);
+                    Log.d("aaa", Uri.parse(url).getQueryParameter("code")  );
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    }
 }

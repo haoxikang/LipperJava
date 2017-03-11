@@ -42,7 +42,7 @@ public class LoginActivityTest extends BaseTest {
 
 
     @Test
-    public void testActivityStart() {
+    public void testLoginActivity() {
         ActivityController<LoginActivity> controller = Robolectric.buildActivity(LoginActivity.class);
         LoginActivity loginActivity = controller.get();
 
@@ -59,8 +59,9 @@ public class LoginActivityTest extends BaseTest {
         verify(mockLoginPresenter).onPresenterCreate();
 
         Button loginButton = (Button) loginActivity.findViewById(R.id.login_button);
-      System.out.print(""+loginButton.performClick());
+        System.out.print("" + loginButton.performClick());
         verify(mockLoginPresenter).onLoginClick();
+
 
 
         controller.destroy();
