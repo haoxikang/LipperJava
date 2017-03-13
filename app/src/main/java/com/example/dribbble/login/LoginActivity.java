@@ -76,7 +76,7 @@ public class LoginActivity extends BaseActivity {
 
 
         mLoginButton.setOnClickListener(v -> {
-            mLoginPresenter.onLoginClick();
+         mLoginPresenter.onLoginClick();
         });
 
     }

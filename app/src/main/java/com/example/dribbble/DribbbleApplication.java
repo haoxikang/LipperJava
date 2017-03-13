@@ -1,6 +1,7 @@
 package com.example.dribbble;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.example.dribbble.dagger.AppComponent;
 import com.example.dribbble.dagger.AppModule;
@@ -15,7 +16,6 @@ public class DribbbleApplication extends Application {
 
 
     private AppComponent mAppComponent;
-
     @Override
     public void onCreate() {
         super.onCreate();

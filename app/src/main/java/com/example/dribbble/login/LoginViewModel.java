@@ -25,6 +25,6 @@ public class LoginViewModel extends BaseViewModel implements LoginView {
 
     @Override
     public void GoWebActivityForResult() {
-        ((Activity) mContext).startActivityForResult(new Intent(mContext, LoginWebActivity.class), LoginActivity.LOGIN_REQUEST_CODE);
+      ((LoginActivity) mContext).startActivityForResult(new Intent(mContext, LoginWebActivity.class), LoginActivity.LOGIN_REQUEST_CODE);
     }
 }
