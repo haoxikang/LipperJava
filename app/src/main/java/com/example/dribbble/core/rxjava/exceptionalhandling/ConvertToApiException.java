@@ -8,7 +8,7 @@ import io.reactivex.functions.Function;
  * Created by qqq34 on 2017/3/13.
  */
 
-public class HttpResponseFunc<T> implements Function<Throwable, Flowable<T>> {
+public class ConvertToApiException<T> implements Function<Throwable, Flowable<T>> {
 
 
     @Override

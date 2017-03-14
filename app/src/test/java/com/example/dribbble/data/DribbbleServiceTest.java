@@ -1,8 +1,7 @@
 package com.example.dribbble.data;
 
-import com.example.dribbble.core.constants.DribbbleID;
 import com.example.dribbble.core.rxjava.exceptionalhandling.ApiException;
-import com.example.dribbble.core.rxjava.exceptionalhandling.HttpResponseFunc;
+import com.example.dribbble.core.rxjava.exceptionalhandling.ConvertToApiException;
 import com.example.dribbble.data.databean.ShotBean;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
@@ -16,7 +15,6 @@ import org.junit.Test;
 import java.util.List;
 
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -40,7 +38,7 @@ public class DribbbleServiceTest {
     public void testShotApi() {
 
         mDisposable = mDribbbleModel.getShot("animated", "week", "")
-                .onErrorResumeNext(new HttpResponseFunc<>())
+                .onErrorResumeNext(new ConvertToApiException<>())
                 .subscribe(testList -> {
                     System.out.print(testList.get(0).getTitle());
                 }, throwable -> {
