@@ -4,10 +4,14 @@ import com.example.dribbble.data.network.DribbbleService;
 import com.example.dribbble.data.network.HttpMethods;
 import com.example.dribbble.data.databean.ShotBean;
 import com.example.dribbble.data.network.model.DribbbleModel;
+import com.example.dribbble.user.LipperUser;
+import com.example.dribbble.user.UserToken;
+import com.example.dribbble.user.UserUtils;
 
 import java.util.List;
 
 import io.reactivex.Flowable;
+import okhttp3.RequestBody;
 
 /**
  * Created by qqq34 on 2017/3/8.
@@ -31,7 +35,17 @@ public class DribbbleModelImpl implements DribbbleModel {
     }
 
     @Override
-    public Flowable<List<ShotBean>> getShot(String list, String timeframe, String access_token) {
-        return mDribbbleService.getShot(list, timeframe, access_token);
+    public Flowable<List<ShotBean>> getShot(String list, String timeframe) {
+        return mDribbbleService.getShot(list, timeframe);
+    }
+
+    @Override
+    public Flowable<LipperUser> getUserInfo() {
+        return mDribbbleService.getUserInfo();
+    }
+
+    @Override
+    public Flowable<UserToken> getToken(RequestBody code) {
+        return mDribbbleService.getToken(code);
     }
 }

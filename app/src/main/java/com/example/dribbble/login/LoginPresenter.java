@@ -25,7 +25,7 @@ public class LoginPresenter extends BasePresenter{
 
     @Override
     public void onPresenterCreate() {
-        Disposable disposable =mDribbbleModel.getShot("animated","week","a83a642ca0a4a1017aa9645ca344b8ea94f31aa838a5e22ea1ac232b3a4d4a9a")
+        Disposable disposable =mDribbbleModel.getShot("animated","week")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe( testList-> {

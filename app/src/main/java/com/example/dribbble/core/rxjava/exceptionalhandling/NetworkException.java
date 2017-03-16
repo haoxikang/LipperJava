@@ -19,8 +19,8 @@ public class NetworkException {
         if (e instanceof HttpException) {
             HttpException httpException = (HttpException) e;
             ex = new ApiException(e, ERROR.HTTP_ERROR);
-            ex.HttpExceptionCode = ((HttpException) e).code();
-            ex.message = e.getMessage();
+            ex.HttpExceptionCode = httpException.code();
+            ex.message =httpException.getMessage();
             return ex;
         } else if (e instanceof JsonParseException
                 || e instanceof JSONException
