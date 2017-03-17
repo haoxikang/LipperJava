@@ -4,9 +4,8 @@ import com.example.dribbble.data.network.DribbbleService;
 import com.example.dribbble.data.network.HttpMethods;
 import com.example.dribbble.data.databean.ShotBean;
 import com.example.dribbble.data.network.model.DribbbleModel;
-import com.example.dribbble.user.LipperUser;
-import com.example.dribbble.user.UserToken;
-import com.example.dribbble.user.UserUtils;
+import com.example.dribbble.data.local.user.LipperUser;
+import com.example.dribbble.data.local.user.UserToken;
 
 import java.util.List;
 
@@ -35,8 +34,8 @@ public class DribbbleModelImpl implements DribbbleModel {
     }
 
     @Override
-    public Flowable<List<ShotBean>> getShot(String list, String timeframe) {
-        return mDribbbleService.getShot(list, timeframe);
+    public Flowable<List<ShotBean>> getShot(String token,String list, String timeframe) {
+        return mDribbbleService.getShot( token,list, timeframe);
     }
 
     @Override

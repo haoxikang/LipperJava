@@ -1,4 +1,4 @@
-package com.example.dribbble.user;
+package com.example.dribbble.data.local.user;
 
 import io.realm.Realm;
 
@@ -6,9 +6,12 @@ import io.realm.Realm;
  * Created by qqq34 on 2017/3/16.
  */
 
-public class UserUtils {
+public class UserHelper {
 
-    public static UserToken saveToken(UserToken userToken) {
+
+
+
+    public  UserToken saveToken(UserToken userToken) {
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
         UserToken realmUserToken = realm.copyFromRealm(userToken);
@@ -16,14 +19,14 @@ public class UserUtils {
         return realmUserToken;
     }
 
-    public static UserToken getToken() {
+    public  UserToken getToken() {
         return Realm.getDefaultInstance().where(UserToken.class)
                 .equalTo("id", "token")
                 .findFirst();
 
     }
 
-    public static boolean isLogin() {
+    public  boolean isLogin() {
         UserToken userToken = Realm.getDefaultInstance().where(UserToken.class)
                 .equalTo("id", "token")
                 .findFirst();

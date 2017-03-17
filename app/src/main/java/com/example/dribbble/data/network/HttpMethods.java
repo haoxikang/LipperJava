@@ -1,19 +1,12 @@
 package com.example.dribbble.data.network;
 
-import android.util.Log;
-
 import com.example.dribbble.core.constants.DribbbleID;
-import com.example.dribbble.user.UserToken;
-import com.example.dribbble.user.UserUtils;
-import com.example.dribbble.utils.LogUtils;
+import com.example.dribbble.data.local.user.UserHelper;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -28,7 +21,6 @@ public class HttpMethods {
     private static final int DEFAULT_TIMEOUT = 5;
     private DribbbleService mDribbbleService;
     private Retrofit retrofit;
-
     private HttpMethods() {
         OkHttpClient.Builder localBuilder = new OkHttpClient.Builder();
         localBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
@@ -36,17 +28,9 @@ public class HttpMethods {
                 .addNetworkInterceptor(chain -> {
                     Request originalRequest = chain.request();
                     System.out.println(chain.request().url().url().toString());
-                    if (UserUtils.isLogin()) {
-                        Request authorised = originalRequest.newBuilder()
-                                .header("Authorization", UserUtils.getToken().getAccess_token())
-                                .build();
+                    Request authorised = originalRequest.newBuilder()
+                            .build();
                         return chain.proceed(authorised);
-                    } else {
-                        Request authorised = originalRequest.newBuilder()
-                                .header("Authorization", DribbbleID.CLIENT_ACCESS_TOKEN)
-                                .build();
-                        return chain.proceed(authorised);
-                    }
                 })
                 .build())
                 .addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).baseUrl(BASE_URL).build();

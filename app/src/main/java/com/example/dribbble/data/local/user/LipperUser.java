@@ -1,4 +1,4 @@
-package com.example.dribbble.user;
+package com.example.dribbble.data.local.user;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;

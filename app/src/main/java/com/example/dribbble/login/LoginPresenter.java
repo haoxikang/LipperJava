@@ -25,15 +25,15 @@ public class LoginPresenter extends BasePresenter{
 
     @Override
     public void onPresenterCreate() {
-        Disposable disposable =mDribbbleModel.getShot("animated","week")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe( testList-> {
-                    mLoginView.onDataFetch(testList.get(0));
-
-                },throwable -> {
-                });
-        mCompositeDisposable.add(disposable);
+//        Disposable disposable =mDribbbleModel.getShot("animated","week")
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe( testList-> {
+//                    mLoginView.onDataFetch(testList.get(0));
+//
+//                },throwable -> {
+//                });
+//        mCompositeDisposable.add(disposable);
 
     }
 
