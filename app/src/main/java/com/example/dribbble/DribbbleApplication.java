@@ -22,7 +22,7 @@ public class DribbbleApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-   //   Realm.init(this);
+     //   Realm.init(this);
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(getApplicationContext()))
                 .build();
