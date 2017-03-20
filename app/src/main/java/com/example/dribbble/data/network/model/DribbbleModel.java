@@ -14,10 +14,8 @@ import okhttp3.RequestBody;
  */
 
 public interface DribbbleModel {
-    Flowable<List<ShotBean>> getShot(String token,String list, String timeframe);
+    Flowable<List<ShotBean>> getShot(String list, String timeframe);
 
     Flowable<LipperUser> getUserInfo();
 
-
-    Flowable<UserToken> getToken(RequestBody code);
 }

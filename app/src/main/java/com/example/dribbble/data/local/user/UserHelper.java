@@ -8,26 +8,25 @@ import io.realm.Realm;
 
 public class UserHelper {
 
+private Realm mRealm = Realm.getDefaultInstance();
 
 
-
-    public  UserToken saveToken(UserToken userToken) {
-        Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
-        UserToken realmUserToken = realm.copyFromRealm(userToken);
-        realm.commitTransaction();
+    public UserToken saveToken(UserToken userToken) {
+        mRealm.beginTransaction();
+        UserToken realmUserToken = mRealm.copyFromRealm(userToken);
+        mRealm.commitTransaction();
         return realmUserToken;
     }
 
-    public  UserToken getToken() {
-        return Realm.getDefaultInstance().where(UserToken.class)
+    public UserToken getToken() {
+        return mRealm.where(UserToken.class)
                 .equalTo("id", "token")
                 .findFirst();
 
     }
 
-    public  boolean isLogin() {
-        UserToken userToken = Realm.getDefaultInstance().where(UserToken.class)
+    public boolean isLogin() {
+        UserToken userToken =mRealm.where(UserToken.class)
                 .equalTo("id", "token")
                 .findFirst();
         return userToken != null;

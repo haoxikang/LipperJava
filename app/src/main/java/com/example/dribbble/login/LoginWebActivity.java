@@ -63,7 +63,7 @@ public class LoginWebActivity extends BaseActivity {
     private String getURl() {
         String url = BaseUrl.LOGIN_URL;
 
-        url = url + "?client_id=" + DribbbleID.CLIENT_ID + "&redirect_uri=" + DribbbleID.CALLBACK_URL + "&state=" + RandomUtils.getRandomString(6)+"&scope=public+write+comment+upload";
+        url = url + "authorize?client_id=" + DribbbleID.CLIENT_ID + "&redirect_uri=" + DribbbleID.CALLBACK_URL + "&state=" + RandomUtils.getRandomString(6)+"&scope=public+write+comment+upload";
         Log.d("tag", url);
         return url;
     }

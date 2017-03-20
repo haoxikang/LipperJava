@@ -2,11 +2,13 @@ package com.example.dribbble.dagger;
 
 import android.content.Context;
 
+import com.example.dribbble.data.local.user.UserHelper;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
 
 import dagger.Module;
 import dagger.Provides;
+import io.realm.Realm;
 
 /**
  * Created by qqq34 on 2017/3/8.
@@ -18,12 +20,15 @@ public class AppModule {
 
     public AppModule(Context context) {
         mContext = context;
+
     }
 
     @Provides
     public DribbbleModel provideDribbbleModel() {
         return DribbbleModelImpl.getInstance();
     }
+
+
 
     @Provides
     Context provideContext() {

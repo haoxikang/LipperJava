@@ -1,4 +1,4 @@
-package com.example.dribbble.data.network;
+package com.example.dribbble.data.network.service;
 
 import com.example.dribbble.data.databean.ShotBean;
 import com.example.dribbble.data.local.user.LipperUser;
@@ -21,13 +21,11 @@ import retrofit2.http.Query;
 
 public interface DribbbleService {
 
-    @GET("v1/shots")
-    Flowable<List<ShotBean>> getShot(@Header("Authorization")String token, @Query("list") String list, @Query("timeframe") String timeframe);
+    @GET("shots")
+    Flowable<List<ShotBean>> getShot(@Query("list") String list, @Query("timeframe") String timeframe);
 
-    @GET("v1/users")
+    @GET("user")
     Flowable<LipperUser> getUserInfo();
 
-    @Multipart
-    @POST("oauth/token")
-    Flowable<UserToken> getToken(@Part("code") RequestBody code);
+
 }

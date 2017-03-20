@@ -63,8 +63,6 @@ public class LoginActivityTest extends BaseTest {
         verify(mockLoginPresenter).onLoginClick();
 
 
-
-
         controller.destroy();
         verify(mockLoginPresenter).detach();
 

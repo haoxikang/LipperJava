@@ -5,6 +5,6 @@ package com.example.dribbble.core.constants;
  */
 
 public class BaseUrl {
-    public static final String LOGIN_URL= "https://dribbble.com/oauth/authorize";
-    public static final String BASE_URL = "https://api.dribbble.com/";
+    public static final String LOGIN_URL= "https://dribbble.com/oauth/";
+    public static final String BASE_URL = "https://api.dribbble.com/v1/";
 }

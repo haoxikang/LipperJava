@@ -31,7 +31,6 @@ public class LoginViewModelTest {
         LoginViewModel loginViewModel = new LoginViewModel(loginActivity);
         loginViewModel.GoWebActivityForResult();
 
-        Intent expectedIntent = new Intent(loginActivity, LoginWebActivity.class);
 
         ShadowActivity shadowActivity = Shadows.shadowOf(loginActivity);
         ShadowActivity.IntentForResult actualIntent = shadowActivity.getNextStartedActivityForResult();

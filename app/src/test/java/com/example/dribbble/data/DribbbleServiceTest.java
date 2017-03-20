@@ -6,6 +6,11 @@ import com.example.dribbble.core.MyRobolectricTestRunner;
 import com.example.dribbble.core.rxjava.exceptionalhandling.ApiException;
 import com.example.dribbble.core.rxjava.exceptionalhandling.ConvertToApiException;
 import com.example.dribbble.data.databean.ShotBean;
+import com.example.dribbble.data.local.user.LipperUser;
+import com.example.dribbble.data.local.user.UserHelper;
+import com.example.dribbble.data.network.BaseHttpMethods;
+import com.example.dribbble.data.network.DribbbleHttpMethods;
+import com.example.dribbble.data.network.MyNetworkInterceptor;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
 import com.example.dribbble.data.local.user.UserToken;
@@ -13,7 +18,6 @@ import com.example.dribbble.utils.RxSchedulersOverrideRule;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,47 +29,46 @@ import org.robolectric.annotation.Config;
 import java.util.List;
 
 import io.reactivex.disposables.Disposable;
-import io.realm.Realm;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by qqq34 on 2017/3/9.
  */
-@RunWith(MyRobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21, application = DribbbleApplication.class)
 public class DribbbleServiceTest {
     DribbbleModel mDribbbleModel;
     Disposable mDisposable;
     List<ShotBean> list;
-    UserToken mUserToken;
+    LipperUser mLipperUser;
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
 
-//    @Mock
-//    Realm mRealm;
+    @Mock
+    UserHelper mUserHelper;
     @Rule
     public RxSchedulersOverrideRule mRxSchedulersOverrideRule = new RxSchedulersOverrideRule();
 
 
-    @BeforeClass
-    public static void setupClass() {
-    }
-
     @Before
     public void setup() {
-        mDribbbleModel = DribbbleModelImpl.getInstance();
+
+        UserToken userToken = new UserToken();
+        userToken.setAccess_token("a9d9a7332cc3454a651bfd3f245e6e6bc04087fcc381b4f469af31f342e9a86f");
+        when(mUserHelper.isLogin()).thenReturn(true);
+        when(mUserHelper.getToken()).thenReturn(userToken);
+        mDribbbleModel = DribbbleModelImpl.getInstance(DribbbleHttpMethods.getInstance(new MyNetworkInterceptor(mUserHelper)).getService());
+
     }
 
     @Test
     public void getUserInfo() throws Exception {
-        mDisposable = mDribbbleModel.getToken(RequestBody.create(
-                MediaType.parse("multipart/form-data"), "d97f6ea52fd48f897605587e4a9296f55634228ae8c92a5b6a33007eef858b75"))
+        mDisposable = mDribbbleModel.getUserInfo()
                 .onErrorResumeNext(new ConvertToApiException<>())
-                .subscribe(userToken -> {
-                    mUserToken = userToken;
+                .subscribe(lipperUser -> {
+                    mLipperUser = lipperUser;
                 }, throwable -> {
                     if (throwable instanceof ApiException) {
                         ApiException a = (ApiException) throwable;
@@ -74,17 +77,13 @@ public class DribbbleServiceTest {
                         System.out.print("throwable" + throwable.getMessage());
                     }
                 });
-        assertNotNull(mUserToken);
+        assertNotNull(mLipperUser);
     }
 
-    @Test
-    public void getToken() throws Exception {
-
-    }
 
     @Test
     public void testShotApi() {
-        mDisposable = mDribbbleModel.getShot("Bearer a9d9a7332cc3454a651bfd3f245e6e6bc04087fcc381b4f469af31f342e9a86f","animated", "week")
+        mDisposable = mDribbbleModel.getShot("animated", "week")
                 .onErrorResumeNext(new ConvertToApiException<>())
                 .subscribe(testList -> {
                     list = testList;
