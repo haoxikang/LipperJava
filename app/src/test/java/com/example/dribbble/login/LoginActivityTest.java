@@ -2,34 +2,22 @@ package com.example.dribbble.login;
 
 import android.widget.Button;
 
-import com.example.dribbble.BuildConfig;
-import com.example.dribbble.DribbbleApplication;
 import com.example.dribbble.R;
-import com.example.dribbble.core.BaseTest;
-import com.example.dribbble.core.MyRobolectricTestRunner;
-import com.example.dribbble.dagger.AppComponent;
-import com.example.dribbble.dagger.AppModule;
-import com.example.dribbble.dagger.DaggerAppComponent;
+import com.example.dribbble.core.BaseRealmTest;
 import com.example.dribbble.data.local.user.UserHelper;
-import com.example.dribbble.data.network.DribbbleHttpMethods;
-import com.example.dribbble.data.network.MyNetworkInterceptor;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.robolectric.Robolectric;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 import org.robolectric.util.ActivityController;
 
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -38,14 +26,12 @@ import static org.mockito.Mockito.when;
 /**
  * Created by 康颢曦 on 2017/3/8.
  */
-@RunWith(MyRobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21, application = DribbbleApplication.class)
-public class LoginActivityTest extends BaseTest {
-
+public class LoginActivityTest extends BaseRealmTest {
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
     @Mock
     LoginView mockLoginView;
+
 
     @Mock
     LoginPresenter mockLoginPresenter;
@@ -54,17 +40,14 @@ public class LoginActivityTest extends BaseTest {
     DribbbleModel mDribbbleModel;
 
     @Before
-    public void setup() {
-        when(mUserHelper.isLogin()).thenReturn(false);
-        mDribbbleModel = DribbbleModelImpl.getInstance(DribbbleHttpMethods.getInstance(new MyNetworkInterceptor(mUserHelper)).getService());
-        AppModule mockAppModule = spy(new AppModule(RuntimeEnvironment.application));
-        Mockito.when(mockAppModule.provideDribbbleModel()).thenReturn(mDribbbleModel);
-        AppComponent appComponent = DaggerAppComponent.builder().appModule(mockAppModule).build();
-        ((DribbbleApplication)RuntimeEnvironment.application).setAppComponent(appComponent);
+    public void setup()throws Exception {
+        super.setup();
+        mDribbbleModel = DribbbleModelImpl.getInstance();
     }
 
     @Test
     public void testLoginActivity() {
+
         ActivityController<LoginActivity> controller = Robolectric.buildActivity(LoginActivity.class);
         LoginActivity loginActivity = controller.get();
 
@@ -90,5 +73,7 @@ public class LoginActivityTest extends BaseTest {
 
 
     }
+
+
 
 }

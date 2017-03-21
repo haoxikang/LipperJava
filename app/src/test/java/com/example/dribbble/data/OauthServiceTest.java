@@ -47,7 +47,6 @@ public class OauthServiceTest {
     public void setup() {
         when(mUserHelper.isLogin()).thenReturn(false);
         mOauthModel = OauthModelImpl.getInstance(OauthHttpMethods.getInstance(new MyNetworkInterceptor(mUserHelper)).getService());
-
     }
 
     @Test

@@ -1,44 +1,39 @@
 package com.example.dribbble.data;
 
-import com.example.dribbble.BuildConfig;
-import com.example.dribbble.DribbbleApplication;
-import com.example.dribbble.core.MyRobolectricTestRunner;
+import com.example.dribbble.core.BaseRealmTest;
 import com.example.dribbble.core.rxjava.exceptionalhandling.ApiException;
 import com.example.dribbble.core.rxjava.exceptionalhandling.ConvertToApiException;
 import com.example.dribbble.data.databean.ShotBean;
 import com.example.dribbble.data.local.user.LipperUser;
 import com.example.dribbble.data.local.user.UserHelper;
-import com.example.dribbble.data.network.BaseHttpMethods;
-import com.example.dribbble.data.network.DribbbleHttpMethods;
-import com.example.dribbble.data.network.MyNetworkInterceptor;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
-import com.example.dribbble.data.local.user.UserToken;
 import com.example.dribbble.utils.RxSchedulersOverrideRule;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
-import org.robolectric.annotation.Config;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 
 import java.util.List;
 
 import io.reactivex.disposables.Disposable;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.when;
 
 /**
  * Created by qqq34 on 2017/3/9.
  */
-public class DribbbleServiceTest {
+@PowerMockIgnore({"org.mockito.*", "org.robolectric.*", "android.*", "retrofit2.*", "okhttp3.*"
+        , "com.example.dribbble.data.network.service.*", "io.reactivex.*"
+        , "com.example.dribbble.data.local.user.LipperUser",
+        "com.example.dribbble.data.local.user.LinksBean"
+        , "com.example.dribbble.data.local.databean.ShotBean"})
+public class DribbbleServiceTest extends BaseRealmTest {
     DribbbleModel mDribbbleModel;
     Disposable mDisposable;
     List<ShotBean> list;
@@ -53,14 +48,9 @@ public class DribbbleServiceTest {
 
 
     @Before
-    public void setup() {
-
-        UserToken userToken = new UserToken();
-        userToken.setAccess_token("a9d9a7332cc3454a651bfd3f245e6e6bc04087fcc381b4f469af31f342e9a86f");
-        when(mUserHelper.isLogin()).thenReturn(true);
-        when(mUserHelper.getToken()).thenReturn(userToken);
-        mDribbbleModel = DribbbleModelImpl.getInstance(DribbbleHttpMethods.getInstance(new MyNetworkInterceptor(mUserHelper)).getService());
-
+    public void setup() throws Exception {
+        super.setup();
+        mDribbbleModel = DribbbleModelImpl.getInstance();
     }
 
     @Test
