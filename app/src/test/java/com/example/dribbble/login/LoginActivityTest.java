@@ -2,8 +2,10 @@ package com.example.dribbble.login;
 
 import android.widget.Button;
 
+import com.example.dribbble.BuildConfig;
+import com.example.dribbble.DribbbleApplication;
 import com.example.dribbble.R;
-import com.example.dribbble.core.BaseRealmTest;
+import com.example.dribbble.core.MyRobolectricTestRunner;
 import com.example.dribbble.data.local.user.UserHelper;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
@@ -11,10 +13,12 @@ import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.robolectric.Robolectric;
+import org.robolectric.annotation.Config;
 import org.robolectric.util.ActivityController;
 
 import static org.mockito.Matchers.any;
@@ -26,7 +30,9 @@ import static org.mockito.Mockito.when;
 /**
  * Created by 康颢曦 on 2017/3/8.
  */
-public class LoginActivityTest extends BaseRealmTest {
+@RunWith(MyRobolectricTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21, application = DribbbleApplication.class)
+public class LoginActivityTest{
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
     @Mock
@@ -41,7 +47,6 @@ public class LoginActivityTest extends BaseRealmTest {
 
     @Before
     public void setup()throws Exception {
-        super.setup();
         mDribbbleModel = DribbbleModelImpl.getInstance();
     }
 

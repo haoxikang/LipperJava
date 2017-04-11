@@ -1,6 +1,8 @@
 package com.example.dribbble.data;
 
-import com.example.dribbble.core.BaseRealmTest;
+import com.example.dribbble.BuildConfig;
+import com.example.dribbble.DribbbleApplication;
+import com.example.dribbble.core.MyRobolectricTestRunner;
 import com.example.dribbble.core.rxjava.exceptionalhandling.ApiException;
 import com.example.dribbble.core.rxjava.exceptionalhandling.ConvertToApiException;
 import com.example.dribbble.data.databean.ShotBean;
@@ -14,10 +16,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
+import org.robolectric.annotation.Config;
 
 import java.util.List;
 
@@ -28,12 +31,9 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by qqq34 on 2017/3/9.
  */
-@PowerMockIgnore({"org.mockito.*", "org.robolectric.*", "android.*", "retrofit2.*", "okhttp3.*"
-        , "com.example.dribbble.data.network.service.*", "io.reactivex.*"
-        , "com.example.dribbble.data.local.user.LipperUser",
-        "com.example.dribbble.data.local.user.LinksBean"
-        , "com.example.dribbble.data.local.databean.ShotBean"})
-public class DribbbleServiceTest extends BaseRealmTest {
+@RunWith(MyRobolectricTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21, application = DribbbleApplication.class)
+public class DribbbleServiceTest {
     DribbbleModel mDribbbleModel;
     Disposable mDisposable;
     List<ShotBean> list;
@@ -49,7 +49,6 @@ public class DribbbleServiceTest extends BaseRealmTest {
 
     @Before
     public void setup() throws Exception {
-        super.setup();
         mDribbbleModel = DribbbleModelImpl.getInstance();
     }
 

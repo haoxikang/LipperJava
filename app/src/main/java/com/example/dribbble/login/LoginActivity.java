@@ -57,9 +57,10 @@ public class LoginActivity extends BaseActivity {
 
         mRotateButton = mActivityLoginBinding.rotateButton;
         mLoginButton = mActivityLoginBinding.loginButton;
-        mRelativeLayout = mActivityLoginBinding.rlLayout;
-        mRotateButton.post(() -> startAnimation());
 
+        mRelativeLayout = mActivityLoginBinding.rlLayout;
+
+    mRotateButton.post(() -> startAnimation());
 
     }
 
@@ -149,9 +150,9 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == LOGIN_REQUEST_CODE) {
-            switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
+            switch (resultCode) {
                 case RESULT_OK:
-                    Bundle b = data.getExtras(); //data为B中回传的Intent
+                    Bundle b = data.getExtras();
                     String url = b.getString(LOGIN_CODE_KEY);
                     Log.d("aaa", Uri.parse(url).getQueryParameter("code")  );
                     break;

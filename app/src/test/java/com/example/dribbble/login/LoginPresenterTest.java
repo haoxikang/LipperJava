@@ -7,10 +7,8 @@ import com.example.dribbble.data.databean.ShotBean;
 import com.example.dribbble.data.local.user.UserHelper;
 import com.example.dribbble.data.network.DribbbleHttpMethods;
 import com.example.dribbble.data.network.MyNetworkInterceptor;
-import com.example.dribbble.data.network.OauthHttpMethods;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
-import com.example.dribbble.data.network.model.impl.OauthModelImpl;
 import com.example.dribbble.utils.RxSchedulersOverrideRule;
 
 import org.junit.After;
@@ -20,31 +18,18 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
-import org.mockito.internal.util.MockitoLogger;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.core.classloader.annotations.SuppressStaticInitializationFor;
-import org.powermock.modules.junit4.rule.PowerMockRule;
 import org.robolectric.annotation.Config;
 
-
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
-import io.realm.RealmQuery;
-import io.realm.RealmResults;
-import io.realm.internal.RealmCore;
-import io.realm.log.RealmLog;
-
-import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
  * Created by qqq34 on 2017/3/9.
  */
-@PowerMockIgnore({"org.mockito.*", "org.robolectric.*", "android.*", "retrofit2.*", "okhttp3.*"})
+@RunWith(MyRobolectricTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21, application = DribbbleApplication.class)
 public class LoginPresenterTest {
 
     @Rule

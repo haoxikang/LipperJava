@@ -2,12 +2,10 @@ package com.example.dribbble.login;
 
 import com.example.dribbble.BuildConfig;
 import com.example.dribbble.DribbbleApplication;
-import com.example.dribbble.core.BaseRealmTest;
 import com.example.dribbble.core.MyRobolectricTestRunner;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.robolectric.Robolectric;
 import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
@@ -19,12 +17,10 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by qqq34 on 2017/3/13.
  */
-@PowerMockIgnore({"org.mockito.*", "org.robolectric.*", "android.*"})
-public class LoginViewModelTest extends BaseRealmTest {
-    @Override
-    public void setup() throws Exception {
-        super.setup();
-    }
+@RunWith(MyRobolectricTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21, application = DribbbleApplication.class)
+public class LoginViewModelTest {
+
 
     @Test
     public void goWebActivityForResult() throws Exception {
