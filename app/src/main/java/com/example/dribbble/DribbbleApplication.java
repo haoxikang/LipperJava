@@ -17,13 +17,17 @@ import io.realm.Realm;
 public class DribbbleApplication extends Application {
 
 
-
     private AppComponent mAppComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Realm.init(this);
+        try {
+            Realm.init(this);
+        } catch (UnsatisfiedLinkError e) {
+            e.printStackTrace();
+        }
+
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(getApplicationContext()))
                 .build();

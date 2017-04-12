@@ -10,6 +10,7 @@ import com.example.dribbble.data.network.MyNetworkInterceptor;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
 import com.example.dribbble.utils.RxSchedulersOverrideRule;
+import com.example.dribbble.utils.TestUtils;
 
 import org.junit.After;
 import org.junit.Before;
@@ -28,8 +29,6 @@ import static org.mockito.Mockito.when;
 /**
  * Created by qqq34 on 2017/3/9.
  */
-@RunWith(MyRobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21, application = DribbbleApplication.class)
 public class LoginPresenterTest {
 
     @Rule
@@ -44,11 +43,11 @@ public class LoginPresenterTest {
     DribbbleModel mDribbbleModel;
 
     LoginPresenter mLoginPresenter;
-    @Mock
+
     UserHelper mUserHelper;
     @Before
     public void setup() {
-        when(mUserHelper.isLogin()).thenReturn(false);
+        mUserHelper = TestUtils.getDefaultMockUserHelper();
         mDribbbleModel = DribbbleModelImpl.getInstance(DribbbleHttpMethods.getInstance(new MyNetworkInterceptor(mUserHelper)).getService());
         mLoginPresenter = new LoginPresenter(mDribbbleModel, mockLoginView);
         mLoginPresenter.attach();

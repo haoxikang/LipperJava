@@ -9,6 +9,7 @@ import com.example.dribbble.data.network.OauthHttpMethods;
 import com.example.dribbble.data.network.model.OauthModel;
 import com.example.dribbble.data.network.model.impl.OauthModelImpl;
 import com.example.dribbble.utils.RxSchedulersOverrideRule;
+import com.example.dribbble.utils.TestUtils;
 
 import org.junit.After;
 import org.junit.Before;
@@ -36,7 +37,6 @@ public class OauthServiceTest {
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
 
-    @Mock
     UserHelper mUserHelper;
     @Rule
     public RxSchedulersOverrideRule mRxSchedulersOverrideRule = new RxSchedulersOverrideRule();
@@ -45,7 +45,7 @@ public class OauthServiceTest {
 
     @Before
     public void setup() {
-        when(mUserHelper.isLogin()).thenReturn(false);
+      mUserHelper = TestUtils.getDefaultMockUserHelper();
         mOauthModel = OauthModelImpl.getInstance(OauthHttpMethods.getInstance(new MyNetworkInterceptor(mUserHelper)).getService());
     }
 

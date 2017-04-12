@@ -5,8 +5,11 @@ import android.widget.Button;
 import com.example.dribbble.BuildConfig;
 import com.example.dribbble.DribbbleApplication;
 import com.example.dribbble.R;
+import com.example.dribbble.core.BaseTest;
 import com.example.dribbble.core.MyRobolectricTestRunner;
 import com.example.dribbble.data.local.user.UserHelper;
+import com.example.dribbble.data.network.DribbbleHttpMethods;
+import com.example.dribbble.data.network.MyNetworkInterceptor;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
 
@@ -32,7 +35,7 @@ import static org.mockito.Mockito.when;
  */
 @RunWith(MyRobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21, application = DribbbleApplication.class)
-public class LoginActivityTest{
+public class LoginActivityTest extends BaseTest{
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
     @Mock
@@ -41,14 +44,7 @@ public class LoginActivityTest{
 
     @Mock
     LoginPresenter mockLoginPresenter;
-    @Mock
-    UserHelper mUserHelper;
-    DribbbleModel mDribbbleModel;
 
-    @Before
-    public void setup()throws Exception {
-        mDribbbleModel = DribbbleModelImpl.getInstance();
-    }
 
     @Test
     public void testLoginActivity() {

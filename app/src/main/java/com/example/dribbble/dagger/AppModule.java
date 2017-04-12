@@ -31,7 +31,7 @@ public class AppModule {
 
 
     @Provides
-    Context provideContext() {
+   public Context provideContext() {
         return mContext;
     }
 
