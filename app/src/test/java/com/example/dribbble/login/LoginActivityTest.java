@@ -3,10 +3,11 @@ package com.example.dribbble.login;
 import android.widget.Button;
 
 import com.example.dribbble.BuildConfig;
-import com.example.dribbble.DribbbleApplication;
 import com.example.dribbble.R;
+import com.example.dribbble.TestApplication;
 import com.example.dribbble.core.MyRobolectricTestRunner;
 import com.example.dribbble.data.network.model.DribbbleModel;
+import com.example.dribbble.data.network.model.OauthModel;
 import com.example.dribbble.utils.BaseRule;
 
 import org.junit.Rule;
@@ -29,12 +30,12 @@ import static org.mockito.Mockito.when;
  * Created by 康颢曦 on 2017/3/8.
  */
 @RunWith(MyRobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21, application = DribbbleApplication.class)
+@Config(constants = BuildConfig.class, sdk = 21, application = TestApplication.class)
 public class LoginActivityTest {
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
     @Rule
-    public   BaseRule baseRule = new BaseRule();
+    public BaseRule baseRule = new BaseRule();
     @Mock
     LoginView mockLoginView;
 
@@ -54,7 +55,7 @@ public class LoginActivityTest {
         loginActivity.setLoginModule(mockLoginModule);
 
 
-        when(mockLoginModule.provideLoginPresenter(any(DribbbleModel.class))).thenReturn(mockLoginPresenter);
+        when(mockLoginModule.provideLoginPresenter(any(DribbbleModel.class),any(OauthModel.class))).thenReturn(mockLoginPresenter);
 
 
         controller.create();
@@ -71,7 +72,6 @@ public class LoginActivityTest {
 
 
     }
-
 
 
 }

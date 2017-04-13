@@ -25,7 +25,7 @@ public class MyNetworkInterceptor implements Interceptor {
         Request original = chain.request();
         System.out.println(chain.request().url().url().toString());
         Request.Builder requestBuilder;
-        if (UserManager.INSTANCE.isLogin()) {
+        if (UserManager.INSTANCE.getUserToken()!=null) {
             requestBuilder = original.newBuilder()
                     .header("Authorization", "Bearer " + UserManager.INSTANCE.getUserToken().getAccess_token());
         } else {

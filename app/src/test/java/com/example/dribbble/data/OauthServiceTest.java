@@ -39,8 +39,7 @@ public class OauthServiceTest {
 
     @Test
     public void getToken() throws Exception {
-        mDisposable = OauthModelImpl.getInstance().getToken(RequestBody.create(
-                MediaType.parse("multipart/form-data"), "d2cebd4a3e8ab4107520e0f5a8934fba27762bae80d6714bbf3426ff265a4b4a"))
+        mDisposable = OauthModelImpl.getInstance().getToken("d2cebd4a3e8ab4107520e0f5a8934fba27762bae80d6714bbf3426ff265a4b4a")
                 .onErrorResumeNext(new ConvertToApiException<>())
                 .subscribe(userToken -> {
                     mUserToken = userToken;

@@ -13,6 +13,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import com.example.dribbble.DaggerApplication;
 import com.example.dribbble.DribbbleApplication;
 import com.example.dribbble.R;
 import com.example.dribbble.core.activity.BaseActivity;
@@ -83,7 +84,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void inject() {
-        DaggerLoginComponent.builder().appComponent(((DribbbleApplication) getApplication())
+        DaggerLoginComponent.builder().appComponent(((DaggerApplication) getApplication())
                 .getAppComponent())
                 .loginModule(mLoginModule).build().inject(this);
         mPresenterList.add(mLoginPresenter);

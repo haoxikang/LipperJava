@@ -12,6 +12,6 @@ import retrofit2.http.Part;
 
 public interface OauthModel {
 
-    Flowable<UserToken> getToken( RequestBody code);
+    Flowable<UserToken> getToken( String code);
 
 }

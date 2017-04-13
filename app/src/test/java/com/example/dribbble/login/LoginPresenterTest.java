@@ -3,7 +3,9 @@ package com.example.dribbble.login;
 import com.example.dribbble.data.databean.ShotBean;
 import com.example.dribbble.data.local.user.UserHelper;
 import com.example.dribbble.data.network.model.DribbbleModel;
+import com.example.dribbble.data.network.model.OauthModel;
 import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
+import com.example.dribbble.data.network.model.impl.OauthModelImpl;
 import com.example.dribbble.utils.BaseRule;
 import com.example.dribbble.utils.RxSchedulersOverrideRule;
 
@@ -29,19 +31,21 @@ public class LoginPresenterTest {
     @Rule
     public RxSchedulersOverrideRule mRxSchedulersOverrideRule = new RxSchedulersOverrideRule();
     @Rule
-    public  BaseRule baseRule = new BaseRule();
+    public BaseRule baseRule = new BaseRule();
     @Mock
     LoginView mockLoginView;
 
     DribbbleModel mDribbbleModel;
 
+    OauthModel oauthModel;
+
     LoginPresenter mLoginPresenter;
 
-    UserHelper mUserHelper;
     @Before
     public void setup() {
         mDribbbleModel = DribbbleModelImpl.getInstance();
-        mLoginPresenter = new LoginPresenter(mDribbbleModel, mockLoginView);
+        oauthModel = OauthModelImpl.getInstance();
+        mLoginPresenter = new LoginPresenter(mDribbbleModel, oauthModel, mockLoginView);
         mLoginPresenter.attach();
     }
 

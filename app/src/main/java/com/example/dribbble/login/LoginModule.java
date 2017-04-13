@@ -1,6 +1,7 @@
 package com.example.dribbble.login;
 
 import com.example.dribbble.data.network.model.DribbbleModel;
+import com.example.dribbble.data.network.model.OauthModel;
 
 import dagger.Module;
 import dagger.Provides;
@@ -19,7 +20,7 @@ public class LoginModule {
     }
 
     @Provides
-    LoginPresenter provideLoginPresenter(DribbbleModel dribbbleModel) {
-        return new LoginPresenter(dribbbleModel, mLoginView);
+    LoginPresenter provideLoginPresenter(DribbbleModel dribbbleModel, OauthModel oauthModel) {
+        return new LoginPresenter(dribbbleModel,oauthModel, mLoginView);
     }
 }
