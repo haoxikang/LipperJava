@@ -6,6 +6,7 @@ import android.content.Context;
 import com.example.dribbble.dagger.AppComponent;
 import com.example.dribbble.dagger.AppModule;
 import com.example.dribbble.dagger.DaggerAppComponent;
+import com.example.dribbble.data.local.user.UserHelper;
 import com.example.dribbble.data.local.user.UserManager;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
@@ -47,5 +48,10 @@ public class DribbbleApplication extends Application {
     public void setAppComponent(AppComponent appComponent) {
         mAppComponent = appComponent;
     }
+
+    public void initUserManager(UserHelper userHelper){
+        UserManager.INSTANCE.init(userHelper);
+    }
+
 
 }

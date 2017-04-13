@@ -35,4 +35,8 @@ public class BaseRule implements TestRule {
             }
         };
     }
+
+    public UserHelper getUserHelper() {
+        return userHelper;
+    }
 }
