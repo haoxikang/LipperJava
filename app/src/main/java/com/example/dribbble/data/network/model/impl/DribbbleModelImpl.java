@@ -11,7 +11,7 @@ import java.util.List;
 import io.reactivex.Flowable;
 
 /**
- * Created by qqq34 on 2017/3/8.
+ * Created by 康颢曦 on 2017/3/8.
  */
 
 public class DribbbleModelImpl implements DribbbleModel {
@@ -22,10 +22,6 @@ public class DribbbleModelImpl implements DribbbleModel {
 
     private DribbbleModelImpl() {
         mDribbbleService = DribbbleHttpMethods.getInstance().getService();
-    }
-
-    private DribbbleModelImpl(DribbbleService dribbbleService) {
-        mDribbbleService = dribbbleService;
     }
 
     public static DribbbleModelImpl getInstance() {
@@ -39,16 +35,6 @@ public class DribbbleModelImpl implements DribbbleModel {
         return ourInstance;
     }
 
-    public static DribbbleModelImpl getInstance(DribbbleService mDribbbleService) {
-        if (ourInstance == null) {
-            synchronized (DribbbleModelImpl.class) {
-                if (ourInstance == null) {
-                    ourInstance = new DribbbleModelImpl(mDribbbleService);
-                }
-            }
-        }
-        return ourInstance;
-    }
 
     @Override
     public Flowable<List<ShotBean>> getShot( String list, String timeframe) {

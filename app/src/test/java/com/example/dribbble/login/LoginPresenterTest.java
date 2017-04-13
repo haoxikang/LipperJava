@@ -9,6 +9,7 @@ import com.example.dribbble.data.network.DribbbleHttpMethods;
 import com.example.dribbble.data.network.MyNetworkInterceptor;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
+import com.example.dribbble.utils.BaseRule;
 import com.example.dribbble.utils.RxSchedulersOverrideRule;
 import com.example.dribbble.utils.TestUtils;
 
@@ -27,7 +28,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- * Created by qqq34 on 2017/3/9.
+ * Created by 康颢曦 on 2017/3/9.
  */
 public class LoginPresenterTest {
 
@@ -36,7 +37,8 @@ public class LoginPresenterTest {
 
     @Rule
     public RxSchedulersOverrideRule mRxSchedulersOverrideRule = new RxSchedulersOverrideRule();
-
+    @Rule
+    public  BaseRule baseRule = new BaseRule();
     @Mock
     LoginView mockLoginView;
 
@@ -47,8 +49,7 @@ public class LoginPresenterTest {
     UserHelper mUserHelper;
     @Before
     public void setup() {
-        mUserHelper = TestUtils.getDefaultMockUserHelper();
-        mDribbbleModel = DribbbleModelImpl.getInstance(DribbbleHttpMethods.getInstance(new MyNetworkInterceptor(mUserHelper)).getService());
+        mDribbbleModel = DribbbleModelImpl.getInstance();
         mLoginPresenter = new LoginPresenter(mDribbbleModel, mockLoginView);
         mLoginPresenter.attach();
     }

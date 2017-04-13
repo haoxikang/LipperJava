@@ -5,7 +5,7 @@ import org.robolectric.RoboSettings;
 import org.robolectric.RobolectricTestRunner;
 
 /**
- * Created by qqq34 on 2017/3/9.
+ * Created by 康颢曦 on 2017/3/9.
  */
 
 public class MyRobolectricTestRunner  extends RobolectricTestRunner {

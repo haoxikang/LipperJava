@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.example.dribbble.core.constants.BaseUrl.BASE_URL;
 
 /**
- * Created by qqq34 on 2017/3/8.
+ * Created by 康颢曦 on 2017/3/8.
  */
 
 public abstract class BaseHttpMethods<S> {

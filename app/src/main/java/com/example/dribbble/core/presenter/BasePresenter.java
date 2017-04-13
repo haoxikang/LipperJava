@@ -3,7 +3,7 @@ package com.example.dribbble.core.presenter;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
- * Created by qqq34 on 2017/3/8.
+ * Created by 康颢曦 on 2017/3/8.
  */
 
 public abstract class BasePresenter implements Contract.Presenter{

@@ -13,7 +13,7 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 /**
- * Created by qqq34 on 2017/3/20.
+ * Created by 康颢曦 on 2017/3/20.
  */
 
 public class OauthModelImpl implements OauthModel {
@@ -23,10 +23,6 @@ public class OauthModelImpl implements OauthModel {
 
     private OauthModelImpl() {
         mOauthService = OauthHttpMethods.getInstance().getService();
-    }
-
-    private OauthModelImpl(OauthService oauthService) {
-        mOauthService = oauthService;
     }
 
     public static OauthModelImpl getInstance() {
@@ -40,16 +36,6 @@ public class OauthModelImpl implements OauthModel {
         return ourInstance;
     }
 
-    public static OauthModelImpl getInstance(OauthService oauthService) {
-        if (ourInstance == null) {
-            synchronized (OauthModelImpl.class) {
-                if (ourInstance == null) {
-                    ourInstance = new OauthModelImpl(oauthService);
-                }
-            }
-        }
-        return ourInstance;
-    }
 
     @Override
     public Flowable<UserToken> getToken(RequestBody code) {

@@ -5,7 +5,7 @@ import com.example.dribbble.data.local.user.UserHelper;
 import com.example.dribbble.data.network.service.DribbbleService;
 
 /**
- * Created by qqq34 on 2017/3/20.
+ * Created by 康颢曦 on 2017/3/20.
  */
 
 public class DribbbleHttpMethods extends BaseHttpMethods<DribbbleService> {
@@ -14,25 +14,16 @@ public class DribbbleHttpMethods extends BaseHttpMethods<DribbbleService> {
 
 
 
-
-    public static DribbbleHttpMethods getInstance(MyNetworkInterceptor myNetworkInterceptor) {
-        return setupCreate(myNetworkInterceptor);
-    }
-
     public static DribbbleHttpMethods getInstance() {
-        return setupCreate(null);
+        return setupCreate();
     }
 
-    private static DribbbleHttpMethods setupCreate(MyNetworkInterceptor myNetworkInterceptor) {
+    private static DribbbleHttpMethods setupCreate() {
 
         if (instance == null) {
             synchronized (DribbbleHttpMethods.class) {
                 if (instance == null) {
-                    if (myNetworkInterceptor == null) {
-                        instance = new DribbbleHttpMethods(new MyNetworkInterceptor(new UserHelper()));
-                    } else {
-                        instance = new DribbbleHttpMethods(myNetworkInterceptor);
-                    }
+                        instance = new DribbbleHttpMethods(new MyNetworkInterceptor());
 
                 }
             }

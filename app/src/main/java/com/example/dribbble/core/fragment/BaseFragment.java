@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by qqq34 on 2017/3/8.
+ * Created by 康颢曦 on 2017/3/8.
  */
 
 public abstract class BaseFragment extends Fragment  {

@@ -1,11 +1,12 @@
 package com.example.dribbble.core.rxjava.exceptionalhandling;
 
+import com.example.dribbble.core.exception.NetworkException;
+
 import io.reactivex.Flowable;
-import io.reactivex.Observable;
 import io.reactivex.functions.Function;
 
 /**
- * Created by qqq34 on 2017/3/13.
+ * Created by 康颢曦 on 2017/3/13.
  */
 
 public class ConvertToApiException<T> implements Function<Throwable, Flowable<T>> {

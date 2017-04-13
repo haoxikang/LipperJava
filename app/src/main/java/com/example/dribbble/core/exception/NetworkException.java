@@ -1,5 +1,7 @@
-package com.example.dribbble.core.rxjava.exceptionalhandling;
+package com.example.dribbble.core.exception;
 
+import com.example.dribbble.core.rxjava.exceptionalhandling.ApiException;
+import com.example.dribbble.core.rxjava.exceptionalhandling.ERROR;
 import com.google.gson.JsonParseException;
 
 import org.json.JSONException;
@@ -10,7 +12,7 @@ import java.text.ParseException;
 import retrofit2.HttpException;
 
 /**
- * Created by qqq34 on 2017/3/13.
+ * Created by 康颢曦 on 2017/3/13.
  */
 
 public class NetworkException {

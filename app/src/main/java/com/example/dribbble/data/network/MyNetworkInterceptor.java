@@ -2,6 +2,7 @@ package com.example.dribbble.data.network;
 
 import com.example.dribbble.core.constants.DribbbleID;
 import com.example.dribbble.data.local.user.UserHelper;
+import com.example.dribbble.data.local.user.UserManager;
 
 import java.io.IOException;
 
@@ -10,15 +11,13 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Created by qqq34 on 2017/3/20.
+ * Created by 康颢曦 on 2017/3/20.
  */
 
 public class MyNetworkInterceptor implements Interceptor {
 
-    private UserHelper mUserHelper;
 
-    public MyNetworkInterceptor(UserHelper userHelper) {
-        mUserHelper = userHelper;
+    public MyNetworkInterceptor() {
     }
 
     @Override
@@ -26,9 +25,9 @@ public class MyNetworkInterceptor implements Interceptor {
         Request original = chain.request();
         System.out.println(chain.request().url().url().toString());
         Request.Builder requestBuilder;
-        if (mUserHelper.isLogin()) {
+        if (UserManager.INSTANCE.isLogin()) {
             requestBuilder = original.newBuilder()
-                    .header("Authorization", "Bearer " + mUserHelper.getToken().getAccess_token());
+                    .header("Authorization", "Bearer " + UserManager.INSTANCE.getUserToken().getAccess_token());
         } else {
             requestBuilder = original.newBuilder()
                     .header("Authorization", "Bearer " + DribbbleID.CLIENT_ACCESS_TOKEN);

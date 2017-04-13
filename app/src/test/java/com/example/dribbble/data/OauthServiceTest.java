@@ -2,20 +2,14 @@ package com.example.dribbble.data;
 
 import com.example.dribbble.core.rxjava.exceptionalhandling.ApiException;
 import com.example.dribbble.core.rxjava.exceptionalhandling.ConvertToApiException;
-import com.example.dribbble.data.local.user.UserHelper;
 import com.example.dribbble.data.local.user.UserToken;
-import com.example.dribbble.data.network.MyNetworkInterceptor;
-import com.example.dribbble.data.network.OauthHttpMethods;
-import com.example.dribbble.data.network.model.OauthModel;
 import com.example.dribbble.data.network.model.impl.OauthModelImpl;
+import com.example.dribbble.utils.BaseRule;
 import com.example.dribbble.utils.RxSchedulersOverrideRule;
-import com.example.dribbble.utils.TestUtils;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
@@ -24,10 +18,9 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.when;
 
 /**
- * Created by qqq34 on 2017/3/20.
+ * Created by 康颢曦 on 2017/3/20.
  */
 public class OauthServiceTest {
 
@@ -37,25 +30,21 @@ public class OauthServiceTest {
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
 
-    UserHelper mUserHelper;
     @Rule
     public RxSchedulersOverrideRule mRxSchedulersOverrideRule = new RxSchedulersOverrideRule();
 
-    OauthModel mOauthModel;
+    @Rule
+    public BaseRule baseRule = new BaseRule();
 
-    @Before
-    public void setup() {
-      mUserHelper = TestUtils.getDefaultMockUserHelper();
-        mOauthModel = OauthModelImpl.getInstance(OauthHttpMethods.getInstance(new MyNetworkInterceptor(mUserHelper)).getService());
-    }
 
     @Test
     public void getToken() throws Exception {
-        mDisposable = mOauthModel.getToken(RequestBody.create(
-                MediaType.parse("multipart/form-data"), "d4a82528cc596ed597277a96922dbcfc34f09dfdebf5de4da22efcfd659dc05c"))
+        mDisposable = OauthModelImpl.getInstance().getToken(RequestBody.create(
+                MediaType.parse("multipart/form-data"), "d2cebd4a3e8ab4107520e0f5a8934fba27762bae80d6714bbf3426ff265a4b4a"))
                 .onErrorResumeNext(new ConvertToApiException<>())
                 .subscribe(userToken -> {
                     mUserToken = userToken;
+                    System.out.print("throwable" + mUserToken.getAccess_token());
                 }, throwable -> {
                     if (throwable instanceof ApiException) {
                         ApiException a = (ApiException) throwable;
@@ -66,6 +55,7 @@ public class OauthServiceTest {
                 });
         assertNotNull(mUserToken);
     }
+
     @After
     public void testFinished() {
 

@@ -3,7 +3,7 @@ package com.example.dribbble.utils;
 import android.util.Log;
 
 /**
- * Created by qqq34 on 2017/3/16.
+ * Created by 康颢曦 on 2017/3/16.
  */
 
 public class LogUtils {

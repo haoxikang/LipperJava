@@ -7,7 +7,7 @@ import android.widget.Toast;
 import com.example.dribbble.core.presenter.Contract;
 
 /**
- * Created by qqq34 on 2017/3/10.
+ * Created by 康颢曦 on 2017/3/10.
  */
 
 public abstract class BaseViewModel implements Contract.BaseView {

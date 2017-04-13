@@ -5,7 +5,7 @@ import com.example.dribbble.data.local.user.UserHelper;
 import com.example.dribbble.data.network.service.OauthService;
 
 /**
- * Created by qqq34 on 2017/3/20.
+ * Created by 康颢曦 on 2017/3/20.
  */
 
 public class OauthHttpMethods extends BaseHttpMethods<OauthService> {
@@ -14,25 +14,16 @@ public class OauthHttpMethods extends BaseHttpMethods<OauthService> {
     private static OauthHttpMethods instance;
 
 
-    public static OauthHttpMethods getInstance(MyNetworkInterceptor myNetworkInterceptor) {
-        return setupCreate(myNetworkInterceptor);
-    }
-
     public static OauthHttpMethods getInstance() {
-        return setupCreate(null);
+        return setupCreate();
     }
 
-    private static OauthHttpMethods setupCreate(MyNetworkInterceptor myNetworkInterceptor) {
+    private static OauthHttpMethods setupCreate() {
 
         if (instance == null) {
             synchronized (OauthHttpMethods.class) {
                 if (instance == null) {
-                    if (myNetworkInterceptor == null) {
-                        instance = new OauthHttpMethods(new MyNetworkInterceptor(new UserHelper()));
-                    } else {
-                        instance = new OauthHttpMethods(myNetworkInterceptor);
-                    }
-
+                        instance = new OauthHttpMethods(new MyNetworkInterceptor());
                 }
             }
         }

@@ -4,7 +4,7 @@ package com.example.dribbble.core.presenter;
 import java.util.List;
 
 /**
- * Created by qqq34 on 2017/1/17.
+ * Created by 康颢曦 on 2017/1/17.
  */
 
 public class PresenterLifecycleHelper {

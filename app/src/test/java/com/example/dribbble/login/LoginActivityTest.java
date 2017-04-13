@@ -5,15 +5,10 @@ import android.widget.Button;
 import com.example.dribbble.BuildConfig;
 import com.example.dribbble.DribbbleApplication;
 import com.example.dribbble.R;
-import com.example.dribbble.core.BaseTest;
 import com.example.dribbble.core.MyRobolectricTestRunner;
-import com.example.dribbble.data.local.user.UserHelper;
-import com.example.dribbble.data.network.DribbbleHttpMethods;
-import com.example.dribbble.data.network.MyNetworkInterceptor;
 import com.example.dribbble.data.network.model.DribbbleModel;
-import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
+import com.example.dribbble.utils.BaseRule;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,9 +30,11 @@ import static org.mockito.Mockito.when;
  */
 @RunWith(MyRobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21, application = DribbbleApplication.class)
-public class LoginActivityTest extends BaseTest{
+public class LoginActivityTest {
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
+    @Rule
+    public   BaseRule baseRule = new BaseRule();
     @Mock
     LoginView mockLoginView;
 

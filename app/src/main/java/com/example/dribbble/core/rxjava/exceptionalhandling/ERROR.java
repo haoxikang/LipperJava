@@ -1,7 +1,7 @@
 package com.example.dribbble.core.rxjava.exceptionalhandling;
 
 /**
- * Created by qqq34 on 2017/3/13.
+ * Created by 康颢曦 on 2017/3/13.
  */
 
 public class ERROR {

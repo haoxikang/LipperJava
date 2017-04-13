@@ -13,7 +13,7 @@ import io.reactivex.plugins.RxJavaPlugins;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by qqq34 on 2017/3/9.
+ * Created by 康颢曦 on 2017/3/9.
  */
 
 public class RxSchedulersOverrideRule  implements TestRule {

@@ -7,7 +7,7 @@ import okhttp3.RequestBody;
 import retrofit2.http.Part;
 
 /**
- * Created by qqq34 on 2017/3/20.
+ * Created by 康颢曦 on 2017/3/20.
  */
 
 public interface OauthModel {

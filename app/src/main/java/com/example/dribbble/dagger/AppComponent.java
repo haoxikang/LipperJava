@@ -9,7 +9,7 @@ import com.example.dribbble.login.LoginActivity;
 import dagger.Component;
 
 /**
- * Created by qqq34 on 2017/3/8.
+ * Created by 康颢曦 on 2017/3/8.
  */
 
 @Component(modules = {AppModule.class})
