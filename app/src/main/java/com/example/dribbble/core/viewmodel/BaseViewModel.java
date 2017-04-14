@@ -1,10 +1,13 @@
 package com.example.dribbble.core.viewmodel;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.dribbble.core.presenter.Contract;
+import com.tapadoo.alerter.Alert;
+import com.tapadoo.alerter.Alerter;
 
 /**
  * Created by 康颢曦 on 2017/3/10.
@@ -12,6 +15,7 @@ import com.example.dribbble.core.presenter.Contract;
 
 public abstract class BaseViewModel implements Contract.BaseView {
     public Context mContext;
+    private Alert alert;
 
     public BaseViewModel(Context context) {
         mContext = context;
@@ -24,12 +28,17 @@ public abstract class BaseViewModel implements Contract.BaseView {
     }
 
     @Override
-    public void showErrorLog(String TAG, String message) {
-        Log.e(TAG, message);
+    public void showTopDialog(String s) {
+        hideAllTopDialog();
+        alert = Alerter.create((Activity)mContext)
+                .setText(s)
+                .show();
     }
 
     @Override
-    public void showDebugLog(String TAG, String message) {
-        Log.d(TAG, message);
+    public void hideAllTopDialog() {
+        if (alert!=null&&alert.isShown()){
+            alert.hide();
+        }
     }
 }

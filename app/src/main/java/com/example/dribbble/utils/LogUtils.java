@@ -1,6 +1,10 @@
 package com.example.dribbble.utils;
 
+import android.os.Build;
+import android.support.compat.BuildConfig;
 import android.util.Log;
+
+import java.util.logging.Logger;
 
 /**
  * Created by 康颢曦 on 2017/3/16.
@@ -8,7 +12,21 @@ import android.util.Log;
 
 public class LogUtils {
     private static String tag = "LogUtils";
-    public static void d(String s){
-        Log.d(tag,s);
+    private static Logger logger = Logger.getLogger("LIPPER");
+    private static boolean isCanLog = true;
+    public static void i(String s){
+        if (isCanLog){
+            logger.info(s);
+        }
+
+
+    }
+    public static void w(String s){
+        if (isCanLog){
+            logger.warning(s);
+        }
+
+
+
     }
 }

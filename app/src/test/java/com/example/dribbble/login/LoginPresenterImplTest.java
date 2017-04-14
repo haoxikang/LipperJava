@@ -1,7 +1,6 @@
 package com.example.dribbble.login;
 
 import com.example.dribbble.data.databean.ShotBean;
-import com.example.dribbble.data.local.user.UserHelper;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.OauthModel;
 import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
@@ -23,7 +22,7 @@ import static org.mockito.Mockito.verify;
 /**
  * Created by 康颢曦 on 2017/3/9.
  */
-public class LoginPresenterTest {
+public class LoginPresenterImplTest {
 
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
@@ -33,20 +32,20 @@ public class LoginPresenterTest {
     @Rule
     public BaseRule baseRule = new BaseRule();
     @Mock
-    LoginView mockLoginView;
+    LoginContract.LoginView mockLoginView;
 
     DribbbleModel mDribbbleModel;
 
     OauthModel oauthModel;
 
-    LoginPresenter mLoginPresenter;
+    LoginContract.LoginPresenter loginPresenter;
 
     @Before
     public void setup() {
         mDribbbleModel = DribbbleModelImpl.getInstance();
         oauthModel = OauthModelImpl.getInstance();
-        mLoginPresenter = new LoginPresenter(mDribbbleModel, oauthModel, mockLoginView);
-        mLoginPresenter.attach();
+        loginPresenter = new LoginPresenterImpl(mDribbbleModel, oauthModel, mockLoginView);
+        loginPresenter.attach();
     }
 
     @Test
@@ -54,7 +53,7 @@ public class LoginPresenterTest {
 
         ArgumentCaptor<ShotBean> captor = ArgumentCaptor.forClass(ShotBean.class);
 
-        mLoginPresenter.onPresenterCreate();
+        loginPresenter.onPresenterCreate();
         verify(mockLoginView).onDataFetch(captor.capture());
 
         ShotBean test = captor.getValue();
@@ -64,7 +63,7 @@ public class LoginPresenterTest {
 
     @After
     public void afterTest() {
-        mLoginPresenter.detach();
+        loginPresenter.detach();
     }
 
 }

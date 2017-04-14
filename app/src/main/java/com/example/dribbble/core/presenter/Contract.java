@@ -7,12 +7,9 @@ package com.example.dribbble.core.presenter;
 public interface Contract {
     interface BaseView {
         void showToast(String s);
+        void showTopDialog(String s);
+        void hideAllTopDialog();
 
-        void showErrorLog(String TAG, String message);
-
-        void showDebugLog(String TAG, String message);
-
-        void GoWebActivityForResult();
     }
 
     interface Presenter {

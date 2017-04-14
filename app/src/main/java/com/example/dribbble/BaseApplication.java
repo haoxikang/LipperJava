@@ -5,12 +5,13 @@ import android.app.Application;
 import com.example.dribbble.dagger.AppComponent;
 import com.example.dribbble.dagger.AppModule;
 import com.example.dribbble.dagger.DaggerAppComponent;
+import com.google.gson.Gson;
 
 /**
  * Created by Administrator on 2017/4/13/013.
  */
 
-public class DaggerApplication extends Application {
+public class BaseApplication extends Application {
     private AppComponent mAppComponent;
 
     @Override
@@ -20,6 +21,7 @@ public class DaggerApplication extends Application {
                 .appModule(new AppModule(getApplicationContext()))
                 .build();
     }
+
     public AppComponent getAppComponent() {
         return mAppComponent;
     }
@@ -28,5 +30,6 @@ public class DaggerApplication extends Application {
     public void setAppComponent(AppComponent appComponent) {
         mAppComponent = appComponent;
     }
+
 
 }

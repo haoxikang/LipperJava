@@ -13,8 +13,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import com.example.dribbble.DaggerApplication;
-import com.example.dribbble.DribbbleApplication;
+import com.example.dribbble.BaseApplication;
 import com.example.dribbble.R;
 import com.example.dribbble.core.activity.BaseActivity;
 import com.example.dribbble.databinding.ActivityLoginBinding;
@@ -32,7 +31,7 @@ public class LoginActivity extends BaseActivity {
 
     ActivityLoginBinding mActivityLoginBinding;
     @Inject
-    LoginPresenter mLoginPresenter;
+    LoginContract.LoginPresenter loginPresenter;
 
 
     private LoginModule mLoginModule;
@@ -77,17 +76,17 @@ public class LoginActivity extends BaseActivity {
 
 
         mLoginButton.setOnClickListener(v -> {
-         mLoginPresenter.onLoginClick();
+            loginPresenter.onLoginClick();
         });
 
     }
 
     @Override
     protected void inject() {
-        DaggerLoginComponent.builder().appComponent(((DaggerApplication) getApplication())
+        DaggerLoginComponent.builder().appComponent(((BaseApplication) getApplication())
                 .getAppComponent())
                 .loginModule(mLoginModule).build().inject(this);
-        mPresenterList.add(mLoginPresenter);
+        mPresenterList.add(loginPresenter);
     }
 
     public void setLoginModule(LoginModule loginModule) {
@@ -155,7 +154,7 @@ public class LoginActivity extends BaseActivity {
                 case RESULT_OK:
                     Bundle b = data.getExtras();
                     String url = b.getString(LOGIN_CODE_KEY);
-                    Log.d("aaa", Uri.parse(url).getQueryParameter("code")  );
+                    loginPresenter.getUserData(Uri.parse(url).getQueryParameter("code"));
                     break;
                 default:
                     break;

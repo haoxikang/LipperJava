@@ -13,14 +13,14 @@ import dagger.Provides;
 @Module
 public class LoginModule {
 
-    private LoginView mLoginView;
+    private LoginContract.LoginView mLoginView;
 
-    public LoginModule(LoginView loginView) {
+    public LoginModule(LoginContract.LoginView loginView) {
         mLoginView = loginView;
     }
 
     @Provides
-    LoginPresenter provideLoginPresenter(DribbbleModel dribbbleModel, OauthModel oauthModel) {
-        return new LoginPresenter(dribbbleModel,oauthModel, mLoginView);
+    LoginContract.LoginPresenter provideLoginPresenter(DribbbleModel dribbbleModel, OauthModel oauthModel) {
+        return new LoginPresenterImpl(dribbbleModel,oauthModel, mLoginView);
     }
 }

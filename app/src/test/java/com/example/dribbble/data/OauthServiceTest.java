@@ -37,23 +37,23 @@ public class OauthServiceTest {
     public BaseRule baseRule = new BaseRule();
 
 
-    @Test
-    public void getToken() throws Exception {
-        mDisposable = OauthModelImpl.getInstance().getToken("d2cebd4a3e8ab4107520e0f5a8934fba27762bae80d6714bbf3426ff265a4b4a")
-                .onErrorResumeNext(new ConvertToApiException<>())
-                .subscribe(userToken -> {
-                    mUserToken = userToken;
-                    System.out.print("throwable" + mUserToken.getAccess_token());
-                }, throwable -> {
-                    if (throwable instanceof ApiException) {
-                        ApiException a = (ApiException) throwable;
-                        System.out.print(a.message);
-                    } else {
-                        System.out.print("throwable" + throwable.getMessage());
-                    }
-                });
-        assertNotNull(mUserToken);
-    }
+//    @Test
+//    public void getToken() throws Exception {
+//        mDisposable = OauthModelImpl.getInstance().getToken("d2cebd4a3e8ab4107520e0f5a8934fba27762bae80d6714bbf3426ff265a4b4a")
+//                .onErrorResumeNext(new ConvertToApiException<>())
+//                .subscribe(userToken -> {
+//                    mUserToken = userToken;
+//                    System.out.print("throwable" + mUserToken.getAccess_token());
+//                }, throwable -> {
+//                    if (throwable instanceof ApiException) {
+//                        ApiException a = (ApiException) throwable;
+//                        System.out.print(a.message);
+//                    } else {
+//                        System.out.print("throwable" + throwable.getMessage());
+//                    }
+//                });
+//        assertNotNull(mUserToken);
+//    }
 
     @After
     public void testFinished() {

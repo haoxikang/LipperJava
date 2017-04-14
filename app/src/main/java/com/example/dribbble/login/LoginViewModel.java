@@ -12,7 +12,7 @@ import com.example.dribbble.data.databean.ShotBean;
  * Created by 康颢曦 on 2017/3/10.
  */
 
-public class LoginViewModel extends BaseViewModel implements LoginView {
+public class LoginViewModel extends BaseViewModel implements LoginContract.LoginView {
 
     public LoginViewModel(Context context) {
         super(context);

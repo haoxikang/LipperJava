@@ -37,11 +37,11 @@ public class LoginActivityTest {
     @Rule
     public BaseRule baseRule = new BaseRule();
     @Mock
-    LoginView mockLoginView;
+    LoginContract.LoginView mockLoginView;
 
 
     @Mock
-    LoginPresenter mockLoginPresenter;
+    LoginContract.LoginPresenter loginPresenter;
 
 
     @Test
@@ -55,20 +55,20 @@ public class LoginActivityTest {
         loginActivity.setLoginModule(mockLoginModule);
 
 
-        when(mockLoginModule.provideLoginPresenter(any(DribbbleModel.class),any(OauthModel.class))).thenReturn(mockLoginPresenter);
+        when(mockLoginModule.provideLoginPresenter(any(DribbbleModel.class),any(OauthModel.class))).thenReturn(loginPresenter);
 
 
         controller.create();
-        verify(mockLoginPresenter).attach();
-        verify(mockLoginPresenter).onPresenterCreate();
+        verify(loginPresenter).attach();
+        verify(loginPresenter).onPresenterCreate();
 
         Button loginButton = (Button) loginActivity.findViewById(R.id.login_button);
         System.out.print("" + loginButton.performClick());
-        verify(mockLoginPresenter).onLoginClick();
+        verify(loginPresenter).onLoginClick();
 
 
         controller.destroy();
-        verify(mockLoginPresenter).detach();
+        verify(loginPresenter).detach();
 
 
     }
