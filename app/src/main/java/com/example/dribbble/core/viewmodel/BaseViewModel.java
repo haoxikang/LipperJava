@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.dribbble.R;
 import com.example.dribbble.core.presenter.Contract;
 import com.tapadoo.alerter.Alert;
 import com.tapadoo.alerter.Alerter;
@@ -32,6 +33,7 @@ public abstract class BaseViewModel implements Contract.BaseView {
         hideAllTopDialog();
         alert = Alerter.create((Activity)mContext)
                 .setText(s)
+                .setDuration(Integer.MAX_VALUE)
                 .show();
     }
 
@@ -40,5 +42,15 @@ public abstract class BaseViewModel implements Contract.BaseView {
         if (alert!=null&&alert.isShown()){
             alert.hide();
         }
+    }
+
+    @Override
+    public void showErrorDialog(String s) {
+        hideAllTopDialog();
+        alert = Alerter.create((Activity)mContext)
+                .setText(s)
+                .setBackgroundColor(R.color.accent)
+                .setDuration(2000)
+                .show();
     }
 }

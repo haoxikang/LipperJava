@@ -3,6 +3,7 @@ package com.example.dribbble.data.local.user;
 import com.example.dribbble.utils.RealmUtils;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * Created by 康颢曦 on 2017/3/16.
@@ -15,8 +16,8 @@ public class UserHelper {
 
     public LipperUser getUserData() {
         if (isLogin()) {
-            return mRealm.where(LipperUser.class)
-                    .findFirst();
+            return Realm.getDefaultInstance().copyFromRealm(mRealm.where(LipperUser.class)
+                    .findFirst());
         } else {
             return null;
         }
@@ -41,8 +42,10 @@ public class UserHelper {
     }
 
     public UserToken getToken() {
-        UserToken userToken = mRealm.where(UserToken.class)
+        UserToken userToken;
+        UserToken realmUserToken = mRealm.where(UserToken.class)
                 .findFirst();
+        userToken=Realm.getDefaultInstance().copyFromRealm(realmUserToken);
 
         return userToken;
 

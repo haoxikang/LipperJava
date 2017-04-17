@@ -9,6 +9,7 @@ public interface Contract {
         void showToast(String s);
         void showTopDialog(String s);
         void hideAllTopDialog();
+        void showErrorDialog(String s);
 
     }
 

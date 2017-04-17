@@ -22,20 +22,17 @@ public abstract class BaseHttpMethods<S> {
     private S mService;
 
 
-
-
-
     public BaseHttpMethods(MyNetworkInterceptor myNetworkInterceptor) {
-        mService =  ( createRetrofit(myNetworkInterceptor).create(getServiceClass()));
+        mService = (createRetrofit(myNetworkInterceptor).create(getServiceClass()));
 
     }
 
-    protected Retrofit  createRetrofit(MyNetworkInterceptor myNetwrokInterceptor) {
+    protected Retrofit createRetrofit(MyNetworkInterceptor myNetwrokInterceptor) {
 
 
         OkHttpClient.Builder localBuilder = new OkHttpClient.Builder();
         localBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
-   return      retrofit = new Retrofit.Builder().client(localBuilder
+        return retrofit = new Retrofit.Builder().client(localBuilder
                 .addNetworkInterceptor(myNetwrokInterceptor)
                 .build())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -47,8 +44,9 @@ public abstract class BaseHttpMethods<S> {
     public S getService() {
         return mService;
     }
-abstract Class<S> getServiceClass();
 
-abstract String getBaseUrl();
+    abstract Class<S> getServiceClass();
+
+    abstract String getBaseUrl();
 
 }

@@ -3,6 +3,8 @@ package com.example.dribbble.login;
 import android.util.Log;
 
 import com.example.dribbble.core.presenter.BasePresenter;
+import com.example.dribbble.core.rxjava.exceptionalhandling.ApiException;
+import com.example.dribbble.core.rxjava.exceptionalhandling.ConvertToApiException;
 import com.example.dribbble.data.local.user.UserManager;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.OauthModel;
@@ -46,21 +48,22 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
     public void getUserData(String code) {
         mLoginView.showTopDialog("正在登录，请稍后");
         Disposable disposable = oauthModel.getToken(code)
+                .onErrorResumeNext(new ConvertToApiException<>())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(userToken -> {
+                    UserManager.INSTANCE.updateToken(userToken);
+                    return userToken;
+                })
+                .observeOn(Schedulers.io())
+                .flatMap(userToken -> mDribbbleModel.getUserInfo())
                 .subscribeOn(Schedulers.io())
-//                .map(userToken -> {
-//                    Log.d("map", Thread.currentThread().getName());
-//                    UserManager.INSTANCE.updateToken(userToken);
-//                    return userToken;
-//                })
-//                .subscribeOn(AndroidSchedulers.mainThread())
-//                .flatMap(userToken -> {
-//                    Log.d("flatmap", Thread.currentThread().getName());
-//                  return mDribbbleModel.getUserInfo();
-//                })
-//                .subscribeOn(Schedulers.io())
-       .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(userToken -> {
-                    Log.d("aaaaaa", userToken.getAccess_token());
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(lipperUser -> {
+                    UserManager.INSTANCE.updateUser(lipperUser);
+                    mLoginView.hideAllTopDialog();
+                }, throwable -> {
+                    LogUtils.w(throwable.getMessage());
+                    mLoginView.showErrorDialog("登录失败请重试");
                 });
         mCompositeDisposable.add(disposable);
 
