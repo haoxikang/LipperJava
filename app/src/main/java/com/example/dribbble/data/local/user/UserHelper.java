@@ -16,8 +16,10 @@ public class UserHelper {
 
     public LipperUser getUserData() {
         if (isLogin()) {
-            return Realm.getDefaultInstance().copyFromRealm(mRealm.where(LipperUser.class)
-                    .findFirst());
+            LipperUser lipperUser = mRealm.where(LipperUser.class)
+                    .findFirst();
+            if (lipperUser==null)return null;
+            return Realm.getDefaultInstance().copyFromRealm(lipperUser);
         } else {
             return null;
         }
@@ -42,10 +44,13 @@ public class UserHelper {
     }
 
     public UserToken getToken() {
-        UserToken userToken;
+        UserToken userToken=null;
         UserToken realmUserToken = mRealm.where(UserToken.class)
                 .findFirst();
-        userToken=Realm.getDefaultInstance().copyFromRealm(realmUserToken);
+        if (realmUserToken!=null){
+            userToken=Realm.getDefaultInstance().copyFromRealm(realmUserToken);
+        }
+
 
         return userToken;
 

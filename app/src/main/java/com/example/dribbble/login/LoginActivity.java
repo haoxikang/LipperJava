@@ -51,16 +51,14 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void initView(@Nullable Bundle savedInstanceState) {
         mActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-
         MDStatusBarCompat.setImageTranslucent(this);
-
-
+        mActivityLoginBinding.setLoginModel(mLoginViewModel);
         mRotateButton = mActivityLoginBinding.rotateButton;
         mLoginButton = mActivityLoginBinding.loginButton;
 
         mRelativeLayout = mActivityLoginBinding.rlLayout;
 
-    mRotateButton.post(() -> startAnimation());
+        mRotateButton.post(() -> startAnimation());
 
     }
 

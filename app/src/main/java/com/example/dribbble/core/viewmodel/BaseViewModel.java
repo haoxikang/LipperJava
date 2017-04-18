@@ -53,4 +53,9 @@ public abstract class BaseViewModel implements Contract.BaseView {
                 .setDuration(2000)
                 .show();
     }
+
+    @Override
+    public String getString(int res) {
+        return mContext.getString(res);
+    }
 }

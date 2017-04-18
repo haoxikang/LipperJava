@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
+<data>
+    <variable
+        name="loginModel"
+        type="com.example.dribbble.login.LoginViewModel"/>
+</data>
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -56,6 +60,7 @@
 
 
         <Button
+            android:enabled="@{loginModel.isEnable}"
             android:textSize="12sp"
             android:id="@+id/login_button"
             android:layout_width="wrap_content"

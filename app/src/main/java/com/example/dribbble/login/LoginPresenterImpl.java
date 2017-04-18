@@ -46,6 +46,7 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
 
     @Override
     public void getUserData(String code) {
+        mLoginView.setButtonEnable(false);
         mLoginView.showTopDialog("正在登录，请稍后");
         Disposable disposable = oauthModel.getToken(code)
                 .onErrorResumeNext(new ConvertToApiException<>())
@@ -59,9 +60,11 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(lipperUser -> {
+                    mLoginView.setButtonEnable(true);
                     UserManager.INSTANCE.updateUser(lipperUser);
                     mLoginView.hideAllTopDialog();
                 }, throwable -> {
+                    mLoginView.setButtonEnable(true);
                     LogUtils.w(throwable.getMessage());
                     mLoginView.showErrorDialog("登录失败请重试");
                 });

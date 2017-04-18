@@ -12,6 +12,8 @@ public interface LoginContract {
 
         void onDataFetch(ShotBean test);
         void GoWebActivityForResult();
+
+        void setButtonEnable(boolean isEnable);
     }
     interface LoginPresenter extends  Contract.Presenter{
         void getUserData(String code);

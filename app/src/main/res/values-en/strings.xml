@@ -7,4 +7,6 @@
     <string name="go_to_dribbble_login">Go to dribbble login</string>
     <string name="need_login">You need to be authorized in dribbble\n prior to use this app</string>
     <string name="sign_in_now">SIGN IN NOW</string>
+    <string name="under_login">Login.......</string>
+    <string name="login_failed">Login failed</string>
 </resources>
