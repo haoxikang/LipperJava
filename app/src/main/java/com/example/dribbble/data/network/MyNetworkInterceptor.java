@@ -3,6 +3,7 @@ package com.example.dribbble.data.network;
 import com.example.dribbble.core.constants.DribbbleID;
 import com.example.dribbble.data.local.user.UserHelper;
 import com.example.dribbble.data.local.user.UserManager;
+import com.example.dribbble.utils.LogUtils;
 
 import java.io.IOException;
 
@@ -23,7 +24,7 @@ public class MyNetworkInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request original = chain.request();
-        System.out.println(chain.request().url().url().toString());
+        LogUtils.i(chain.request().url().url().toString());
         Request.Builder requestBuilder;
         if (UserManager.INSTANCE.getUserToken()!=null) {
             requestBuilder = original.newBuilder()

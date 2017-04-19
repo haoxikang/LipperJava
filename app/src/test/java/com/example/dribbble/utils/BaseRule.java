@@ -16,14 +16,14 @@ import org.junit.runners.model.Statement;
 public class BaseRule implements TestRule {
     private UserHelper userHelper;
 
-    public BaseRule(UserHelper userHelper) {
-        this.userHelper = userHelper;
+    public BaseRule(boolean isLogin) {
+        if (isLogin){
+            this.userHelper = TestUtils.getLoginMockUserHelper();
+        }else {
+            this.userHelper = TestUtils.getDefaultMockUserHelper();
+        }
     }
 
-
-    public BaseRule() {
-        this.userHelper = TestUtils.getDefaultMockUserHelper();
-    }
 
     @Override
     public Statement apply(Statement base, Description description) {

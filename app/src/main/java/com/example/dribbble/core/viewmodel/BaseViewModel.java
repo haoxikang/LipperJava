@@ -14,7 +14,7 @@ import com.tapadoo.alerter.Alerter;
  * Created by 康颢曦 on 2017/3/10.
  */
 
-public abstract class BaseViewModel implements Contract.BaseView {
+public  class BaseViewModel implements Contract.BaseView {
     public Context mContext;
     private Alert alert;
 

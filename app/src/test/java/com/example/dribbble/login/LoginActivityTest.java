@@ -35,7 +35,7 @@ public class LoginActivityTest {
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
     @Rule
-    public BaseRule baseRule = new BaseRule();
+    public BaseRule baseRule = new BaseRule(false);
     @Mock
     LoginContract.LoginView mockLoginView;
 

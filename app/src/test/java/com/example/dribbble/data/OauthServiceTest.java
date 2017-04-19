@@ -34,7 +34,7 @@ public class OauthServiceTest {
     public RxSchedulersOverrideRule mRxSchedulersOverrideRule = new RxSchedulersOverrideRule();
 
     @Rule
-    public BaseRule baseRule = new BaseRule();
+    public BaseRule baseRule = new BaseRule(false);
 
 
 //    @Test

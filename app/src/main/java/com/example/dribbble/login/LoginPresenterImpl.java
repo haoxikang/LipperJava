@@ -2,12 +2,14 @@ package com.example.dribbble.login;
 
 import android.util.Log;
 
+import com.example.dribbble.R;
 import com.example.dribbble.core.presenter.BasePresenter;
 import com.example.dribbble.core.rxjava.exceptionalhandling.ApiException;
 import com.example.dribbble.core.rxjava.exceptionalhandling.ConvertToApiException;
 import com.example.dribbble.data.local.user.UserManager;
 import com.example.dribbble.data.network.model.DribbbleModel;
 import com.example.dribbble.data.network.model.OauthModel;
+import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
 import com.example.dribbble.utils.LogUtils;
 import com.google.gson.Gson;
 
@@ -33,15 +35,32 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
 
     @Override
     public void onPresenterCreate() {
-        Disposable disposable = mDribbbleModel.getShot("animated", "week")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(testList -> {
-                    mLoginView.onDataFetch(testList.get(0));
-                }, throwable -> {
-                });
-        mCompositeDisposable.add(disposable);
+     //   if (UserManager.INSTANCE.isLogin()){
+            mLoginView.setButtonEnable(false);
+            mLoginView.showTopDialog(mLoginView.getString(R.string.under_login));
+            Disposable disposable = DribbbleModelImpl.getInstance().getUserInfo()
+                    .onErrorResumeNext(new ConvertToApiException<>())
+                    .subscribe(lipperUser -> {
+                        UserManager.INSTANCE.updateUser(lipperUser);
+                        mLoginView.hideAllTopDialog();
+                        mLoginView.GoMainAcitivity();
+                    }, throwable -> {
+                      //  mLoginView.setButtonEnable(true);
+                        LogUtils.w(throwable.getMessage());
+                        mLoginView.showErrorDialog(mLoginView.getString(R.string.login_failed));
+                    });
+            mCompositeDisposable.add(disposable);
 
+    //    }
+
+//        Disposable disposable = mDribbbleModel.getShot("animated", "week")
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(testList -> {
+//                    mLoginView.onDataFetch(testList.get(0));
+//                }, throwable -> {
+//                });
+//        mCompositeDisposable.add(disposable);
     }
 
     @Override
@@ -52,6 +71,7 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
                 .onErrorResumeNext(new ConvertToApiException<>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(userToken -> {
+                    LogUtils.i(new Gson().toJson(userToken));
                     UserManager.INSTANCE.updateToken(userToken);
                     return userToken;
                 })
@@ -60,9 +80,9 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(lipperUser -> {
-                    mLoginView.setButtonEnable(true);
                     UserManager.INSTANCE.updateUser(lipperUser);
                     mLoginView.hideAllTopDialog();
+                    mLoginView.GoMainAcitivity();
                 }, throwable -> {
                     mLoginView.setButtonEnable(true);
                     LogUtils.w(throwable.getMessage());

@@ -8,6 +8,7 @@ import android.databinding.ObservableField;
 import com.example.dribbble.core.presenter.Contract;
 import com.example.dribbble.core.viewmodel.BaseViewModel;
 import com.example.dribbble.data.databean.ShotBean;
+import com.example.dribbble.main.MainActivity;
 
 /**
  * Created by 康颢曦 on 2017/3/10.
@@ -28,11 +29,18 @@ public class LoginViewModel extends BaseViewModel implements LoginContract.Login
 
     @Override
     public void GoWebActivityForResult() {
-      ((LoginActivity) mContext).startActivityForResult(new Intent(mContext, LoginWebActivity.class), LoginActivity.LOGIN_REQUEST_CODE);
+        ((LoginActivity) mContext).startActivityForResult(new Intent(mContext, LoginWebActivity.class), LoginActivity.LOGIN_REQUEST_CODE);
     }
 
     @Override
     public void setButtonEnable(boolean isEnable) {
         this.isEnable.set(isEnable);
+    }
+
+    @Override
+    public void GoMainAcitivity() {
+        Intent intent = new Intent(mContext, MainActivity.class);
+        mContext.startActivity(intent);
+        ((Activity) mContext).finish();
     }
 }

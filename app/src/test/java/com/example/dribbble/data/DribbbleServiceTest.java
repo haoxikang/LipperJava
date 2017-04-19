@@ -35,21 +35,10 @@ public class DribbbleServiceTest {
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
 
     @Rule
-    public BaseRule baseRule = new BaseRule(getUserHelper());
+    public BaseRule baseRule = new BaseRule(true);
 
     @Rule
     public RxSchedulersOverrideRule mRxSchedulersOverrideRule = new RxSchedulersOverrideRule();
-
-
-    private UserHelper getUserHelper() {
-        UserHelper userHelper;
-        userHelper = Mockito.mock(UserHelper.class);
-        when(userHelper.isLogin()).thenReturn(true);
-        UserToken userToken= new UserToken();
-        userToken.setAccess_token("a9d9a7332cc3454a651bfd3f245e6e6bc04087fcc381b4f469af31f342e9a86f");
-        when(userHelper.getToken()).thenReturn(userToken);
-        return userHelper;
-    }
 
 
 

@@ -14,6 +14,8 @@ public interface LoginContract {
         void GoWebActivityForResult();
 
         void setButtonEnable(boolean isEnable);
+
+        void GoMainAcitivity();
     }
     interface LoginPresenter extends  Contract.Presenter{
         void getUserData(String code);
