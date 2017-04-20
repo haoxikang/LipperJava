@@ -12,7 +12,6 @@ import com.example.dribbble.R;
  */
 public class MDStatusBarCompat {
 
-    private static View mStatusBarView;
 
     /**
      * 简单型状态栏(ToolBar)

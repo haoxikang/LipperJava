@@ -1,6 +1,7 @@
 package com.example.dribbble.login;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableField;
@@ -28,7 +29,7 @@ public class LoginViewModel extends BaseViewModel implements LoginContract.Login
     }
 
     @Override
-    public void GoWebActivityForResult() {
+    public void goWebActivityForResult() {
         ((LoginActivity) mContext).startActivityForResult(new Intent(mContext, LoginWebActivity.class), LoginActivity.LOGIN_REQUEST_CODE);
     }
 
@@ -38,9 +39,13 @@ public class LoginViewModel extends BaseViewModel implements LoginContract.Login
     }
 
     @Override
-    public void GoMainAcitivity() {
+    public void goMainActivity() {
         Intent intent = new Intent(mContext, MainActivity.class);
-        mContext.startActivity(intent);
-        ((Activity) mContext).finish();
+        mContext.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation((Activity) mContext).toBundle());
+    }
+
+    @Override
+    public void finishActivity() {
+        ((Activity)mContext).finish();
     }
 }

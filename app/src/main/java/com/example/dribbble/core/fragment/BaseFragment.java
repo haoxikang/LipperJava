@@ -43,8 +43,8 @@ public abstract class BaseFragment extends Fragment  {
 
     protected abstract void inject();
 
-    abstract View initView(@Nullable Bundle savedInstanceState);
+    protected abstract View initView(@Nullable Bundle savedInstanceState);
 
-    abstract void initListeners();
+    public abstract void initListeners();
 
 }

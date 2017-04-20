@@ -15,18 +15,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.robolectric.Robolectric;
-import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowActivity;
-import org.robolectric.shadows.ShadowDialog;
 import org.robolectric.util.ActivityController;
-
-import java.security.PublicKey;
-import java.util.logging.Logger;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
@@ -74,7 +68,7 @@ public class LoginViewModelTest {
     @Test
     public void goWebActivityForResult() throws Exception {
 
-        loginViewModel.GoWebActivityForResult();
+        loginViewModel.goWebActivityForResult();
 
         ShadowActivity shadowActivity = shadowOf(loginActivity);
         ShadowActivity.IntentForResult actualIntent = shadowActivity.getNextStartedActivityForResult();
@@ -83,7 +77,7 @@ public class LoginViewModelTest {
 
     @Test
     public void goMainActivity() {
-        loginViewModel.GoMainAcitivity();
+        loginViewModel.goMainActivity();
         Intent intent = new Intent(loginActivity, MainActivity.class);
         ShadowActivity shadowActivity = shadowOf(loginActivity);
         Intent actualIntent = shadowActivity.getNextStartedActivity();

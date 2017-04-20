@@ -3,6 +3,7 @@ package com.example.dribbble.core.viewmodel;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.dribbble.R;
@@ -34,6 +35,9 @@ public  class BaseViewModel implements Contract.BaseView {
         alert = Alerter.create((Activity)mContext)
                 .setText(s)
                 .setDuration(Integer.MAX_VALUE)
+                .setOnClickListener(v -> {
+
+                })
                 .show();
     }
 

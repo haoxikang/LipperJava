@@ -1,6 +1,7 @@
 package com.example.dribbble.data.local.user;
 
 import com.example.dribbble.core.exception.HaveNotInitException;
+import com.example.dribbble.utils.LogUtils;
 
 /**
  * Created by 康颢曦 on 2017/4/13/013.
@@ -34,6 +35,7 @@ public enum UserManager {
             this.userHelper = userHelper;
             lipperUser = userHelper.getUserData();
             userToken = userHelper.getToken();
+            isLogin = userHelper.isLogin();
             isInit = true;
         }
     }

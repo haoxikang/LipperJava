@@ -1,10 +1,7 @@
 package com.example.dribbble.login;
 
-import android.util.Log;
-
 import com.example.dribbble.R;
 import com.example.dribbble.core.presenter.BasePresenter;
-import com.example.dribbble.core.rxjava.exceptionalhandling.ApiException;
 import com.example.dribbble.core.rxjava.exceptionalhandling.ConvertToApiException;
 import com.example.dribbble.data.local.user.UserManager;
 import com.example.dribbble.data.network.model.DribbbleModel;
@@ -13,6 +10,12 @@ import com.example.dribbble.data.network.model.impl.DribbbleModelImpl;
 import com.example.dribbble.utils.LogUtils;
 import com.google.gson.Gson;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -33,40 +36,51 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
         mLoginView = loginView;
     }
 
+    private void finishActivity() {
+
+        mCompositeDisposable.add(Flowable.timer(1, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(aLong -> {
+
+                },throwable -> {
+                    mLoginView.finishActivity();
+
+                },()->{
+                    mLoginView.finishActivity();
+
+                }))   ;
+    }
+
     @Override
     public void onPresenterCreate() {
-     //   if (UserManager.INSTANCE.isLogin()){
+        if (UserManager.INSTANCE.isLogin()) {
             mLoginView.setButtonEnable(false);
             mLoginView.showTopDialog(mLoginView.getString(R.string.under_login));
             Disposable disposable = DribbbleModelImpl.getInstance().getUserInfo()
                     .onErrorResumeNext(new ConvertToApiException<>())
+                    .delay(1, TimeUnit.SECONDS)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(lipperUser -> {
                         UserManager.INSTANCE.updateUser(lipperUser);
                         mLoginView.hideAllTopDialog();
-                        mLoginView.GoMainAcitivity();
+                        mLoginView.goMainActivity();
+                        finishActivity();
                     }, throwable -> {
-                      //  mLoginView.setButtonEnable(true);
                         LogUtils.w(throwable.getMessage());
+                        mLoginView.hideAllTopDialog();
                         mLoginView.showErrorDialog(mLoginView.getString(R.string.login_failed));
                     });
             mCompositeDisposable.add(disposable);
+        }
 
-    //    }
-
-//        Disposable disposable = mDribbbleModel.getShot("animated", "week")
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(testList -> {
-//                    mLoginView.onDataFetch(testList.get(0));
-//                }, throwable -> {
-//                });
-//        mCompositeDisposable.add(disposable);
     }
 
     @Override
     public void getUserData(String code) {
         mLoginView.setButtonEnable(false);
-        mLoginView.showTopDialog("正在登录，请稍后");
+        mLoginView.showTopDialog(mLoginView.getString(R.string.under_login));
         Disposable disposable = oauthModel.getToken(code)
                 .onErrorResumeNext(new ConvertToApiException<>())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -82,11 +96,10 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
                 .subscribe(lipperUser -> {
                     UserManager.INSTANCE.updateUser(lipperUser);
                     mLoginView.hideAllTopDialog();
-                    mLoginView.GoMainAcitivity();
+                    mLoginView.goMainActivity();
                 }, throwable -> {
                     mLoginView.setButtonEnable(true);
-                    LogUtils.w(throwable.getMessage());
-                    mLoginView.showErrorDialog("登录失败请重试");
+                    mLoginView.showErrorDialog(mLoginView.getString(R.string.login_failed));
                 });
         mCompositeDisposable.add(disposable);
 
@@ -94,6 +107,6 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
 
     @Override
     public void onLoginClick() {
-        mLoginView.GoWebActivityForResult();
+        mLoginView.goWebActivityForResult();
     }
 }

@@ -9,7 +9,7 @@
     <string name="under_login">正在登陆，请稍候</string>
     <string name="login_failed">登录失败请重试</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
+    <string name="shots">场景</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 

@@ -11,11 +11,13 @@ public interface LoginContract {
     interface  LoginView extends Contract.BaseView{
 
         void onDataFetch(ShotBean test);
-        void GoWebActivityForResult();
+        void goWebActivityForResult();
 
         void setButtonEnable(boolean isEnable);
 
-        void GoMainAcitivity();
+        void goMainActivity();
+
+        void finishActivity();
     }
     interface LoginPresenter extends  Contract.Presenter{
         void getUserData(String code);

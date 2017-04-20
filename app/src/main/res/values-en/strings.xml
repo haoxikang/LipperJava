@@ -9,7 +9,7 @@
     <string name="sign_in_now">SIGN IN NOW</string>
     <string name="under_login">Login.......</string>
     <string name="login_failed">Login failed</string>
-    <string name="title_home">Home</string>
+    <string name="shots">Shots</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 </resources>
