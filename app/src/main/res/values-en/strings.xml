@@ -10,6 +10,29 @@
     <string name="under_login">Login.......</string>
     <string name="login_failed">Login failed</string>
     <string name="shots">Shots</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="search">Search</string>
+    <string name="user">User</string>
+    <string-array name="sort">
+        <item >Popular</item>
+        <item >Recent</item>
+        <item >Viewed</item>
+        <item >Commented</item>
+    </string-array>
+    <string-array name="type">
+        <item >Shots</item>
+        <item >Debuts</item>
+        <item >Team</item>
+        <item >Playoffs</item>
+        <item >GIFs</item>
+        <item >Attachments</item>
+        <item ></item>
+    </string-array>
+    <string-array name="time">
+        <item >Now</item>
+        <item >Week</item>
+        <item >Month</item>
+        <item >Year</item>
+        <item >All</item>
+        <item ></item>
+    </string-array>
 </resources>

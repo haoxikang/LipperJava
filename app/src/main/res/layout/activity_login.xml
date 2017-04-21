@@ -4,7 +4,7 @@
 <data>
     <variable
         name="loginModel"
-        type="com.example.dribbble.login.LoginViewModel"/>
+        type="com.fallllllll.dribbble.ui.login.LoginViewModel"/>
 </data>
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:background="@mipmap/login_bg"
         android:fitsSystemWindows="false"
-        tools:context="com.example.dribbble.login.LoginActivity">
+        tools:context=".ui.login.LoginActivity">
 
         <LinearLayout
             android:id="@+id/linearLayout"
