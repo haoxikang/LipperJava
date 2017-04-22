@@ -25,7 +25,6 @@
         <item >Playoffs</item>
         <item >GIFs</item>
         <item >Attachments</item>
-        <item ></item>
     </string-array>
     <string-array name="time">
         <item >Now</item>
@@ -33,6 +32,5 @@
         <item >Month</item>
         <item >Year</item>
         <item >All</item>
-        <item ></item>
     </string-array>
 </resources>

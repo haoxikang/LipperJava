@@ -4,7 +4,7 @@
 <data>
     <variable
         name="loginModel"
-        type="com.fallllllll.dribbble.ui.login.LoginViewModel"/>
+        type="com.fallllllll.lipper.ui.login.LoginViewModel"/>
 </data>
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/login_e"
-                android:textColor="@color/primary_dark"
+                android:textColor="@color/secondary_text"
 
                 android:textSize="24sp"
                 android:textStyle="bold"/>
@@ -40,7 +40,7 @@
                 android:layout_marginTop="@dimen/common_distance"
                 android:gravity="center"
                 android:text="@string/need_login"
-                android:textColor="@color/primary"
+                android:textColor="@color/secondary_text"
                 android:textSize="12sp"/>
 
         </LinearLayout>
@@ -72,7 +72,7 @@
             android:paddingLeft="@dimen/longer_distance"
             android:paddingRight="@dimen/longer_distance"
             android:text="@string/sign_in_now"
-            android:textColor="@color/primary_dark"
+            android:textColor="@color/secondary_text"
             android:translationZ="4dp"
             android:visibility="invisible"/>
     </RelativeLayout>

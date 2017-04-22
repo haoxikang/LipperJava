@@ -26,7 +26,6 @@
         <item>响应</item>
         <item>动图</item>
         <item>附件</item>
-        <item></item>
     </string-array>
     <string-array name="time">
         <item>现在</item>
@@ -34,6 +33,5 @@
         <item>一月</item>
         <item>一年</item>
         <item>所有</item>
-        <item></item>
     </string-array>
 </resources>

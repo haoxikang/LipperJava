@@ -3,27 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <android.support.design.widget.AppBarLayout
+            android:elevation="2dp"
+            android:id="@+id/shots_appbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="0dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:background="?android:attr/windowBackground"
-            android:paddingTop="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:layout_margin="16dp"
+            <android.support.v7.widget.Toolbar
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_scrollFlags="scroll|enterAlways"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="?attr/actionBarSize">
+            </android.support.v7.widget.Toolbar>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
 
                 <LinearLayout
                     android:layout_centerInParent="true"
@@ -31,16 +30,26 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <android.support.v7.widget.AppCompatSpinner
+                        android:popupBackground="@color/primary"
+                        android:gravity="center"
+                        android:dropDownWidth="100dp"
+                        app:theme="@style/shotsDropTheme"
                         android:entries="@array/sort"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                     </android.support.v7.widget.AppCompatSpinner>
                     <android.support.v7.widget.AppCompatSpinner
+                        android:gravity="center"
+                        android:dropDownWidth="100dp"
+                        app:theme="@style/shotsDropTheme"
                         android:entries="@array/type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                     </android.support.v7.widget.AppCompatSpinner>
                     <android.support.v7.widget.AppCompatSpinner
+                        android:gravity="center"
+                        android:dropDownWidth="100dp"
+                        app:theme="@style/shotsDropTheme"
                         android:entries="@array/time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
@@ -48,5 +57,5 @@
                 </LinearLayout>
             </RelativeLayout>
         </android.support.design.widget.AppBarLayout>
-    </android.support.constraint.ConstraintLayout>
+    </android.support.design.widget.CoordinatorLayout>
 </layout>
