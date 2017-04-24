@@ -29,9 +29,9 @@ public abstract class BaseFragment extends Fragment  {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        initData(savedInstanceState);
         View view = initView(inflater,container,savedInstanceState);
         inject();
-        initData(savedInstanceState);
         initListeners();
         mPresenterLifecycleHelper = new PresenterLifecycleHelper(mPresenterList);
         mPresenterLifecycleHelper.attach();

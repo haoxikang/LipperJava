@@ -1,26 +1,24 @@
 package com.fallllllll.lipper.ui.main;
 
 import android.databinding.DataBindingUtil;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.transition.Explode;
-import android.transition.Fade;
 import android.view.MenuItem;
 
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.activity.BaseActivity;
 import com.fallllllll.lipper.databinding.ActivityMainBinding;
+import com.fallllllll.lipper.ui.main.home.ShotsFragment;
+import com.fallllllll.lipper.utils.LogUtils;
 import com.fallllllll.lipper.utils.MDStatusBarCompat;
-import com.fallllllll.lipper.view.adapter.ViewPagerAdapter;
+import com.fallllllll.lipper.ui.view.adapter.ViewPagerAdapter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
-import static com.fallllllll.lipper.core.constants.TimeConstants.ACTIVITY_TRANSITIONS_TIME;
 
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding binding;
@@ -29,22 +27,17 @@ public class MainActivity extends BaseActivity {
     private BottomNavigationView bottomNavigationView;
     private ViewPagerAdapter viewPagerAdapter;
     private MenuItem menuItem;
+    private List<String> bottomTabName;
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState) {
-
+        bottomTabName = Arrays.asList(getResources().getStringArray(R.array.home_page));
     }
 
     @Override
     protected void initView(@Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            MDStatusBarCompat.setImageTransparent(this);
-            setDarkStatusBar();
-        }else {
-            MDStatusBarCompat.setImageTranslucent(this);
-        }
-
+        MDStatusBarCompat.setOrdinaryToolBar(this);
         viewPager = binding.viewPager;
         bottomNavigationView = binding.navigation;
         fragments = new ArrayList<>();
@@ -52,7 +45,7 @@ public class MainActivity extends BaseActivity {
         fragments.add(new SearchFragment());
         fragments.add(new UserFragment());
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.setFragmentList(fragments);
+        viewPagerAdapter.setFragmentList(fragments, bottomTabName);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setOffscreenPageLimit(3);
 

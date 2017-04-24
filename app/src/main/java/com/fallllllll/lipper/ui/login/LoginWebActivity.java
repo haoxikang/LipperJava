@@ -42,7 +42,6 @@ public class LoginWebActivity extends BaseActivity {
         mActivityLoginWebBinding = DataBindingUtil.setContentView(this, R.layout.activity_login_web);
         MDStatusBarCompat.setOrdinaryToolBar(this);
         mToolbar = mActivityLoginWebBinding.toolbar;
-        mToolbar.setTitle(R.string.login);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -62,9 +61,7 @@ public class LoginWebActivity extends BaseActivity {
 
     private String getURl() {
         String url = BaseUrl.LOGIN_URL;
-
         url = url + "authorize?client_id=" + DribbbleID.CLIENT_ID + "&redirect_uri=" + DribbbleID.CALLBACK_URL + "&state=" + RandomUtils.getRandomString(6)+"&scope=public+write+comment+upload";
-        Log.d("tag", url);
         return url;
     }
 
@@ -95,7 +92,6 @@ public class LoginWebActivity extends BaseActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
             String url = request.getUrl().toString();
-            Log.d("aa", url);
 
             if (!url.contains(DribbbleID.CALLBACK_URL+"/?code")) {
                 view.loadUrl(url);

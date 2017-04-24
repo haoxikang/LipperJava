@@ -9,9 +9,14 @@
     <string name="sign_in_now">SIGN IN NOW</string>
     <string name="under_login">Login.......</string>
     <string name="login_failed">Login failed</string>
-    <string name="shots">Shots</string>
+    <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="user">User</string>
+    <string-array name="home_page">
+        <item>Home</item>
+        <item>Search</item>
+        <item>User</item>
+    </string-array>
     <string-array name="sort">
         <item >Popular</item>
         <item >Recent</item>

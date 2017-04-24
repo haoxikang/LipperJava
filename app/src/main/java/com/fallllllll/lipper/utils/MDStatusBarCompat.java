@@ -42,14 +42,6 @@ public class MDStatusBarCompat {
 
     }
 
-    /**
-     * ToolBar+TabLayout状态栏(ToolBar可伸缩)
-     *
-     * @param activity
-     */
-    public static void setToolbarTabLayout(Activity activity) {
-            activity.getWindow().setStatusBarColor(ContextCompat.getColor(activity, R.color.primary_dark));
-    }
 
 
 
