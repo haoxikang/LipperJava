@@ -2,6 +2,7 @@ package com.fallllllll.lipper.core.activity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,38 +19,25 @@ import java.util.List;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
-    private PresenterLifecycleHelper mPresenterLifecycleHelper;
-    protected List<Contract.Presenter> mPresenterList = new ArrayList<>();
 
-
+    protected PresenterLifecycleHelper presenterLifecycleHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initData(savedInstanceState);
-        inject();
-        initView(savedInstanceState);
+        presenterLifecycleHelper = new PresenterLifecycleHelper();
+        initViewAndData();
         initListeners();
-        mPresenterLifecycleHelper = new PresenterLifecycleHelper(mPresenterList);
-        mPresenterLifecycleHelper.attach();
-        mPresenterLifecycleHelper.onPresenterCreate();
-
     }
+
+protected abstract  void  initViewAndData();
+    protected abstract void initListeners();
 
     @Override
     protected void onDestroy() {
-        mPresenterLifecycleHelper.destroyPresenter();
         super.onDestroy();
+        presenterLifecycleHelper.destroyPresenter();
     }
-
-
-    protected abstract void initData(@Nullable Bundle savedInstanceState);
-
-    protected abstract void initView(@Nullable Bundle savedInstanceState);
-
-    protected abstract void initListeners();
-
-    protected abstract void inject();
 
     protected void setDarkStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

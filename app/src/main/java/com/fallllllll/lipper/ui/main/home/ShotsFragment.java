@@ -19,7 +19,6 @@ import com.fallllllll.lipper.core.fragment.BaseFragment;
 import com.fallllllll.lipper.databinding.FragmentShotsBinding;
 import com.fallllllll.lipper.ui.main.SearchFragment;
 import com.fallllllll.lipper.ui.view.adapter.ViewPagerAdapter;
-import com.fallllllll.lipper.ui.view.widget.GeneralRecyclerViewFragment.GeneralRecyclerViewFragment;
 import com.lapism.searchview.SearchView;
 
 import java.util.ArrayList;
@@ -40,19 +39,11 @@ public class ShotsFragment extends BaseFragment {
     private List<String> title_lsit;
     private SearchView searchView;
 
+    @Nullable
     @Override
-    protected void initData(@Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         fragmentList = new ArrayList<>();
         title_lsit = Arrays.asList(getResources().getStringArray(R.array.sort));
-    }
-
-    @Override
-    protected void inject() {
-
-    }
-
-    @Override
-    protected View initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentShotsBinding.inflate(inflater, container, false);
         tabLayout = binding.shotsTablayout;
         viewPager = binding.shotsViewpager;
@@ -60,12 +51,8 @@ public class ShotsFragment extends BaseFragment {
         searchView = binding.searchView;
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
-        TestAdapter textAdapter = new TestAdapter();
-        GeneralRecyclerViewFragment generalRecyclerViewFragment = new GeneralRecyclerViewFragment();
-        generalRecyclerViewFragment.initialize(new TestPresenter(), textAdapter, new LinearLayoutManager(getContext()));
 
-
-        fragmentList.add(generalRecyclerViewFragment);
+        fragmentList.add(new ShotListFragment());
         fragmentList.add(new SearchFragment());
         fragmentList.add(new SearchFragment());
         fragmentList.add(new SearchFragment());
@@ -77,6 +64,8 @@ public class ShotsFragment extends BaseFragment {
         tabLayout.setupWithViewPager(viewPager);
         return binding.getRoot();
     }
+
+
 
     @Override
     public void initListeners() {

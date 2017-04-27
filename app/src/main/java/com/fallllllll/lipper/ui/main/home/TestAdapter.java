@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.fall.generalrecyclerviewfragment.GeneralAdapter;
+import com.fall.generalrecyclerviewfragment.GeneralDataController;
 import com.fallllllll.lipper.R;
-import com.fallllllll.lipper.ui.view.widget.GeneralRecyclerViewFragment.GeneralAdapter;
-import com.fallllllll.lipper.ui.view.widget.GeneralRecyclerViewFragment.GeneralDataController;
 
 
 /**

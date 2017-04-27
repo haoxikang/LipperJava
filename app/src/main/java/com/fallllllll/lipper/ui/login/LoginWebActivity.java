@@ -32,13 +32,10 @@ public class LoginWebActivity extends BaseActivity {
     private Toolbar mToolbar;
 
 
-    @Override
-    protected void initData(@Nullable Bundle savedInstanceState) {
 
-    }
 
     @Override
-    protected void initView(@Nullable Bundle savedInstanceState) {
+    protected void initViewAndData() {
         mActivityLoginWebBinding = DataBindingUtil.setContentView(this, R.layout.activity_login_web);
         MDStatusBarCompat.setOrdinaryToolBar(this);
         mToolbar = mActivityLoginWebBinding.toolbar;
@@ -72,10 +69,6 @@ public class LoginWebActivity extends BaseActivity {
         });
     }
 
-    @Override
-    protected void inject() {
-
-    }
 
     private class ChromeClient extends WebChromeClient {
 

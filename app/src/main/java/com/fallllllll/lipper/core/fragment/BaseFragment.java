@@ -17,34 +17,26 @@ import java.util.List;
  * Created by 康颢曦 on 2017/3/8.
  */
 
-public abstract class BaseFragment extends Fragment  {
-    private PresenterLifecycleHelper mPresenterLifecycleHelper;
-    protected List<Contract.Presenter> mPresenterList = new ArrayList<>();
+public abstract class BaseFragment extends Fragment {
+    protected PresenterLifecycleHelper presenterLifecycleHelper;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenterLifecycleHelper = new PresenterLifecycleHelper();
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        initData(savedInstanceState);
-        View view = initView(inflater,container,savedInstanceState);
-        inject();
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         initListeners();
-        mPresenterLifecycleHelper = new PresenterLifecycleHelper(mPresenterList);
-        mPresenterLifecycleHelper.attach();
-        mPresenterLifecycleHelper.onPresenterCreate();
-        return view;
     }
-
-    protected abstract void initData(@Nullable Bundle savedInstanceState);
-
-    protected abstract void inject();
-
-    protected abstract View initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
 
     public abstract void initListeners();
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenterLifecycleHelper.destroyPresenter();
+    }
 }

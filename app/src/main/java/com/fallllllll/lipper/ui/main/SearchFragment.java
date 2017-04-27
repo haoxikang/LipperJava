@@ -19,24 +19,15 @@ import com.fallllllll.lipper.utils.LogUtils;
 
 public class SearchFragment extends BaseFragment {
 
+
+    @Nullable
     @Override
-    protected void initData(@Nullable Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    protected void inject() {
-
-    }
-
-    @Override
-    protected View initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         TextView textView = new TextView(getContext());
         textView.setText("搜索");
         textView.setTextSize(20);
         textView.setTextColor(ContextCompat.getColor(getContext(), R.color.primary_text));
-        return textView;
-    }
+        return textView;    }
 
     @Override
     public void initListeners() {

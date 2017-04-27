@@ -55,7 +55,7 @@ public class LoginActivityTest {
         loginActivity.setLoginModule(mockLoginModule);
 
 
-        when(mockLoginModule.provideLoginPresenter(any(DribbbleModel.class),any(OauthModel.class))).thenReturn(loginPresenter);
+        when(mockLoginModule.provideLoginPresenter(any(DribbbleModel.class), any(OauthModel.class))).thenReturn(loginPresenter);
 
 
         controller.create();
@@ -63,7 +63,7 @@ public class LoginActivityTest {
         verify(loginPresenter).onPresenterCreate();
 
         Button loginButton = (Button) loginActivity.findViewById(R.id.login_button);
-        System.out.print("" + loginButton.performClick());
+        System.out.print("" + loginButton.callOnClick());
         verify(loginPresenter).onLoginClick();
 
 

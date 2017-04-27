@@ -17,18 +17,10 @@ import com.fallllllll.lipper.core.fragment.BaseFragment;
 
 public class UserFragment extends BaseFragment {
 
+
+    @Nullable
     @Override
-    protected void initData(@Nullable Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    protected void inject() {
-
-    }
-
-    @Override
-    protected View initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         TextView textView = new TextView(getContext());
         textView.setText("用户");
         textView.setTextSize(20);

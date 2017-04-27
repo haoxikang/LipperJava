@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.fallllllll.lipper.BaseApplication;
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.activity.BaseActivity;
 import com.fallllllll.lipper.databinding.ActivityLoginBinding;
+import com.fallllllll.lipper.utils.LogUtils;
 import com.fallllllll.lipper.utils.MDStatusBarCompat;
 
 import javax.inject.Inject;
@@ -38,17 +40,16 @@ public class LoginActivity extends BaseActivity {
     private Button mLoginButton;
     private RelativeLayout mRelativeLayout;
 
-
     @Override
-    protected void initData(@Nullable Bundle savedInstanceState) {
+    protected void initViewAndData() {
         mLoginViewModel = new LoginViewModel(this);
         if (mLoginModule == null) {
             mLoginModule = new LoginModule(mLoginViewModel);
         }
-    }
-
-    @Override
-    protected void initView(@Nullable Bundle savedInstanceState) {
+        DaggerLoginComponent.builder().appComponent(((BaseApplication) getApplication())
+                .getAppComponent())
+                .loginModule(mLoginModule).build().inject(this);
+        presenterLifecycleHelper.addPresenter(loginPresenter);
         mActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         MDStatusBarCompat.setImageTranslucent(this);
         mActivityLoginBinding.setLoginModel(mLoginViewModel);
@@ -58,33 +59,18 @@ public class LoginActivity extends BaseActivity {
         mRelativeLayout = mActivityLoginBinding.rlLayout;
 
         mRotateButton.post(() -> startAnimation());
-
+        presenterLifecycleHelper.onPresenterCreate();
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
 
     @Override
     protected void initListeners() {
-
-
         mLoginButton.setOnClickListener(v -> {
             loginPresenter.onLoginClick();
         });
 
     }
 
-    @Override
-    protected void inject() {
-        DaggerLoginComponent.builder().appComponent(((BaseApplication) getApplication())
-                .getAppComponent())
-                .loginModule(mLoginModule).build().inject(this);
-        mPresenterList.add(loginPresenter);
-    }
 
     public void setLoginModule(LoginModule loginModule) {
         this.mLoginModule = loginModule;

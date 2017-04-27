@@ -42,38 +42,43 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> {
 
-                },throwable -> {
+                }, throwable -> {
                     mLoginView.finishActivity();
 
-                },()->{
+                }, () -> {
                     mLoginView.finishActivity();
 
-                }))   ;
+                }));
     }
 
     @Override
     public void onPresenterCreate() {
         if (UserManager.INSTANCE.isLogin()) {
-            mLoginView.setButtonEnable(false);
-            mLoginView.showTopDialog(mLoginView.getString(R.string.under_login));
-            Disposable disposable = DribbbleModelImpl.getInstance().getUserInfo()
-                    .onErrorResumeNext(new ConvertToApiException<>())
-                    .delay(1, TimeUnit.SECONDS)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(lipperUser -> {
-                        UserManager.INSTANCE.updateUser(lipperUser);
-                        mLoginView.hideAllTopDialog();
-                        mLoginView.goMainActivity();
-                        finishActivity();
-                    }, throwable -> {
-                        LogUtils.w(throwable.getMessage());
-                        mLoginView.hideAllTopDialog();
-                        mLoginView.showErrorDialog(mLoginView.getString(R.string.login_failed));
-                    });
-            mCompositeDisposable.add(disposable);
+            updateUserData();
         }
 
+    }
+
+    private void updateUserData() {
+        mLoginView.setButtonEnable(false);
+        mLoginView.showTopDialog(mLoginView.getString(R.string.under_login));
+        Disposable disposable = DribbbleModelImpl.getInstance().getUserInfo()
+                .onErrorResumeNext(new ConvertToApiException<>())
+                .delay(1, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(lipperUser -> {
+                    UserManager.INSTANCE.updateUser(lipperUser);
+                    mLoginView.hideAllTopDialog();
+                    mLoginView.goMainActivity();
+                    finishActivity();
+                }, throwable -> {
+                    LogUtils.w(throwable.getMessage());
+                    mLoginView.hideAllTopDialog();
+                    mLoginView.setButtonEnable(true);
+                    mLoginView.showErrorDialog(mLoginView.getString(R.string.login_failed));
+                });
+        mCompositeDisposable.add(disposable);
     }
 
     @Override
@@ -106,6 +111,11 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
 
     @Override
     public void onLoginClick() {
-        mLoginView.goWebActivityForResult();
+        if (UserManager.INSTANCE.isLogin()) {
+            updateUserData();
+        } else {
+            mLoginView.goWebActivityForResult();
+        }
+
     }
 }

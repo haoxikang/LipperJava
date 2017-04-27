@@ -1,8 +1,6 @@
 package com.fallllllll.lipper.ui.main;
 
 import android.databinding.DataBindingUtil;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -11,10 +9,10 @@ import android.view.MenuItem;
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.activity.BaseActivity;
 import com.fallllllll.lipper.databinding.ActivityMainBinding;
+import com.fallllllll.lipper.ui.main.home.ShotListFragment;
 import com.fallllllll.lipper.ui.main.home.ShotsFragment;
-import com.fallllllll.lipper.utils.LogUtils;
-import com.fallllllll.lipper.utils.MDStatusBarCompat;
 import com.fallllllll.lipper.ui.view.adapter.ViewPagerAdapter;
+import com.fallllllll.lipper.utils.MDStatusBarCompat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,13 +27,11 @@ public class MainActivity extends BaseActivity {
     private MenuItem menuItem;
     private List<String> bottomTabName;
 
-    @Override
-    protected void initData(@Nullable Bundle savedInstanceState) {
-        bottomTabName = Arrays.asList(getResources().getStringArray(R.array.home_page));
-    }
+
 
     @Override
-    protected void initView(@Nullable Bundle savedInstanceState) {
+    protected void initViewAndData() {
+        bottomTabName = Arrays.asList(getResources().getStringArray(R.array.home_page));
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         MDStatusBarCompat.setOrdinaryToolBar(this);
         viewPager = binding.viewPager;
@@ -48,8 +44,8 @@ public class MainActivity extends BaseActivity {
         viewPagerAdapter.setFragmentList(fragments, bottomTabName);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setOffscreenPageLimit(3);
-
     }
+
 
     @Override
     protected void initListeners() {
@@ -91,8 +87,4 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    @Override
-    protected void inject() {
-
-    }
 }
