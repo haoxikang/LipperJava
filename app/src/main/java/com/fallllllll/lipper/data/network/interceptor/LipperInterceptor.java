@@ -1,4 +1,4 @@
-package com.fallllllll.lipper.data.network;
+package com.fallllllll.lipper.data.network.interceptor;
 
 import com.fallllllll.lipper.core.constants.DribbbleID;
 import com.fallllllll.lipper.data.local.user.UserManager;
@@ -14,10 +14,10 @@ import okhttp3.Response;
  * Created by 康颢曦 on 2017/3/20.
  */
 
-public class MyNetworkInterceptor implements Interceptor {
+public class LipperInterceptor implements Interceptor {
 
 
-    public MyNetworkInterceptor() {
+    public LipperInterceptor() {
     }
 
     @Override

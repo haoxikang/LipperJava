@@ -12,13 +12,18 @@ import com.fallllllll.lipper.dagger.DaggerAppComponent;
 
 public class BaseApplication extends Application {
     private AppComponent mAppComponent;
-
+    private static BaseApplication instance;
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(getApplicationContext()))
                 .build();
+    }
+
+    public static BaseApplication getInstance() {
+        return instance;
     }
 
     public AppComponent getAppComponent() {

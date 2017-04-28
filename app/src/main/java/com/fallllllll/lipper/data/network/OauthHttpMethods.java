@@ -22,7 +22,7 @@ public class OauthHttpMethods extends BaseHttpMethods<OauthService> {
         if (instance == null) {
             synchronized (OauthHttpMethods.class) {
                 if (instance == null) {
-                        instance = new OauthHttpMethods(new MyNetworkInterceptor());
+                        instance = new OauthHttpMethods();
                 }
             }
         }
@@ -30,9 +30,6 @@ public class OauthHttpMethods extends BaseHttpMethods<OauthService> {
     }
 
 
-    public OauthHttpMethods(MyNetworkInterceptor myNetworkInterceptor) {
-        super(myNetworkInterceptor);
-    }
 
     @Override
     Class getServiceClass() {

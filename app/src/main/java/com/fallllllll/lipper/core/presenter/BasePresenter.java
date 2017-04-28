@@ -1,5 +1,8 @@
 package com.fallllllll.lipper.core.presenter;
 
+import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ApiException;
+import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ERROR;
+
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -19,5 +22,8 @@ public abstract class BasePresenter implements Contract.Presenter{
         mCompositeDisposable.dispose();
         mCompositeDisposable = null;
     }
+
+
+
 
 }

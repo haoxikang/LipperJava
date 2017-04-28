@@ -1,5 +1,9 @@
 package com.fallllllll.lipper.data.network;
 
+import com.fallllllll.lipper.BaseApplication;
+import com.fallllllll.lipper.data.network.interceptor.LipperInterceptor;
+import com.fallllllll.lipper.data.network.interceptor.LogInterceptor;
+
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
@@ -19,24 +23,23 @@ public abstract class BaseHttpMethods<S> {
     private S mService;
 
 
-    public BaseHttpMethods(MyNetworkInterceptor myNetworkInterceptor) {
-        mService = (createRetrofit(myNetworkInterceptor).create(getServiceClass()));
+    public BaseHttpMethods() {
+        mService = (createRetrofit().create(getServiceClass()));
 
     }
 
-    protected Retrofit createRetrofit(MyNetworkInterceptor myNetwrokInterceptor) {
+    protected Retrofit createRetrofit() {
 
-////缓存文件夹
-//        File cacheFile = new File(getExternalCacheDir().toString(),"cache");
-////缓存大小为10M
-//        int cacheSize = 10 * 1024 * 1024;
-////创建缓存对象
-//        Cache cache = new Cache(cacheFile,cacheSize);
+        File cacheFile = new File(BaseApplication.getInstance().getExternalCacheDir().toString(), "lipper");
+        int cacheSize = 10 * 1024 * 1024;
+        Cache cache = new Cache(cacheFile, cacheSize);
 
         OkHttpClient.Builder localBuilder = new OkHttpClient.Builder();
         localBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         return retrofit = new Retrofit.Builder().client(localBuilder
-                .addNetworkInterceptor(myNetwrokInterceptor)
+                .cache(cache)
+                .addNetworkInterceptor(new LipperInterceptor())
+                .addNetworkInterceptor(new LogInterceptor())
                 .build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

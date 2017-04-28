@@ -1,5 +1,8 @@
 package com.fallllllll.lipper.ui.login;
 
+import com.fallllllll.lipper.BuildConfig;
+import com.fallllllll.lipper.TestApplication;
+import com.fallllllll.lipper.core.MyRobolectricTestRunner;
 import com.fallllllll.lipper.data.network.model.DribbbleModel;
 import com.fallllllll.lipper.data.network.model.OauthModel;
 import com.fallllllll.lipper.data.network.model.impl.DribbbleModelImpl;
@@ -11,9 +14,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+import org.robolectric.annotation.Config;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
@@ -22,6 +27,8 @@ import static org.mockito.Mockito.verify;
 /**
  * Created by 康颢曦 on 2017/3/9.
  */
+@RunWith(MyRobolectricTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21, application = TestApplication.class)
 public class LoginPresenterImplTest {
 
 

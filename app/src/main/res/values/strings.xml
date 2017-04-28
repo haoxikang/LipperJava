@@ -8,6 +8,7 @@
     <string name="sign_in_now">SIGN IN NOW</string>
     <string name="under_login">正在登陆，请稍候</string>
     <string name="login_failed">登录失败请重试</string>
+    <string name="login_expire">登录过期请重新登陆</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="home">主页</string>
     <string name="search">搜索</string>

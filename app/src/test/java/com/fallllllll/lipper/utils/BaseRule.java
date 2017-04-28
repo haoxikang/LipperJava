@@ -6,6 +6,7 @@ import com.fallllllll.lipper.data.local.user.UserManager;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
+import org.robolectric.shadows.ShadowLog;
 
 /**
  * Created by Administrator on 2017/4/13/013.
@@ -28,6 +29,7 @@ public class BaseRule implements TestRule {
         return new Statement() {
             @Override
             public void evaluate() throws Throwable {
+                ShadowLog.stream = System.out;
                 UserManager.INSTANCE.init(userHelper);
                 base.evaluate();
             }

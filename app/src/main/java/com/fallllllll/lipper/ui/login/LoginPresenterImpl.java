@@ -2,11 +2,14 @@ package com.fallllllll.lipper.ui.login;
 
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.presenter.BasePresenter;
+import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ApiException;
 import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ConvertToApiException;
+import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ERROR;
 import com.fallllllll.lipper.data.local.user.UserManager;
 import com.fallllllll.lipper.data.network.model.DribbbleModel;
 import com.fallllllll.lipper.data.network.model.OauthModel;
 import com.fallllllll.lipper.data.network.model.impl.DribbbleModelImpl;
+import com.fallllllll.lipper.utils.LipperHttpErrorUtils;
 import com.fallllllll.lipper.utils.LogUtils;
 import com.google.gson.Gson;
 
@@ -76,6 +79,11 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
                     LogUtils.w(throwable.getMessage());
                     mLoginView.hideAllTopDialog();
                     mLoginView.setButtonEnable(true);
+                    if (LipperHttpErrorUtils.checkToken(throwable)) {
+                        mLoginView.showErrorDialog(mLoginView.getString(R.string.login_expire));
+                        UserManager.INSTANCE.logOut();
+                        return;
+                    }
                     mLoginView.showErrorDialog(mLoginView.getString(R.string.login_failed));
                 });
         mCompositeDisposable.add(disposable);

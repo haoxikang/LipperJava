@@ -1,5 +1,8 @@
 package com.fallllllll.lipper.data;
 
+import com.fallllllll.lipper.BuildConfig;
+import com.fallllllll.lipper.TestApplication;
+import com.fallllllll.lipper.core.MyRobolectricTestRunner;
 import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ApiException;
 import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ConvertToApiException;
 import com.fallllllll.lipper.data.databean.ShotBean;
@@ -11,8 +14,10 @@ import com.fallllllll.lipper.utils.RxSchedulersOverrideRule;
 import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+import org.robolectric.annotation.Config;
 
 import java.util.List;
 
@@ -23,6 +28,8 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by 康颢曦 on 2017/3/9.
  */
+@RunWith(MyRobolectricTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21, application = TestApplication.class)
 public class DribbbleServiceTest {
     Disposable mDisposable;
     List<ShotBean> list;

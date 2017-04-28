@@ -22,7 +22,7 @@ public class DribbbleHttpMethods extends BaseHttpMethods<DribbbleService> {
         if (instance == null) {
             synchronized (DribbbleHttpMethods.class) {
                 if (instance == null) {
-                        instance = new DribbbleHttpMethods(new MyNetworkInterceptor());
+                        instance = new DribbbleHttpMethods();
 
                 }
             }
@@ -30,9 +30,6 @@ public class DribbbleHttpMethods extends BaseHttpMethods<DribbbleService> {
         return instance;
     }
 
-    public DribbbleHttpMethods(MyNetworkInterceptor myNetworkInterceptor) {
-        super(myNetworkInterceptor);
-    }
     @Override
     Class getServiceClass() {
         return DribbbleService.class;
