@@ -1,7 +1,7 @@
 package com.fallllllll.lipper.core.constants;
 
 /**
- * Created by Administrator on 2017/4/22/022.
+ * Created by fallllllll on 2017/4/22/022.
  */
 
 public class TimeConstants {

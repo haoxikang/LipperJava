@@ -11,7 +11,7 @@ import com.fallllllll.lipper.data.databean.ShotBean;
 import com.fallllllll.lipper.ui.main.MainActivity;
 
 /**
- * Created by 康颢曦 on 2017/3/10.
+ * Created by fallllllll on 2017/3/10.
  */
 
 public class LoginViewModel extends BaseViewModel implements LoginContract.LoginView {

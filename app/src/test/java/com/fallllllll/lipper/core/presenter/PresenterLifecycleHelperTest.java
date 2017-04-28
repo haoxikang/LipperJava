@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
 /**
- * Created by Administrator on 2017/4/27/027.
+ * Created by fallllllll on 2017/4/27/027.
  */
 public class PresenterLifecycleHelperTest {
 

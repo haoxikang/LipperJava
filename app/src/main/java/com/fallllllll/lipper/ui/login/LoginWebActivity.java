@@ -22,7 +22,7 @@ import com.fallllllll.lipper.utils.MDStatusBarCompat;
 import com.fallllllll.lipper.utils.RandomUtils;
 
 /**
- * Created by 康颢曦 on 2017/3/11.
+ * Created by fallllllll on 2017/3/11.
  */
 
 public class LoginWebActivity extends BaseActivity {

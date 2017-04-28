@@ -6,7 +6,7 @@ import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ERROR;
 import com.fallllllll.lipper.data.local.user.UserManager;
 
 /**
- * Created by Administrator on 2017/4/28/028.
+ * Created by fallllllll on 2017/4/28/028.
  */
 
 public class LipperHttpErrorUtils {

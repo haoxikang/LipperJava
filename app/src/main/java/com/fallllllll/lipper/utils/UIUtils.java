@@ -3,7 +3,7 @@ package com.fallllllll.lipper.utils;
 import android.app.Activity;
 
 /**
- * Created by Administrator on 2017/4/22/022.
+ * Created by fallllllll on 2017/4/22/022.
  */
 
 public class UIUtils {

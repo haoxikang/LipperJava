@@ -3,7 +3,7 @@ package com.fallllllll.lipper.utils;
 import java.util.Random;
 
 /**
- * Created by 康颢曦 on 2017/3/11.
+ * Created by fallllllll on 2017/3/11.
  */
 
 public class RandomUtils {

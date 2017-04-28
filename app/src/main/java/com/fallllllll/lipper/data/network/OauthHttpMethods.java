@@ -4,7 +4,7 @@ import com.fallllllll.lipper.core.constants.BaseUrl;
 import com.fallllllll.lipper.data.network.service.OauthService;
 
 /**
- * Created by 康颢曦 on 2017/3/20.
+ * Created by fallllllll on 2017/3/20.
  */
 
 public class OauthHttpMethods extends BaseHttpMethods<OauthService> {

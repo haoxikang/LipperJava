@@ -5,7 +5,7 @@ import com.fallllllll.lipper.utils.RealmUtils;
 import io.realm.Realm;
 
 /**
- * Created by 康颢曦 on 2017/3/16.
+ * Created by fallllllll on 2017/3/16.
  */
 
 public class UserHelper {

@@ -6,7 +6,7 @@ import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ERROR;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
- * Created by 康颢曦 on 2017/3/8.
+ * Created by fallllllll on 2017/3/8.
  */
 
 public abstract class BasePresenter implements Contract.Presenter{

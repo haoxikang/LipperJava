@@ -14,7 +14,7 @@ import com.fallllllll.lipper.core.fragment.BaseFragment;
 import com.fallllllll.lipper.utils.LogUtils;
 
 /**
- * Created by Administrator on 2017/4/21/021.
+ * Created by fallllllll on 2017/4/21/021.
  */
 
 public class SearchFragment extends BaseFragment {

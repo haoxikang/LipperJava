@@ -9,7 +9,7 @@ import org.junit.runners.model.Statement;
 import org.robolectric.shadows.ShadowLog;
 
 /**
- * Created by Administrator on 2017/4/13/013.
+ * Created by fallllllll on 2017/4/13/013.
  */
 
 public class BaseRule implements TestRule {

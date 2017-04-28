@@ -3,7 +3,7 @@ package com.fallllllll.lipper.data.local.user;
 import com.fallllllll.lipper.core.exception.HaveNotInitException;
 
 /**
- * Created by 康颢曦 on 2017/4/13/013.
+ * Created by fallllllll on 2017/4/13/013.
  * 为了避免重复查询，使用一个单例来管理用户信息
  */
 

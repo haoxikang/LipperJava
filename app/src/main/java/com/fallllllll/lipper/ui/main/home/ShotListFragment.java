@@ -9,7 +9,7 @@ import com.fallllllll.lipper.core.fragment.BaseFragment;
 import com.fallllllll.lipper.core.fragment.BaseListFragment;
 
 /**
- * Created by Administrator on 2017/4/27/027.
+ * Created by fallllllll on 2017/4/27/027.
  */
 
 public class ShotListFragment extends BaseListFragment{

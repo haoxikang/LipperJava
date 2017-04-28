@@ -1,7 +1,7 @@
 package com.fallllllll.lipper.core.rxjava.exceptionalhandling;
 
 /**
- * Created by 康颢曦 on 2017/3/13.
+ * Created by fallllllll on 2017/3/13.
  */
 
 public class ERROR {

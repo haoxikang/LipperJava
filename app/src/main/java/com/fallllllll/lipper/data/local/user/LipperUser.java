@@ -4,7 +4,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 /**
- * Created by 康颢曦 on 2017/3/16.
+ * Created by fallllllll on 2017/3/16.
  */
 
 public class LipperUser extends RealmObject {

@@ -21,7 +21,7 @@ import retrofit2.HttpException;
 import static org.junit.Assert.*;
 
 /**
- * Created by 康颢曦 on 2017/3/14.
+ * Created by fallllllll on 2017/3/14.
  */
 @RunWith(Parameterized.class)
 public class ExceptionTest {

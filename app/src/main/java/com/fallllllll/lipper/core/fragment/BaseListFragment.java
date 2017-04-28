@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.zip.Inflater;
 
 /**
- * Created by Administrator on 2017/4/27/027.
+ * Created by fallllllll on 2017/4/27/027.
  */
 
 public abstract class BaseListFragment extends GeneralRecyclerViewFragment {

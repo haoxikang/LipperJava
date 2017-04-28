@@ -23,7 +23,7 @@ import io.reactivex.schedulers.Schedulers;
 import static com.fallllllll.lipper.core.constants.TimeConstants.ACTIVITY_TRANSITIONS_TIME;
 
 /**
- * Created by 康颢曦 on 2017/3/8.
+ * Created by fallllllll on 2017/3/8.
  */
 
 public class LoginPresenterImpl extends BasePresenter implements LoginContract.LoginPresenter {

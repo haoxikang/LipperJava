@@ -10,7 +10,7 @@ import com.tapadoo.alerter.Alert;
 import com.tapadoo.alerter.Alerter;
 
 /**
- * Created by 康颢曦 on 2017/3/10.
+ * Created by fallllllll on 2017/3/10.
  */
 
 public  class BaseViewModel implements Contract.BaseView {

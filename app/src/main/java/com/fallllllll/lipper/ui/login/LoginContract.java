@@ -4,7 +4,7 @@ import com.fallllllll.lipper.core.presenter.Contract;
 import com.fallllllll.lipper.data.databean.ShotBean;
 
 /**
- * Created by Administrator on 2017/4/14/014.
+ * Created by fallllllll on 2017/4/14/014.
  */
 
 public interface LoginContract {

@@ -12,7 +12,7 @@ import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.fragment.BaseFragment;
 
 /**
- * Created by Administrator on 2017/4/21/021.
+ * Created by fallllllll on 2017/4/21/021.
  */
 
 public class UserFragment extends BaseFragment {

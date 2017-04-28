@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/4/20/020.
+ * Created by fallllllll on 2017/4/20/020.
  */
 
 public class ShotsFragment extends BaseFragment {

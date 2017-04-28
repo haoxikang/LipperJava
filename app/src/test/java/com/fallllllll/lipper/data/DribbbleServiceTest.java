@@ -26,7 +26,7 @@ import io.reactivex.disposables.Disposable;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * Created by 康颢曦 on 2017/3/9.
+ * Created by fallllllll on 2017/3/9.
  */
 @RunWith(MyRobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21, application = TestApplication.class)
