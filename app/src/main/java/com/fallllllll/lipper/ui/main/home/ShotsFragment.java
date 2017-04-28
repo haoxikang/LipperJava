@@ -6,7 +6,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -52,7 +51,7 @@ public class ShotsFragment extends BaseFragment {
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
 
-        fragmentList.add(new ShotListFragment());
+        fragmentList.add(new ShotsListFragment());
         fragmentList.add(new SearchFragment());
         fragmentList.add(new SearchFragment());
         fragmentList.add(new SearchFragment());

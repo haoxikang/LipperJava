@@ -1,8 +1,6 @@
 package com.fallllllll.lipper.core.presenter;
 
 
-import com.fallllllll.lipper.utils.LogUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,40 +9,42 @@ import java.util.List;
  */
 
 public class PresenterLifecycleHelper {
-   private List<Contract.Presenter> mPresenterList;
+    private List<Contract.Presenter> mPresenterList;
 
-   public void addPresenter(Contract.Presenter presenter){
-       mPresenterList.add(presenter);
-   }
+    public void addPresenter(Contract.Presenter presenter) {
+        mPresenterList.add(presenter);
+        if (presenter != null) {
+            presenter.attach();
+        }
+    }
 
     public PresenterLifecycleHelper() {
         mPresenterList = new ArrayList<>();
 
     }
 
-    public void onPresenterCreate(){
+    public void onPresenterCreate() {
         if (checkList()) {
-            for (Contract.Presenter presenter:mPresenterList){
-                if (presenter!=null){
-                    presenter.attach();
+            for (Contract.Presenter presenter : mPresenterList) {
+                if (presenter != null) {
                     presenter.onPresenterCreate();
                 }
             }
         }
     }
 
-    public void destroyPresenter(){
+    public void destroyPresenter() {
         if (checkList()) {
-            for (Contract.Presenter presenter:mPresenterList){
-                if (presenter!=null){
+            for (Contract.Presenter presenter : mPresenterList) {
+                if (presenter != null) {
                     presenter.detach();
                 }
             }
         }
     }
 
-    private boolean checkList(){
-        if (mPresenterList != null && mPresenterList.size() > 0)return true;
+    private boolean checkList() {
+        if (mPresenterList != null && mPresenterList.size() > 0) return true;
         return false;
     }
 

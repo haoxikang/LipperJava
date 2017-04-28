@@ -16,7 +16,7 @@ import retrofit2.http.Query;
 public interface DribbbleService {
 
     @GET("shots")
-    Flowable<List<ShotBean>> getShot(@Query("list") String list, @Query("timeframe") String timeframe);
+    Flowable<List<ShotBean>> getShot(@Query("list") String list, @Query("timeframe") String timeframe,@Query("sort")String sort,@Query("page")String page,@Query("per_page")String perPage);
 
     @GET("user")
     Flowable<LipperUser> getUserInfo();

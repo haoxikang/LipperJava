@@ -1,7 +1,5 @@
 package com.fallllllll.lipper.data.network.interceptor;
 
-import android.util.Log;
-
 import com.fallllllll.lipper.utils.LogUtils;
 
 import java.io.IOException;

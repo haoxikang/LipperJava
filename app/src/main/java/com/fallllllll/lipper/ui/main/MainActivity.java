@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.activity.BaseActivity;
 import com.fallllllll.lipper.databinding.ActivityMainBinding;
-import com.fallllllll.lipper.ui.main.home.ShotListFragment;
 import com.fallllllll.lipper.ui.main.home.ShotsFragment;
 import com.fallllllll.lipper.ui.view.adapter.ViewPagerAdapter;
 import com.fallllllll.lipper.utils.MDStatusBarCompat;

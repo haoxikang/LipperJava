@@ -1,5 +1,6 @@
 package com.fallllllll.lipper.data.network.model.impl;
 
+import com.fallllllll.lipper.core.constants.AppConstants;
 import com.fallllllll.lipper.data.network.DribbbleHttpMethods;
 import com.fallllllll.lipper.data.network.service.DribbbleService;
 import com.fallllllll.lipper.data.databean.ShotBean;
@@ -37,8 +38,8 @@ public class DribbbleModelImpl implements DribbbleModel {
 
 
     @Override
-    public Flowable<List<ShotBean>> getShot( String list, String timeframe) {
-        return mDribbbleService.getShot(list, timeframe);
+    public Flowable<List<ShotBean>> getShot(String list, String timeframe, String sort, String page) {
+        return mDribbbleService.getShot(list, timeframe, sort, page, AppConstants.PAGE_COUNT);
     }
 
     @Override

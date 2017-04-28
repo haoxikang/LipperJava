@@ -34,7 +34,7 @@ public class LoginPresenterImplTest {
 
     @Rule
     public RxSchedulersOverrideRule mRxSchedulersOverrideRule = new RxSchedulersOverrideRule();
-     @Rule
+    @Rule
     public BaseRule baseRule = new BaseRule(true);
     @Mock
     LoginContract.LoginView mockLoginView;
@@ -49,7 +49,7 @@ public class LoginPresenterImplTest {
 
     @Before
     public void setup() {
-     //   UserManager.INSTANCE.init(TestUtils.getLoginMockUserHelper());
+        //   UserManager.INSTANCE.init(TestUtils.getLoginMockUserHelper());
         mDribbbleModel = DribbbleModelImpl.getInstance();
         oauthModel = OauthModelImpl.getInstance();
         loginPresenter = new LoginPresenterImpl(mDribbbleModel, oauthModel, mockLoginView);
@@ -60,20 +60,13 @@ public class LoginPresenterImplTest {
     @Test
     public void TestOnPresenterCreate() {
         loginPresenter.onPresenterCreate();
-       verify(mockLoginView).setButtonEnable(anyBoolean());
+        verify(mockLoginView).setButtonEnable(anyBoolean());
         verify(mockLoginView).showTopDialog(any());
         verify(mockLoginView).hideAllTopDialog();
         verify(mockLoginView).goMainActivity();
         verify(mockLoginView).finishActivity();
 
 
-//        ArgumentCaptor<ShotBean> captor = ArgumentCaptor.forClass(ShotBean.class);
-//
-//        loginPresenter.onPresenterCreate();
-//        verify(mockLoginView).onDataFetch(any());
-//
-//        ShotBean test = captor.getValue();
-//        System.out.print(test.getTitle());
 
     }
 

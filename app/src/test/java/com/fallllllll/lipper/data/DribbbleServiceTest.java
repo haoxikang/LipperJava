@@ -67,7 +67,7 @@ public class DribbbleServiceTest {
 
     @Test
     public void testShotApi() {
-        mDisposable =  DribbbleModelImpl.getInstance().getShot("animated", "week")
+        mDisposable =  DribbbleModelImpl.getInstance().getShot(null,null,null,"1")
                 .onErrorResumeNext(new ConvertToApiException<>())
                 .subscribe(testList -> {
                     list = testList;

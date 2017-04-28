@@ -2,9 +2,7 @@ package com.fallllllll.lipper.ui.login;
 
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.presenter.BasePresenter;
-import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ApiException;
 import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ConvertToApiException;
-import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ERROR;
 import com.fallllllll.lipper.data.local.user.UserManager;
 import com.fallllllll.lipper.data.network.model.DribbbleModel;
 import com.fallllllll.lipper.data.network.model.OauthModel;

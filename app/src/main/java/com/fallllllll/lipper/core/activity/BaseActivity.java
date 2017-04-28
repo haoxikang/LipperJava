@@ -2,17 +2,11 @@ package com.fallllllll.lipper.core.activity;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.fallllllll.lipper.core.presenter.Contract;
 import com.fallllllll.lipper.core.presenter.PresenterLifecycleHelper;
-import com.fallllllll.lipper.utils.LogUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by fallllllll on 2017/3/8.

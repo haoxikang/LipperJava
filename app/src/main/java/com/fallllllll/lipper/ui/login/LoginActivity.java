@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
@@ -17,7 +15,6 @@ import com.fallllllll.lipper.BaseApplication;
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.activity.BaseActivity;
 import com.fallllllll.lipper.databinding.ActivityLoginBinding;
-import com.fallllllll.lipper.utils.LogUtils;
 import com.fallllllll.lipper.utils.MDStatusBarCompat;
 
 import javax.inject.Inject;

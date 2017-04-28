@@ -1,9 +1,7 @@
 package com.fallllllll.lipper.utils;
 
-import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ApiException;
 import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ERROR;
-import com.fallllllll.lipper.data.local.user.UserManager;
 
 /**
  * Created by fallllllll on 2017/4/28/028.
