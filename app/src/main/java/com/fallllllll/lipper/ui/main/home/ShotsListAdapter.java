@@ -23,10 +23,8 @@ import com.fallllllll.lipper.databinding.ItemViewShotsBinding;
 public class ShotsListAdapter extends RecyclerView.Adapter<ShotsListAdapter.ShotsListViewHolder> implements GeneralAdapter {
 
     private GeneralDataController<ShotBean> mStringGeneralDataController;
+    private ShotsListItemViewModel shotsListItemViewModel;
 
-    public ShotsListAdapter() {
-        mStringGeneralDataController = new GeneralDataController<>(this);
-    }
 
     @Override
     public ShotsListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -34,9 +32,16 @@ public class ShotsListAdapter extends RecyclerView.Adapter<ShotsListAdapter.Shot
         return new ShotsListViewHolder(itemViewShotsBinding);
     }
 
+    public ShotsListAdapter(ShotsListItemViewModel shotsListItemViewModel) {
+        this.shotsListItemViewModel = shotsListItemViewModel;
+        mStringGeneralDataController = new GeneralDataController<>(this);
+
+    }
+
     @Override
     public void onBindViewHolder(ShotsListViewHolder holder, int position) {
         ShotBean shotBean = mStringGeneralDataController.datas.get(position);
+        holder.getBinding().setItemViewModel(shotsListItemViewModel);
         holder.getBinding().setShotBean(shotBean);
         holder.getBinding().executePendingBindings();
     }

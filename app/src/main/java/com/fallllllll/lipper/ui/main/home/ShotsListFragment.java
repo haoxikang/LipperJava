@@ -3,6 +3,7 @@ package com.fallllllll.lipper.ui.main.home;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -16,10 +17,10 @@ import javax.inject.Inject;
  * Created by fallllllll on 2017/4/27/027.
  */
 
-public class ShotsListFragment extends BaseListFragment {
+public class ShotsListFragment extends BaseListFragment implements ShotsListContract.ShotsListView {
 
     private ShotsListModule shotsListModule;
-    private ShotsListViewModel shotsListViewModel;
+    private ShotsListItemViewModel shotsListItemViewModel;
 
     public void setShotsListModule(ShotsListModule shotsListModule) {
         this.shotsListModule = shotsListModule;
@@ -35,9 +36,8 @@ public class ShotsListFragment extends BaseListFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        shotsListViewModel = new ShotsListViewModel(getContext());
         if (shotsListModule == null) {
-            shotsListModule = new ShotsListModule(shotsListViewModel);
+            shotsListModule = new ShotsListModule(this);
         }
         DaggerShotsListComponent
                 .builder()
@@ -59,7 +59,8 @@ public class ShotsListFragment extends BaseListFragment {
     @Override
     protected RecyclerView.Adapter getAdapter() {
         if (shotsListAdapter == null) {
-            shotsListAdapter = new ShotsListAdapter();
+            shotsListItemViewModel = new ShotsListItemViewModel(ShotsListItemViewModel.LINEAR_LAYOUT);
+            shotsListAdapter = new ShotsListAdapter(shotsListItemViewModel);
         }
         return shotsListAdapter;
     }
@@ -68,6 +69,21 @@ public class ShotsListFragment extends BaseListFragment {
     @Override
     protected RecyclerView.LayoutManager getLayoutManager() {
 
-        return new LinearLayoutManager(getContext());
+        return new GridLayoutManager(getContext(), 1);
+    }
+
+
+    @Override
+    public void setRecyclerViewLayout() {
+
+        GridLayoutManager gridLayoutManager = (GridLayoutManager) recyclerView.getLayoutManager();
+        if (gridLayoutManager.getSpanCount() == 1) {
+            shotsListItemViewModel.setLayout(ShotsListItemViewModel.ONLY_IMAGE_LAYOUT);
+            gridLayoutManager.setSpanCount(2);
+        } else {
+            shotsListItemViewModel.setLayout(ShotsListItemViewModel.LINEAR_LAYOUT);
+            gridLayoutManager.setSpanCount(1);
+        }
+        getAdapter().notifyItemRangeChanged(0, getAdapter().getItemCount());
     }
 }

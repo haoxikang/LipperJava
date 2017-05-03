@@ -15,9 +15,11 @@ import android.view.ViewGroup;
 
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.fragment.BaseFragment;
+import com.fallllllll.lipper.data.databean.eventBean.ShotsMenuLayoutEvent;
 import com.fallllllll.lipper.databinding.FragmentShotsBinding;
 import com.fallllllll.lipper.ui.main.SearchFragment;
 import com.fallllllll.lipper.ui.view.adapter.ViewPagerAdapter;
+import com.fallllllll.lipper.core.rxjava.RxBus;
 import com.lapism.searchview.SearchView;
 
 import java.util.ArrayList;
@@ -52,9 +54,9 @@ public class ShotsFragment extends BaseFragment {
         setHasOptionsMenu(true);
 
         fragmentList.add(new ShotsListFragment());
-        fragmentList.add(new SearchFragment());
-        fragmentList.add(new SearchFragment());
-        fragmentList.add(new SearchFragment());
+        fragmentList.add(new ShotsListFragment());
+        fragmentList.add(new ShotsListFragment());
+        fragmentList.add(new ShotsListFragment());
 
         adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         adapter.setFragmentList(fragmentList, title_lsit);
@@ -65,14 +67,16 @@ public class ShotsFragment extends BaseFragment {
     }
 
 
-
     @Override
     public void initListeners() {
         toolbar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.shots_menu_search: {
-                    searchView.open(true,item);
+                    searchView.open(true, item);
                     break;
+                }
+                case R.id.shots_menu_layout: {
+                    RxBus.get().post(new ShotsMenuLayoutEvent());
                 }
             }
             return true;

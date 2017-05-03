@@ -44,18 +44,18 @@ public class ShotBean {
      * rebound_source_url : https://api.dribbble.com/v1/shots/3303596
      */
 
-    private int id;
+    private String id;
     private String title;
     private String description;
-    private int width;
-    private int height;
+    private String width;
+    private String height;
     private ImagesBean images;
-    private int views_count;
-    private int likes_count;
-    private int comments_count;
-    private int attachments_count;
-    private int rebounds_count;
-    private int buckets_count;
+    private String views_count;
+    private String likes_count;
+    private String comments_count;
+    private String attachments_count;
+    private String rebounds_count;
+    private String buckets_count;
     private String created_at;
     private String updated_at;
     private String html_url;
@@ -71,11 +71,11 @@ public class ShotBean {
     private String rebound_source_url;
     private List<String> tags;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -95,19 +95,19 @@ public class ShotBean {
         this.description = description;
     }
 
-    public int getWidth() {
+    public String getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(String width) {
         this.width = width;
     }
 
-    public int getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
@@ -119,51 +119,51 @@ public class ShotBean {
         this.images = images;
     }
 
-    public int getViews_count() {
+    public String getViews_count() {
         return views_count;
     }
 
-    public void setViews_count(int views_count) {
+    public void setViews_count(String views_count) {
         this.views_count = views_count;
     }
 
-    public int getLikes_count() {
+    public String getLikes_count() {
         return likes_count;
     }
 
-    public void setLikes_count(int likes_count) {
+    public void setLikes_count(String likes_count) {
         this.likes_count = likes_count;
     }
 
-    public int getComments_count() {
+    public String getComments_count() {
         return comments_count;
     }
 
-    public void setComments_count(int comments_count) {
+    public void setComments_count(String comments_count) {
         this.comments_count = comments_count;
     }
 
-    public int getAttachments_count() {
+    public String getAttachments_count() {
         return attachments_count;
     }
 
-    public void setAttachments_count(int attachments_count) {
+    public void setAttachments_count(String attachments_count) {
         this.attachments_count = attachments_count;
     }
 
-    public int getRebounds_count() {
+    public String getRebounds_count() {
         return rebounds_count;
     }
 
-    public void setRebounds_count(int rebounds_count) {
+    public void setRebounds_count(String rebounds_count) {
         this.rebounds_count = rebounds_count;
     }
 
-    public int getBuckets_count() {
+    public String getBuckets_count() {
         return buckets_count;
     }
 
-    public void setBuckets_count(int buckets_count) {
+    public void setBuckets_count(String buckets_count) {
         this.buckets_count = buckets_count;
     }
 

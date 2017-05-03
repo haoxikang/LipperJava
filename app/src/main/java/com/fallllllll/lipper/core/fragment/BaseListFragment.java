@@ -3,6 +3,7 @@ package com.fallllllll.lipper.core.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.fall.generalrecyclerviewfragment.GeneralRecyclerViewFragment;
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.presenter.Contract;
 import com.fallllllll.lipper.core.presenter.PresenterLifecycleHelper;
+import com.fallllllll.lipper.utils.BaseViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +24,18 @@ import java.util.zip.Inflater;
  * Created by fallllllll on 2017/4/27/027.
  */
 
-public abstract class BaseListFragment extends GeneralRecyclerViewFragment {
+public abstract class BaseListFragment extends GeneralRecyclerViewFragment implements Contract.BaseView {
 
     protected View errorView;
 
     protected PresenterLifecycleHelper presenterLifecycleHelper;
+    private BaseViewUtils baseViewUtils;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenterLifecycleHelper = new PresenterLifecycleHelper();
+        baseViewUtils = new BaseViewUtils(getContext());
     }
 
 
@@ -39,6 +43,7 @@ public abstract class BaseListFragment extends GeneralRecyclerViewFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         swipeRefreshLayout.setColorSchemeResources(R.color.primary, R.color.accent);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
 
@@ -76,6 +81,25 @@ public abstract class BaseListFragment extends GeneralRecyclerViewFragment {
             ((TextView) errorView.findViewById(R.id.error_text)).setText(R.string.no_data);
             errorLayout.addView(errorView);
         }
+    }
+    @Override
+    public void showToast(String s) {
+        baseViewUtils.showToast(s);
+    }
+
+    @Override
+    public void showTopDialog(String s) {
+        baseViewUtils.showTopDialog(s);
+    }
+
+    @Override
+    public void hideAllTopDialog() {
+        baseViewUtils.hideAllTopDialog();
+    }
+
+    @Override
+    public void showErrorDialog(String s) {
+        baseViewUtils.showErrorDialog(s);
     }
 
 }

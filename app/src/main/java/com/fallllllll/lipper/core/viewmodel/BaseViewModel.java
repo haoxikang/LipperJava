@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.presenter.Contract;
+import com.fallllllll.lipper.utils.BaseViewUtils;
 import com.tapadoo.alerter.Alert;
 import com.tapadoo.alerter.Alerter;
 
@@ -13,52 +14,38 @@ import com.tapadoo.alerter.Alerter;
  * Created by fallllllll on 2017/3/10.
  */
 
-public  class BaseViewModel implements Contract.BaseView {
+public class BaseViewModel implements Contract.BaseView {
     public Context mContext;
-    private Alert alert;
+    private BaseViewUtils baseViewUtils;
 
     public BaseViewModel(Context context) {
         mContext = context;
+        baseViewUtils = new BaseViewUtils(context);
     }
 
 
     @Override
     public void showToast(String s) {
-        Toast.makeText(mContext, s, Toast.LENGTH_SHORT).show();
+        baseViewUtils.showToast(s);
     }
 
     @Override
     public void showTopDialog(String s) {
-        hideAllTopDialog();
-        alert = Alerter.create((Activity)mContext)
-                .setText(s)
-                .setDuration(Integer.MAX_VALUE)
-                .setBackgroundColor(R.color.primary)
-                .setOnClickListener(v -> {
-
-                })
-                .show();
+        baseViewUtils.showTopDialog(s);
     }
 
     @Override
     public void hideAllTopDialog() {
-        if (alert!=null&&alert.isShown()){
-            alert.hide();
-        }
+        baseViewUtils.hideAllTopDialog();
     }
 
     @Override
     public void showErrorDialog(String s) {
-        hideAllTopDialog();
-        alert = Alerter.create((Activity)mContext)
-                .setText(s)
-                .setBackgroundColor(R.color.accent)
-                .setDuration(2000)
-                .show();
+        baseViewUtils.showErrorDialog(s);
     }
 
     @Override
     public String getString(int res) {
-        return mContext.getString(res);
+       return baseViewUtils.getString(res);
     }
 }

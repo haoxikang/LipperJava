@@ -10,6 +10,8 @@ import com.fallllllll.lipper.core.presenter.Contract;
 public class ShotsListContract {
     interface ShotsListView extends Contract.BaseView{
 
+        void setRecyclerViewLayout();
+
     }
     interface ShotsListPresenter extends Contract.Presenter{
 

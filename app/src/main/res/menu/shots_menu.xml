@@ -8,7 +8,7 @@
         android:title="@string/search" />
     <item
         app:showAsAction="always"
-        android:id="@+id/navigation_shots"
+        android:id="@+id/shots_menu_layout"
         android:icon="@drawable/ic_view_quilt"
         android:title="@string/home" />
 

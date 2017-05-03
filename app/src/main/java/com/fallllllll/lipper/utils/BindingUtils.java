@@ -2,6 +2,7 @@ package com.fallllllll.lipper.utils;
 
 import android.databinding.BindingAdapter;
 import android.net.Uri;
+import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -19,8 +20,14 @@ public class BindingUtils {
     public static void showImageByUrlWithSmallSize(final SimpleDraweeView simpleDraweeView, String url) {
         FrescoUtils.displayWithResize(350, 350, Uri.parse(url), simpleDraweeView);
     }
+
     @BindingAdapter("frescoImageUriWithTinySize")
     public static void showImageByUrlWithTinySize(final SimpleDraweeView simpleDraweeView, String url) {
         FrescoUtils.displayWithResize(50, 50, Uri.parse(url), simpleDraweeView);
+    }
+
+    @BindingAdapter("setTextNumber")
+    public static void showTextNumber(final TextView textView, String number) {
+        textView.setText(StringUtils.numberToK(number));
     }
 }

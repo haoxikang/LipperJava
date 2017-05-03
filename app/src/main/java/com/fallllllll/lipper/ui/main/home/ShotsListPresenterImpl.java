@@ -1,17 +1,12 @@
 package com.fallllllll.lipper.ui.main.home;
 
-import android.os.Handler;
-
-
 import com.fallllllll.lipper.core.constants.AppConstants;
 import com.fallllllll.lipper.core.presenter.BaseListPresenter;
+import com.fallllllll.lipper.data.databean.eventBean.ShotsMenuLayoutEvent;
 import com.fallllllll.lipper.data.network.model.DribbbleModel;
 import com.fallllllll.lipper.utils.LogUtils;
+import com.fallllllll.lipper.core.rxjava.RxBus;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -27,6 +22,15 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
     public ShotsListPresenterImpl(DribbbleModel model, ShotsListContract.ShotsListView shotsListView) {
         this.model = model;
         this.shotsListView = shotsListView;
+    }
+
+    @Override
+    public void onPresenterCreate() {
+        super.onPresenterCreate();
+        mCompositeDisposable.add(RxBus.get().toFlowable(ShotsMenuLayoutEvent.class)
+                .subscribe(shotsMenuLayoutEvent -> {
+                    shotsListView.setRecyclerViewLayout();
+                }));
     }
 
     @Override
