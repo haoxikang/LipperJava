@@ -30,7 +30,7 @@
             app:cardElevation="@{itemViewModel.currentLayout==ShotsListItemViewModel.ONLY_IMAGE_LAYOUT?@dimen/shots_card_elevation_image:@dimen/shots_card_elevation}"
             app:cardMaxElevation="2dp"
             app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">>
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,7 +56,6 @@
                         app:roundAsCircle="true" />
 
                     <TextView
-                        android:textSize="12sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -66,6 +65,7 @@
                         android:maxLines="1"
                         android:text="@{shotBean.user.name}"
                         android:textColor="@color/primary_text"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
 
@@ -130,20 +130,20 @@
                             android:layout_gravity="center"
                             android:drawableLeft="@drawable/ic_visibility_grey"
                             android:drawablePadding="8dp"
-                            app:setTextNumber="@{shotBean.views_count}"
                             android:textColor="@color/primary_text"
                             android:textSize="10sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            app:setTextNumber="@{shotBean.views_count}" />
 
                         <TextView
-                            android:visibility="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT?View.VISIBLE:View.GONE}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="2dp"
                             android:text="VIEWS"
                             android:textColor="@color/secondary_text"
-                            android:textSize="10sp" />
+                            android:textSize="10sp"
+                            android:visibility="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT?View.VISIBLE:View.GONE}" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -152,20 +152,20 @@
                             android:drawableLeft="@drawable/ic_favorite_pink"
                             android:drawablePadding="8dp"
                             android:paddingLeft="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT? @dimen/shots_item_padding_left_large:@dimen/shots_item_padding_left_small}"
-                            app:setTextNumber="@{shotBean.likes_count}"
                             android:textColor="@color/primary_text"
                             android:textSize="10sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            app:setTextNumber="@{shotBean.likes_count}" />
 
                         <TextView
-                            android:visibility="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT?View.VISIBLE:View.GONE}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="2dp"
                             android:text="LIKES"
                             android:textColor="@color/secondary_text"
-                            android:textSize="10sp" />
+                            android:textSize="10sp"
+                            android:visibility="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT?View.VISIBLE:View.GONE}" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -175,7 +175,7 @@
                             android:text="REPLY"
                             android:textColor="@color/primary_text"
                             android:textSize="10sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>

@@ -27,12 +27,13 @@ public class MainActivity extends BaseActivity {
     private List<String> bottomTabName;
 
 
-
     @Override
     protected void initViewAndData() {
         bottomTabName = Arrays.asList(getResources().getStringArray(R.array.home_page));
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         MDStatusBarCompat.setOrdinaryToolBar(this);
+
+
         viewPager = binding.viewPager;
         bottomNavigationView = binding.navigation;
         fragments = new ArrayList<>();
@@ -43,7 +44,11 @@ public class MainActivity extends BaseActivity {
         viewPagerAdapter.setFragmentList(fragments, bottomTabName);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setOffscreenPageLimit(3);
+
+
     }
+
+
 
 
     @Override

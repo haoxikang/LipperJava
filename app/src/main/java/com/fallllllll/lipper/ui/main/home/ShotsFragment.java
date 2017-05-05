@@ -39,7 +39,7 @@ public class ShotsFragment extends BaseFragment {
     private List<Fragment> fragmentList;
     private List<String> title_lsit;
     private SearchView searchView;
-
+private HomeItemLayoutPopWindow popWindow;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class ShotsFragment extends BaseFragment {
         viewPager = binding.shotsViewpager;
         toolbar = binding.shtosToolar;
         searchView = binding.searchView;
+        popWindow = new HomeItemLayoutPopWindow(getActivity());
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
 
@@ -76,7 +77,8 @@ public class ShotsFragment extends BaseFragment {
                     break;
                 }
                 case R.id.shots_menu_layout: {
-                    RxBus.get().post(new ShotsMenuLayoutEvent());
+                   // RxBus.get().post(new ShotsMenuLayoutEvent());
+                    popWindow.showPopupWindow(toolbar);
                 }
             }
             return true;

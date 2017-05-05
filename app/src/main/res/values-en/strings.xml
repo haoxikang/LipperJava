@@ -17,6 +17,10 @@
     <string name="no_data">no data</string>
     <string name="failed_to_load">Failed to load</string>
 
+    <string name="small_with_info">small with info</string>
+    <string name="large_with_info">large with info</string>
+    <string name="only_image">only image</string>
+
     <string-array name="home_page">
         <item>Home</item>
         <item>Search</item>
