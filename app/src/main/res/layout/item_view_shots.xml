@@ -82,7 +82,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     app:actualImageScaleType="centerCrop"
-                    app:frescoImageUri="@{shotBean.images.normal}" />
+                    app:frescoImageUri="@{shotBean.images.normal}"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"

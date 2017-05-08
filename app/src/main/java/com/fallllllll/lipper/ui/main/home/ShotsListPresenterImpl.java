@@ -18,6 +18,7 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
 
     private DribbbleModel model;
     private ShotsListContract.ShotsListView shotsListView;
+    private String currentLayoutType = AppConstants.SHOTS_LAYOUT_LARGE;
 
     public ShotsListPresenterImpl(DribbbleModel model, ShotsListContract.ShotsListView shotsListView) {
         this.model = model;
@@ -29,7 +30,18 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
         super.onPresenterCreate();
         mCompositeDisposable.add(RxBus.get().toFlowable(ShotsMenuLayoutEvent.class)
                 .subscribe(shotsMenuLayoutEvent -> {
-                    shotsListView.setRecyclerViewLayout();
+                    if (!currentLayoutType.equals(shotsMenuLayoutEvent.getShotLayoutType())) {
+                        if ((currentLayoutType.equals(AppConstants.SHOTS_LAYOUT_SMALL) || currentLayoutType.equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE))
+                                &&
+                                (shotsMenuLayoutEvent.getShotLayoutType().equals(AppConstants.SHOTS_LAYOUT_SMALL) || shotsMenuLayoutEvent.getShotLayoutType().equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE))) {
+                            shotsListView.changeItemViewLayout(shotsMenuLayoutEvent.getShotLayoutType());
+                        } else {
+                            shotsListView.changeRecyclerViewLayout(shotsMenuLayoutEvent.getShotLayoutType());
+
+
+                        }
+                        currentLayoutType = shotsMenuLayoutEvent.getShotLayoutType();
+                    }
                 }));
     }
 

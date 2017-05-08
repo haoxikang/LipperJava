@@ -23,7 +23,10 @@
                 <LinearLayout
                     android:id="@+id/home_popup_large_layout"
                     android:background="?android:attr/selectableItemBackground"
-                    android:padding="8dp"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -32,9 +35,7 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp" />
                     <TextView
-                        android:textStyle="bold"
                         android:layout_gravity="center"
-                        android:textSize="12sp"
                         android:text="@string/large_with_info"
                         android:textColor="@android:color/white"
                         android:layout_marginLeft="12dp"
@@ -42,9 +43,12 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
                 <LinearLayout
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:id="@+id/home_popup_small_layout"
                     android:background="?android:attr/selectableItemBackground"
-                    android:padding="8dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -53,9 +57,7 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp" />
                     <TextView
-                        android:textStyle="bold"
                         android:layout_gravity="center"
-                        android:textSize="12sp"
                         android:text="@string/small_with_info"
                         android:textColor="@android:color/white"
                         android:layout_marginLeft="12dp"
@@ -65,7 +67,10 @@
                 <LinearLayout
                     android:id="@+id/home_popup_only_image_layout"
                     android:background="?android:attr/selectableItemBackground"
-                    android:padding="8dp"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -74,9 +79,7 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp" />
                     <TextView
-                        android:textStyle="bold"
                         android:layout_gravity="center"
-                        android:textSize="12sp"
                         android:text="@string/only_image"
                         android:textColor="@android:color/white"
                         android:layout_marginLeft="12dp"

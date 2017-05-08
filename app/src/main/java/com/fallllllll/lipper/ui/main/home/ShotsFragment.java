@@ -77,7 +77,6 @@ private HomeItemLayoutPopWindow popWindow;
                     break;
                 }
                 case R.id.shots_menu_layout: {
-                   // RxBus.get().post(new ShotsMenuLayoutEvent());
                     popWindow.showPopupWindow(toolbar);
                 }
             }

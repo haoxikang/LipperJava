@@ -2,6 +2,7 @@ package com.fallllllll.lipper.ui.main.home;
 
 import android.database.DatabaseUtils;
 import android.databinding.DataBindingUtil;
+import android.support.transition.TransitionManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;

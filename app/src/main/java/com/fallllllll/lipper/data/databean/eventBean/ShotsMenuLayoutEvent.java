@@ -5,4 +5,13 @@ package com.fallllllll.lipper.data.databean.eventBean;
  */
 
 public class ShotsMenuLayoutEvent {
+    private String shotLayoutType;
+
+    public ShotsMenuLayoutEvent(String shotLayoutType) {
+        this.shotLayoutType = shotLayoutType;
+    }
+
+    public String getShotLayoutType() {
+        return shotLayoutType;
+    }
 }

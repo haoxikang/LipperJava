@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.fall.generalrecyclerviewfragment.GeneralContract;
 import com.fallllllll.lipper.DribbbleApplication;
+import com.fallllllll.lipper.core.constants.AppConstants;
 import com.fallllllll.lipper.core.fragment.BaseListFragment;
 
 import javax.inject.Inject;
@@ -74,16 +75,29 @@ public class ShotsListFragment extends BaseListFragment implements ShotsListCont
 
 
     @Override
-    public void setRecyclerViewLayout() {
-
+    public void changeRecyclerViewLayout(String layoutType) {
         GridLayoutManager gridLayoutManager = (GridLayoutManager) recyclerView.getLayoutManager();
-        if (gridLayoutManager.getSpanCount() == 1) {
-            shotsListItemViewModel.setLayout(ShotsListItemViewModel.ONLY_IMAGE_LAYOUT);
-            gridLayoutManager.setSpanCount(2);
-        } else {
+        if (layoutType.equals(AppConstants.SHOTS_LAYOUT_LARGE)){
             shotsListItemViewModel.setLayout(ShotsListItemViewModel.LINEAR_LAYOUT);
             gridLayoutManager.setSpanCount(1);
+        }else if (layoutType.equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE)){
+            shotsListItemViewModel.setLayout(ShotsListItemViewModel.ONLY_IMAGE_LAYOUT);
+            gridLayoutManager.setSpanCount(2);
+        }else if (layoutType.equals(AppConstants.SHOTS_LAYOUT_SMALL)){
+            shotsListItemViewModel.setLayout(ShotsListItemViewModel.GRID_LAYOUT);
+            gridLayoutManager.setSpanCount(2);
         }
         getAdapter().notifyItemRangeChanged(0, getAdapter().getItemCount());
     }
+
+    @Override
+    public void changeItemViewLayout(String layoutType) {
+        if (layoutType.equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE)){
+            shotsListItemViewModel.setLayout(ShotsListItemViewModel.ONLY_IMAGE_LAYOUT);
+        }
+        if (layoutType.equals(AppConstants.SHOTS_LAYOUT_SMALL)){
+            shotsListItemViewModel.setLayout(ShotsListItemViewModel.GRID_LAYOUT);
+        }
+    }
+
 }

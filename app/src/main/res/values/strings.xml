@@ -40,7 +40,7 @@
         <item>团队</item>
         <item>响应</item>
         <item>动图</item>
-        <item>附件</item>
+        <item>附件 </item>
     </string-array>
     <string-array name="time">
         <item>现在</item>

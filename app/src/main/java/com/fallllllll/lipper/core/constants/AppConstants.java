@@ -27,5 +27,9 @@ public class AppConstants {
     public static String VIEWS = "views";
     public static String POPULARITY = null;
 
+    public static String SHOTS_LAYOUT_LARGE ="shots_layout_large";
+    public static String SHOTS_LAYOUT_SMALL="shots_layout_small" ;
+    public static String SHOTS_LAYOUT_ONLY_IMAGE ="shots_layout_only_image";
+
 
 }
