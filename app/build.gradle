@@ -55,6 +55,8 @@ dependencies {
     //Dagger
     compile 'com.google.dagger:dagger:2.9'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
+    //储存相关
+    compile 'com.jakewharton:disklrucache:2.0.2'
     //unit tests
     androidTestCompile 'junit:junit:4.12'
     testCompile 'junit:junit:4.12'
