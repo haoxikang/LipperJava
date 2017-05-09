@@ -1,10 +1,10 @@
 package com.fallllllll.lipper.ui.login;
 
 import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableField;
+import android.text.TextUtils;
 
 import com.fallllllll.lipper.core.viewmodel.BaseViewModel;
 import com.fallllllll.lipper.data.databean.ShotBean;
@@ -24,7 +24,6 @@ public class LoginViewModel extends BaseViewModel implements LoginContract.Login
 
     @Override
     public void onDataFetch(ShotBean test) {
-
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.fallllllll.lipper.utils;
 
 
+import android.text.TextUtils;
+
 /**
  * Created by Administrator on 2017/5/3/003.
  */
