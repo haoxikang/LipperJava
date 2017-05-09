@@ -6,6 +6,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.fallllllll.lipper.dagger.AppComponent;
 import com.fallllllll.lipper.dagger.AppModule;
 import com.fallllllll.lipper.dagger.DaggerAppComponent;
+import com.google.gson.Gson;
 
 /**
  * Created by fallllllll on 2017/4/13/013.
@@ -14,6 +15,7 @@ import com.fallllllll.lipper.dagger.DaggerAppComponent;
 public class BaseApplication extends Application {
     private AppComponent mAppComponent;
     private static BaseApplication instance;
+    private Gson gson= new Gson();
     @Override
     public void onCreate() {
         super.onCreate();
@@ -22,6 +24,10 @@ public class BaseApplication extends Application {
                 .appModule(new AppModule(getApplicationContext()))
                 .build();
         Fresco.initialize(this);
+    }
+
+    public Gson getGson() {
+        return gson;
     }
 
     public static BaseApplication getInstance() {

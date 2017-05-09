@@ -1,14 +1,11 @@
 package com.fallllllll.lipper.data.local.user;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by fallllllll on 2017/3/16.
  */
 
-public class LipperUser extends RealmObject {
-    @PrimaryKey
+public class LipperUser{
     private String UserID = "user";
     private int id;
     private String name;

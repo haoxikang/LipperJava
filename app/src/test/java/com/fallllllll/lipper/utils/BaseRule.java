@@ -8,6 +8,8 @@ import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 import org.robolectric.shadows.ShadowLog;
 
+import java.io.IOException;
+
 /**
  * Created by fallllllll on 2017/4/13/013.
  */
@@ -16,11 +18,16 @@ public class BaseRule implements TestRule {
     private UserHelper userHelper;
 
     public BaseRule(boolean isLogin) {
-        if (isLogin){
-            this.userHelper = TestUtils.getLoginMockUserHelper();
-        }else {
-            this.userHelper = TestUtils.getDefaultMockUserHelper();
+        try {
+            if (isLogin) {
+                this.userHelper = TestUtils.getLoginMockUserHelper();
+            } else {
+                this.userHelper = TestUtils.getDefaultMockUserHelper();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
 

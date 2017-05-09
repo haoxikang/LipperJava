@@ -1,14 +1,11 @@
 package com.fallllllll.lipper.data.local.user;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by fallllllll on 2017/3/16.
  */
 
-public class UserToken extends RealmObject {
-    @PrimaryKey
+public class UserToken{
     private String id = "token";
     private String access_token;
     private String token_type;

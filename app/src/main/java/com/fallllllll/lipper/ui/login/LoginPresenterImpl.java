@@ -13,7 +13,10 @@ import com.google.gson.Gson;
 
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -66,10 +69,14 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
         Disposable disposable = DribbbleModelImpl.getInstance().getUserInfo()
                 .onErrorResumeNext(new ConvertToApiException<>())
                 .delay(1, TimeUnit.SECONDS)
+                .flatMap(lipperUser -> Flowable.create((FlowableOnSubscribe<Boolean>) e -> {
+                    UserManager.INSTANCE.updateUser(lipperUser);
+                    e.onNext(true);
+                    e.onComplete();
+                }, BackpressureStrategy.BUFFER))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(lipperUser -> {
-                    UserManager.INSTANCE.updateUser(lipperUser);
+                .subscribe(b -> {
                     mLoginView.hideAllTopDialog();
                     mLoginView.goMainActivity();
                     finishActivity();
@@ -93,18 +100,20 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
         mLoginView.showTopDialog(mLoginView.getString(R.string.under_login));
         Disposable disposable = oauthModel.getToken(code)
                 .onErrorResumeNext(new ConvertToApiException<>())
-                .observeOn(AndroidSchedulers.mainThread())
                 .map(userToken -> {
                     LogUtils.i(new Gson().toJson(userToken));
                     UserManager.INSTANCE.updateToken(userToken);
                     return userToken;
                 })
-                .observeOn(Schedulers.io())
                 .flatMap(userToken -> mDribbbleModel.getUserInfo())
+                .flatMap(lipperUser -> Flowable.create((FlowableOnSubscribe<Boolean>) e -> {
+                    UserManager.INSTANCE.updateUser(lipperUser);
+                    e.onNext(true);
+                    e.onComplete();
+                }, BackpressureStrategy.BUFFER))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(lipperUser -> {
-                    UserManager.INSTANCE.updateUser(lipperUser);
                     mLoginView.hideAllTopDialog();
                     mLoginView.goMainActivity();
                 }, throwable -> {

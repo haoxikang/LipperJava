@@ -2,6 +2,8 @@ package com.fallllllll.lipper.data.local.user;
 
 import com.fallllllll.lipper.core.exception.HaveNotInitException;
 
+import java.io.IOException;
+
 /**
  * Created by fallllllll on 2017/4/13/013.
  * 为了避免重复查询，使用一个单例来管理用户信息
@@ -22,14 +24,28 @@ public enum UserManager {
     public void init() {
         if (!isInit) {
             userHelper = new UserHelper();
-            lipperUser = userHelper.getUserData();
-            userToken = userHelper.getToken();
-            isLogin = userHelper.isLogin();
+
+            try {
+                isLogin = userHelper.isLogin();
+            } catch (Exception e) {
+                isLogin = false;
+            }
+            if (isLogin) {
+                try {
+                    lipperUser = userHelper.getUserData();
+                    userToken = userHelper.getToken();
+                } catch (Exception e) {
+                    isLogin = false;
+                    lipperUser = null;
+                    userToken = null;
+                }
+
+            }
             isInit = true;
         }
     }
 
-    public void init(UserHelper userHelper) {
+    public void init(UserHelper userHelper) throws IOException {
         if (!isInit) {
             this.userHelper = userHelper;
             lipperUser = userHelper.getUserData();
@@ -54,7 +70,7 @@ public enum UserManager {
         return userToken;
     }
 
-    public boolean updateUser(LipperUser lipperUser) {
+    public boolean updateUser(LipperUser lipperUser) throws IOException {
         checkInitStatus();
         if (userHelper.saveOrUpdateUser(lipperUser)) {
             this.lipperUser = lipperUser;
@@ -64,7 +80,7 @@ public enum UserManager {
         } else return false;
     }
 
-    public boolean updateToken(UserToken userToken) {
+    public boolean updateToken(UserToken userToken) throws IOException {
         checkInitStatus();
         if (userHelper.saveToken(userToken)) {
             this.userToken = userToken;
@@ -73,7 +89,7 @@ public enum UserManager {
         } else return false;
     }
 
-    public void logOut() {
+    public void logOut() throws IOException {
         checkInitStatus();
         if (isLogin) {
             userHelper.logOut();

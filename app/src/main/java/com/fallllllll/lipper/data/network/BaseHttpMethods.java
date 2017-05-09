@@ -41,7 +41,7 @@ public abstract class BaseHttpMethods<S> {
                 .addNetworkInterceptor(new LipperInterceptor())
                 .addNetworkInterceptor(new LogInterceptor())
                 .build())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(BaseApplication.getInstance().getGson()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(getBaseUrl())
                 .build();

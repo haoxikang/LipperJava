@@ -1,11 +1,10 @@
 package com.fallllllll.lipper.data.local.user;
 
-import io.realm.RealmObject;
 
 /**
  * Created by fallllllll on 2017/3/16.
  */
-public class LinksBean extends RealmObject {
+public class LinksBean {
 
 
     private String web;
