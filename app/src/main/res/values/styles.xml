@@ -17,8 +17,10 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
-    <style name="shotsDropTheme" parent="Widget.AppCompat.DropDownItem.Spinner">
-    <!--<item name="android:textColor">@android:color/white</item>-->
-    <item name="android:textSize">12sp</item>
-</style>
+    <style name="homeCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/primary</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>

@@ -2,6 +2,7 @@ package com.fallllllll.lipper.ui.main.home;
 
 import com.fallllllll.lipper.core.constants.AppConstants;
 import com.fallllllll.lipper.core.presenter.BaseListPresenter;
+import com.fallllllll.lipper.data.databean.eventBean.ShotsListFilterEvent;
 import com.fallllllll.lipper.data.databean.eventBean.ShotsMenuLayoutEvent;
 import com.fallllllll.lipper.data.network.model.DribbbleModel;
 import com.fallllllll.lipper.utils.LogUtils;
@@ -19,6 +20,10 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
     private DribbbleModel model;
     private ShotsListContract.ShotsListView shotsListView;
     private String currentLayoutType = AppConstants.SHOTS_LAYOUT_LARGE;
+    private String TIME = AppConstants.NOW;
+    private String SORT = AppConstants.SHOTS;
+    private String TYPE = AppConstants.POPULARITY;
+
 
     public ShotsListPresenterImpl(DribbbleModel model, ShotsListContract.ShotsListView shotsListView) {
         this.model = model;
@@ -28,6 +33,24 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
     @Override
     public void onPresenterCreate() {
         super.onPresenterCreate();
+        subscribeLayoutEvent();
+        subscribeListFilterEvent();
+
+    }
+
+    private void subscribeListFilterEvent() {
+        mCompositeDisposable.add(RxBus.get().toFlowable(ShotsListFilterEvent.class)
+                .subscribe(shotsListFilterEvent -> {
+                    mCompositeDisposable.dispose();
+                    stopLoading();
+                    TIME = shotsListFilterEvent.getTime();
+                    SORT = shotsListFilterEvent.getSort();
+                    TYPE = shotsListFilterEvent.getType();
+                    checkAndRefreshData();
+                }, throwable -> subscribeListFilterEvent()));
+    }
+
+    private void subscribeLayoutEvent() {
         mCompositeDisposable.add(RxBus.get().toFlowable(ShotsMenuLayoutEvent.class)
                 .subscribe(shotsMenuLayoutEvent -> {
                     if (!currentLayoutType.equals(shotsMenuLayoutEvent.getShotLayoutType())) {
@@ -42,12 +65,12 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
                         }
                         currentLayoutType = shotsMenuLayoutEvent.getShotLayoutType();
                     }
-                }));
+                }, throwable -> subscribeLayoutEvent()));
     }
 
     @Override
     public void refreshData() {
-        mCompositeDisposable.add(model.getShot(AppConstants.SHOTS, AppConstants.NOW, AppConstants.POPULARITY, "1")
+        mCompositeDisposable.add(model.getShot(TYPE, TIME, SORT, "1")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(shotBeans -> {

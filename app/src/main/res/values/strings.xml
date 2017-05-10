@@ -22,6 +22,11 @@
     <string name="only_image">仅图片</string>
 
 
+    <string name="apply_filters">确定</string>
+
+
+
+
     <string-array name="home_page">
         <item>主页</item>
         <item>搜索</item>

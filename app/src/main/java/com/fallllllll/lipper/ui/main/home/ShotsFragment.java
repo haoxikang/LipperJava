@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.fallllllll.lipper.R;
+import com.fallllllll.lipper.core.constants.AppConstants;
 import com.fallllllll.lipper.core.fragment.BaseFragment;
 import com.fallllllll.lipper.data.databean.eventBean.ShotsMenuLayoutEvent;
 import com.fallllllll.lipper.databinding.FragmentShotsBinding;
@@ -32,41 +35,36 @@ import java.util.List;
 
 public class ShotsFragment extends BaseFragment {
     private FragmentShotsBinding binding;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private ViewPagerAdapter adapter;
     private Toolbar toolbar;
-    private List<Fragment> fragmentList;
-    private List<String> title_lsit;
     private SearchView searchView;
-private HomeItemLayoutPopWindow popWindow;
+    private HomeItemLayoutPopWindow popWindow;
+    private ShotsListFragment shotsListFragment;
+    private HomeBottomSheetFragment homeBottomSheetFragment;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        fragmentList = new ArrayList<>();
-        title_lsit = Arrays.asList(getResources().getStringArray(R.array.sort));
         binding = FragmentShotsBinding.inflate(inflater, container, false);
-        tabLayout = binding.shotsTablayout;
-        viewPager = binding.shotsViewpager;
         toolbar = binding.shtosToolar;
         searchView = binding.searchView;
         popWindow = new HomeItemLayoutPopWindow(getActivity());
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
-
-        fragmentList.add(new ShotsListFragment());
-        fragmentList.add(new ShotsListFragment());
-        fragmentList.add(new ShotsListFragment());
-        fragmentList.add(new ShotsListFragment());
-
-        adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-        adapter.setFragmentList(fragmentList, title_lsit);
-        viewPager.setAdapter(adapter);
-        viewPager.setOffscreenPageLimit(4);
-        tabLayout.setupWithViewPager(viewPager);
+        showFragment();
         return binding.getRoot();
     }
 
+
+    private void showFragment() {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        if (shotsListFragment == null) {
+            shotsListFragment = new ShotsListFragment();
+        }
+        fragmentTransaction.replace(R.id.fragment_container, shotsListFragment);
+        fragmentTransaction.commit();
+
+    }
 
     @Override
     public void initListeners() {
@@ -78,10 +76,23 @@ private HomeItemLayoutPopWindow popWindow;
                 }
                 case R.id.shots_menu_layout: {
                     popWindow.showPopupWindow(toolbar);
+                    break;
+                }
+                case R.id.filter_list: {
+                    showBottomSheet();
+                    break;
                 }
             }
             return true;
         });
+    }
+
+
+    private void showBottomSheet() {
+        if (homeBottomSheetFragment == null) {
+            homeBottomSheetFragment = HomeBottomSheetFragment.newInstance(AppConstants.EVER, AppConstants.POPULARITY, AppConstants.COMENTS);
+        }
+        homeBottomSheetFragment.show(getFragmentManager(), "bottomSheet");
     }
 
     @Override

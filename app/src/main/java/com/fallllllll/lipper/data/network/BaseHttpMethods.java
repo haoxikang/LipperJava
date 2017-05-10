@@ -30,7 +30,7 @@ public abstract class BaseHttpMethods<S> {
 
     protected Retrofit createRetrofit() {
 
-        File cacheFile = new File(BaseApplication.getInstance().getExternalCacheDir().toString(), "lipper");
+        File cacheFile = new File(BaseApplication.getInstance().getExternalCacheDir().toString()+ "/okhttpCache", "lipper");
         int cacheSize = 10 * 1024 * 1024;
         Cache cache = new Cache(cacheFile, cacheSize);
 
