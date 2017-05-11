@@ -82,6 +82,7 @@ public abstract class BaseListFragment extends GeneralRecyclerViewFragment imple
             errorLayout.addView(errorView);
         }
     }
+
     @Override
     public void showToast(String s) {
         baseViewUtils.showToast(s);

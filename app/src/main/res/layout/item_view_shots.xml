@@ -3,7 +3,7 @@
 
     <data>
 
-        <import type="com.fallllllll.lipper.ui.main.home.ShotsListItemViewModel" />
+        <import type="com.fallllllll.lipper.ui.main.homelist.ShotsListItemViewModel" />
 
         <import type="android.view.View" />
 
@@ -13,7 +13,7 @@
 
         <variable
             name="itemViewModel"
-            type="com.fallllllll.lipper.ui.main.home.ShotsListItemViewModel" />
+            type="com.fallllllll.lipper.ui.main.homelist.ShotsListItemViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -78,13 +78,28 @@
                         android:visibility="@{shotBean.rebound_source_url!=null?View.VISIBLE:View.GONE}" />
                 </LinearLayout>
 
-                <com.facebook.drawee.view.SimpleDraweeView
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    app:actualImageScaleType="centerCrop"
-                    app:frescoImageUri="@{shotBean.images.normal}"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        app:actualImageScaleType="centerCrop"
+                        app:frescoImageUri="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT?shotBean.images.normal:shotBean.images.teaser}" />
+
+                    <ImageView
+                        android:visibility="@{shotBean.animated?View.VISIBLE:View.GONE}"
+                        android:layout_width="18dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginTop="12dp"
+                        android:src="@mipmap/ic_gif" />
+                </FrameLayout>
+
 
                 <RelativeLayout
                     android:layout_width="match_parent"

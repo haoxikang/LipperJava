@@ -1,10 +1,9 @@
-package com.fallllllll.lipper.ui.main.home;
+package com.fallllllll.lipper.ui.main.homelist;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.fall.generalrecyclerviewfragment.GeneralContract;
@@ -77,13 +76,13 @@ public class ShotsListFragment extends BaseListFragment implements ShotsListCont
     @Override
     public void changeRecyclerViewLayout(String layoutType) {
         GridLayoutManager gridLayoutManager = (GridLayoutManager) recyclerView.getLayoutManager();
-        if (layoutType.equals(AppConstants.SHOTS_LAYOUT_LARGE)){
+        if (layoutType.equals(AppConstants.SHOTS_LAYOUT_LARGE)) {
             shotsListItemViewModel.setLayout(ShotsListItemViewModel.LINEAR_LAYOUT);
             gridLayoutManager.setSpanCount(1);
-        }else if (layoutType.equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE)){
+        } else if (layoutType.equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE)) {
             shotsListItemViewModel.setLayout(ShotsListItemViewModel.ONLY_IMAGE_LAYOUT);
             gridLayoutManager.setSpanCount(2);
-        }else if (layoutType.equals(AppConstants.SHOTS_LAYOUT_SMALL)){
+        } else if (layoutType.equals(AppConstants.SHOTS_LAYOUT_SMALL)) {
             shotsListItemViewModel.setLayout(ShotsListItemViewModel.GRID_LAYOUT);
             gridLayoutManager.setSpanCount(2);
         }
@@ -92,12 +91,13 @@ public class ShotsListFragment extends BaseListFragment implements ShotsListCont
 
     @Override
     public void changeItemViewLayout(String layoutType) {
-        if (layoutType.equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE)){
+        if (layoutType.equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE)) {
             shotsListItemViewModel.setLayout(ShotsListItemViewModel.ONLY_IMAGE_LAYOUT);
         }
-        if (layoutType.equals(AppConstants.SHOTS_LAYOUT_SMALL)){
+        if (layoutType.equals(AppConstants.SHOTS_LAYOUT_SMALL)) {
             shotsListItemViewModel.setLayout(ShotsListItemViewModel.GRID_LAYOUT);
         }
     }
+
 
 }

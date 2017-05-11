@@ -3,6 +3,7 @@ package com.fallllllll.lipper;
 import android.app.Application;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.fallllllll.lipper.dagger.AppComponent;
 import com.fallllllll.lipper.dagger.AppModule;
 import com.fallllllll.lipper.dagger.DaggerAppComponent;
@@ -23,7 +24,12 @@ public class BaseApplication extends Application {
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(getApplicationContext()))
                 .build();
-        Fresco.initialize(this);
+        initFresco();
+    }
+    private void initFresco(){
+        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
+                .setDownsampleEnabled(true).build();
+        Fresco.initialize(this,config);
     }
 
     public Gson getGson() {

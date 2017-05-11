@@ -2,11 +2,8 @@ package com.fallllllll.lipper.ui.main.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -18,28 +15,23 @@ import android.view.ViewGroup;
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.constants.AppConstants;
 import com.fallllllll.lipper.core.fragment.BaseFragment;
-import com.fallllllll.lipper.data.databean.eventBean.ShotsMenuLayoutEvent;
+import com.fallllllll.lipper.data.databean.HomeListFilterBean;
 import com.fallllllll.lipper.databinding.FragmentShotsBinding;
-import com.fallllllll.lipper.ui.main.SearchFragment;
-import com.fallllllll.lipper.ui.view.adapter.ViewPagerAdapter;
-import com.fallllllll.lipper.core.rxjava.RxBus;
+import com.fallllllll.lipper.ui.main.homelist.ShotsListFragment;
 import com.lapism.searchview.SearchView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by fallllllll on 2017/4/20/020.
  */
 
-public class ShotsFragment extends BaseFragment {
+public class ShotsFragment extends BaseFragment implements ShotsFragmentContract.ShotsFragmentView {
     private FragmentShotsBinding binding;
     private Toolbar toolbar;
     private SearchView searchView;
     private HomeItemLayoutPopWindow popWindow;
     private ShotsListFragment shotsListFragment;
     private HomeBottomSheetFragment homeBottomSheetFragment;
+    private ShotsFragmentContract.ShotsFragmentPresenter presenter;
 
     @Nullable
     @Override
@@ -51,6 +43,8 @@ public class ShotsFragment extends BaseFragment {
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
         showFragment();
+        presenter = new ShotsFragmentPresenter(this);
+        presenterLifecycleHelper.addPresenter(presenter);
         return binding.getRoot();
     }
 
@@ -79,7 +73,7 @@ public class ShotsFragment extends BaseFragment {
                     break;
                 }
                 case R.id.filter_list: {
-                    showBottomSheet();
+                    presenter.showBottomSheet();
                     break;
                 }
             }
@@ -88,15 +82,18 @@ public class ShotsFragment extends BaseFragment {
     }
 
 
-    private void showBottomSheet() {
-        if (homeBottomSheetFragment == null) {
-            homeBottomSheetFragment = HomeBottomSheetFragment.newInstance(AppConstants.EVER, AppConstants.POPULARITY, AppConstants.COMENTS);
-        }
-        homeBottomSheetFragment.show(getFragmentManager(), "bottomSheet");
-    }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.shots_menu, menu);
+    }
+
+    @Override
+    public void showBottomSheet(HomeListFilterBean homeListFilterBean) {
+        if (homeBottomSheetFragment == null) {
+            homeBottomSheetFragment = HomeBottomSheetFragment.newInstance(homeListFilterBean.getTime(), homeListFilterBean.getType(), homeListFilterBean.getSort());
+        } else {
+            homeBottomSheetFragment.updateCheckStatus(homeListFilterBean.getTime(), homeListFilterBean.getType(), homeListFilterBean.getSort());
+        }
+        homeBottomSheetFragment.show(getFragmentManager(), "bottomSheet");
     }
 }

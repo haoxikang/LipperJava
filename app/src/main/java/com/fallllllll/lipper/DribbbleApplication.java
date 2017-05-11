@@ -25,8 +25,9 @@ public class DribbbleApplication extends BaseApplication {
         }
         UserManager.INSTANCE.init();
         super.onCreate();
-        Fresco.initialize(this);
     }
+
+
 
 
 }

@@ -1,4 +1,4 @@
-package com.fallllllll.lipper.ui.main.home;
+package com.fallllllll.lipper.ui.main.homelist;
 
 import com.fallllllll.lipper.core.presenter.BasePresenter;
 import com.fallllllll.lipper.core.presenter.Contract;
@@ -13,6 +13,7 @@ public class ShotsListContract {
         void changeRecyclerViewLayout(String LayoutType);
 
         void changeItemViewLayout(String layoutType);
+
     }
     interface ShotsListPresenter extends Contract.Presenter{
 

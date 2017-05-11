@@ -1,4 +1,4 @@
-package com.fallllllll.lipper.ui.main.home;
+package com.fallllllll.lipper.ui.main.homelist;
 
 import org.junit.Test;
 

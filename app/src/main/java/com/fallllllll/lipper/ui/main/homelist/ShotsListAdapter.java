@@ -1,15 +1,10 @@
-package com.fallllllll.lipper.ui.main.home;
+package com.fallllllll.lipper.ui.main.homelist;
 
-import android.database.DatabaseUtils;
 import android.databinding.DataBindingUtil;
-import android.support.transition.TransitionManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.android.databinding.library.baseAdapters.BR;
 import com.fall.generalrecyclerviewfragment.GeneralAdapter;
 import com.fall.generalrecyclerviewfragment.GeneralDataController;
 import com.fallllllll.lipper.R;

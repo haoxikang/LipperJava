@@ -16,13 +16,9 @@ import com.fallllllll.lipper.ui.view.widget.MultiLineRadioGroup;
 public class BindingUtils {
     @BindingAdapter("frescoImageUri")
     public static void showImageByUrl(final SimpleDraweeView simpleDraweeView, String url) {
-        FrescoUtils.displayWithResize(600, 600, Uri.parse(url), simpleDraweeView);
+        FrescoUtils.display( simpleDraweeView,url,false);
     }
 
-    @BindingAdapter("frescoImageUriWithSmallSize")
-    public static void showImageByUrlWithSmallSize(final SimpleDraweeView simpleDraweeView, String url) {
-        FrescoUtils.displayWithResize(350, 350, Uri.parse(url), simpleDraweeView);
-    }
 
 
     @BindingAdapter("frescoImageUriWithTinySize")

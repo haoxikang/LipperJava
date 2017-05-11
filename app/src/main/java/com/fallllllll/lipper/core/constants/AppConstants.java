@@ -5,31 +5,32 @@ package com.fallllllll.lipper.core.constants;
  */
 
 public class AppConstants {
-    public static String PAGE_COUNT="30";
+    public static final String PAGE_COUNT="30";
+    public static final String ANIMATED = "animated";
+    public static final String ATTACHMENTS = "attachments";
+    public static final String DEBUTS = "debuts";
+    public static final String PLAYOFFS = "playoffs";
+    public static final String REBOUNDS = "rebounds";
+    public static final String TEAMS = "teams";
+    public static final String SHOTS = null;
 
-    public static String ANIMATED = "animated";
-    public static String ATTACHMENTS = "attachments";
-    public static String DEBUTS = "debuts";
-    public static String PLAYOFFS = "playoffs";
-    public static String REBOUNDS = "rebounds";
-    public static String TEAMS = "rebounds";
-    public static String SHOTS = null;
-
-    public static String WEEK = "week";
-    public static String MONTH = "month";
-    public static String YEAR = "year";
-    public static String EVER = "ever";
-    public static String NOW = null;
+    public static final String WEEK = "week";
+    public static final String MONTH = "month";
+    public static final String YEAR = "year";
+    public static final String EVER = "ever";
+    public static final String NOW = null;
 
 
-    public static String COMENTS = "comments";
-    public static String RECENT = "recent";
-    public static String VIEWS = "views";
-    public static String POPULARITY = null;
+    public static final String COMENTS = "comments";
+    public static final String RECENT = "recent";
+    public static final String VIEWS = "views";
+    public static final String POPULARITY = null;
 
-    public static String SHOTS_LAYOUT_LARGE ="shots_layout_large";
-    public static String SHOTS_LAYOUT_SMALL="shots_layout_small" ;
-    public static String SHOTS_LAYOUT_ONLY_IMAGE ="shots_layout_only_image";
+    public static final String SHOTS_LAYOUT_LARGE ="shots_layout_large";
+    public static final String SHOTS_LAYOUT_SMALL="shots_layout_small" ;
+    public static final String SHOTS_LAYOUT_ONLY_IMAGE ="shots_layout_only_image";
+    
+    public static final String DATA_TANK_HOME_FILTER_KEY="data_tank_home_filter_key";
 
 
 }

@@ -24,6 +24,7 @@ import com.facebook.imagepipeline.datasource.BaseBitmapDataSubscriber;
 import com.facebook.imagepipeline.image.CloseableImage;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
+import com.fallllllll.lipper.core.constants.SettingConstants;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,15 +47,15 @@ public class FrescoUtils {
         DraweeController controller = Fresco.newDraweeControllerBuilder()
                 .setOldController(simpleDraweeView.getController())
                 .setImageRequest(request)
-                .setAutoPlayAnimations(true)
+                .setAutoPlayAnimations(SettingConstants.canAutoPlayGif)
                 .build();
         simpleDraweeView.setController(controller);
     }
 
-    public static void display(SimpleDraweeView imgView, String url){
+    public static void display(SimpleDraweeView imgView, String url,boolean isAutoPlayAnimations){
         DraweeController controller = Fresco.newDraweeControllerBuilder()
                 .setUri(url)
-                .setAutoPlayAnimations(true)
+                .setAutoPlayAnimations(isAutoPlayAnimations)
                 .build();
         imgView.setController(controller);
     }
