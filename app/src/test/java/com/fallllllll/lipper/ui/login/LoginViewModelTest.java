@@ -36,7 +36,7 @@ import static org.robolectric.Shadows.shadowOf;
  * Created by fallllllll on 2017/3/13.
  */
 @RunWith(MyRobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21, application = TestApplication.class)
+@Config(constants = BuildConfig.class, sdk = 23, application = TestApplication.class)
 public class LoginViewModelTest {
     @Test
     public void goMainAcitivity() throws Exception {

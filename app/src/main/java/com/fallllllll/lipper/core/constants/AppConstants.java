@@ -31,6 +31,7 @@ public class AppConstants {
     public static final String SHOTS_LAYOUT_ONLY_IMAGE ="shots_layout_only_image";
     
     public static final String DATA_TANK_HOME_FILTER_KEY="data_tank_home_filter_key";
+    public static final String SHOTS_HOME_LAYOUT_KEY = "shots_home_layout_key";
 
 
 }

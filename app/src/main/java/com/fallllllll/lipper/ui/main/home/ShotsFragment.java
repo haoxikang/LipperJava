@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -25,13 +26,18 @@ import com.lapism.searchview.SearchView;
  */
 
 public class ShotsFragment extends BaseFragment implements ShotsFragmentContract.ShotsFragmentView {
-    private FragmentShotsBinding binding;
+    public FragmentShotsBinding binding;
     private Toolbar toolbar;
     private SearchView searchView;
-    private HomeItemLayoutPopWindow popWindow;
+    public HomeItemLayoutPopWindow popWindow;
     private ShotsListFragment shotsListFragment;
     private HomeBottomSheetFragment homeBottomSheetFragment;
     private ShotsFragmentContract.ShotsFragmentPresenter presenter;
+
+
+    public void setPresenter(ShotsFragmentContract.ShotsFragmentPresenter presenter){
+        this.presenter = presenter;
+    }
 
     @Nullable
     @Override
@@ -43,14 +49,17 @@ public class ShotsFragment extends BaseFragment implements ShotsFragmentContract
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
         showFragment();
-        presenter = new ShotsFragmentPresenter(this);
+        if (presenter==null){
+            presenter = new ShotsFragmentPresenter(this);
+        }
+
         presenterLifecycleHelper.addPresenter(presenter);
         return binding.getRoot();
     }
 
 
     private void showFragment() {
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         if (shotsListFragment == null) {
             shotsListFragment = new ShotsListFragment();
@@ -81,6 +90,24 @@ public class ShotsFragment extends BaseFragment implements ShotsFragmentContract
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.shots_menu_search: {
+                searchView.open(true, item);
+                break;
+            }
+            case R.id.shots_menu_layout: {
+                popWindow.showPopupWindow(toolbar);
+                break;
+            }
+            case R.id.filter_list: {
+                presenter.showBottomSheet();
+                break;
+            }
+        }
+        return true;
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -94,6 +121,6 @@ public class ShotsFragment extends BaseFragment implements ShotsFragmentContract
         } else {
             homeBottomSheetFragment.updateCheckStatus(homeListFilterBean.getTime(), homeListFilterBean.getType(), homeListFilterBean.getSort());
         }
-        homeBottomSheetFragment.show(getFragmentManager(), "bottomSheet");
+        homeBottomSheetFragment.show(getChildFragmentManager(), "bottomSheet");
     }
 }

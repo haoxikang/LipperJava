@@ -10,6 +10,7 @@ import com.fall.generalrecyclerviewfragment.GeneralContract;
 import com.fallllllll.lipper.DribbbleApplication;
 import com.fallllllll.lipper.core.constants.AppConstants;
 import com.fallllllll.lipper.core.fragment.BaseListFragment;
+import com.fallllllll.lipper.data.databean.eventBean.ShotsMenuLayoutEvent;
 
 import javax.inject.Inject;
 
@@ -98,6 +99,7 @@ public class ShotsListFragment extends BaseListFragment implements ShotsListCont
             shotsListItemViewModel.setLayout(ShotsListItemViewModel.GRID_LAYOUT);
         }
     }
+
 
 
 }

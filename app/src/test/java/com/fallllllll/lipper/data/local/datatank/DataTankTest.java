@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
  * Created by Administrator on 2017/5/9/009.
  */
 @RunWith(MyRobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21, application = TestApplication.class)
+@Config(constants = BuildConfig.class, sdk = 23, application = TestApplication.class)
 public class DataTankTest {
     @Rule
     public RxSchedulersOverrideRule mRxSchedulersOverrideRule = new RxSchedulersOverrideRule();

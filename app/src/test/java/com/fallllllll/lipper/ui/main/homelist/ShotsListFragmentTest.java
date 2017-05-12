@@ -24,7 +24,7 @@ import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFr
  * Created by Administrator on 2017/4/28/028.
  */
 @RunWith(MyRobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21, application = TestApplication.class)
+@Config(constants = BuildConfig.class, sdk = 23, application = TestApplication.class)
 public class ShotsListFragmentTest {
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();

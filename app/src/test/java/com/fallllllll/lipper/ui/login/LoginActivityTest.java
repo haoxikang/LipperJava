@@ -30,7 +30,7 @@ import static org.mockito.Mockito.when;
  * Created by fallllllll on 2017/3/8.
  */
 @RunWith(MyRobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21, application = TestApplication.class)
+@Config(constants = BuildConfig.class, sdk = 23, application = TestApplication.class)
 public class LoginActivityTest {
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
