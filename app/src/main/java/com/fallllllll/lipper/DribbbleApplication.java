@@ -17,14 +17,9 @@ public class DribbbleApplication extends BaseApplication {
 
     @Override
     public void onCreate() {
-        try {
-            DataTank.init(getCacheDir().getPath(), 2048000, new GsonAdapter(getGson()));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        UserManager.INSTANCE.init();
         super.onCreate();
+
+
     }
 
 

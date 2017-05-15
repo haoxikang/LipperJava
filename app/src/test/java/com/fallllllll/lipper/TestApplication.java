@@ -10,6 +10,6 @@ public class TestApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        Fresco.initialize(this);
+
     }
 }

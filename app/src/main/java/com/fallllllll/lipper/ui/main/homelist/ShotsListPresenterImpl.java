@@ -39,9 +39,13 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
     @Override
     public void onPresenterCreate() {
         super.onPresenterCreate();
+        initRxBus();
+
+    }
+
+    public void initRxBus() {
         subscribeLayoutEvent();
         subscribeListFilterEvent();
-
     }
 
     private void subscribeListFilterEvent() {
@@ -58,10 +62,7 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
                             .subscribe(aBoolean -> {
                             }, throwable -> {
                             });
-                }, throwable -> {
-                    LogUtils.d(throwable.getMessage());
-                    subscribeListFilterEvent();
-                }));
+                }, throwable -> subscribeListFilterEvent()));
     }
 
     private void subscribeLayoutEvent() {
@@ -77,7 +78,7 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
                 }, throwable -> subscribeLayoutEvent()));
     }
 
-    private void setListLayout(ShotsMenuLayoutEvent shotsMenuLayoutEvent) {
+    public void setListLayout(ShotsMenuLayoutEvent shotsMenuLayoutEvent) {
         if (!currentLayoutType.equals(shotsMenuLayoutEvent.getShotLayoutType())) {
             if ((currentLayoutType.equals(AppConstants.SHOTS_LAYOUT_SMALL) || currentLayoutType.equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE))
                     &&

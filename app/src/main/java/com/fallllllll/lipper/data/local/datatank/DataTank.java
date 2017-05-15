@@ -89,9 +89,11 @@ public class DataTank {
 
     public static <T> Flowable<T> get(final String key, final Class<T> tClass) {
         return Flowable.create(e -> {
-            T value = getSynchronization(key, tClass);
-            e.onNext(value);
-            e.onComplete();
+
+                T value = getSynchronization(key, tClass);
+                e.onNext(value);
+                e.onComplete();
+
         }, BackpressureStrategy.BUFFER);
     }
 

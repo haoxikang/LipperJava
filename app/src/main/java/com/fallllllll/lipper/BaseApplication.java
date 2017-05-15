@@ -7,7 +7,12 @@ import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.fallllllll.lipper.dagger.AppComponent;
 import com.fallllllll.lipper.dagger.AppModule;
 import com.fallllllll.lipper.dagger.DaggerAppComponent;
+import com.fallllllll.lipper.data.local.datatank.DataTank;
+import com.fallllllll.lipper.data.local.datatank.GsonAdapter;
+import com.fallllllll.lipper.data.local.user.UserManager;
 import com.google.gson.Gson;
+
+import java.io.IOException;
 
 /**
  * Created by fallllllll on 2017/4/13/013.
@@ -20,6 +25,13 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        try {
+            DataTank.init(getCacheDir().getPath(), 2048000, new GsonAdapter(getGson()));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        UserManager.INSTANCE.init();
         instance = this;
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(getApplicationContext()))

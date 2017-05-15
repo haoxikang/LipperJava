@@ -27,22 +27,27 @@ public class ShotsFragmentPresenter extends BasePresenter implements ShotsFragme
 
     @Override
     public void showBottomSheet() {
-        mCompositeDisposable.add(DataTank.get(AppConstants.DATA_TANK_HOME_FILTER_KEY, HomeListFilterBean.class)
+
+        mCompositeDisposable.add(DataTank.get(AppConstants.DATA_TANK_HOME_FILTER_KEY,HomeListFilterBean.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(homeListFilterBean -> {
                     if (homeListFilterBean != null) {
                         shotsFragmentView.showBottomSheet(homeListFilterBean);
-                        LogUtils.d(homeListFilterBean.toString());
                     } else {
-                        showDefaultBottomSheet();
+                        showDefaultBottomSheet(null);
                     }
                 }, throwable -> {
-                    showDefaultBottomSheet();
+                    showDefaultBottomSheet(null);
                 }));
     }
 
-    private void showDefaultBottomSheet() {
-        shotsFragmentView.showBottomSheet(new HomeListFilterBean(AppConstants.NOW, AppConstants.SHOTS, AppConstants.POPULARITY));
+    private void showDefaultBottomSheet(HomeListFilterBean homeListFilterBean) {
+        if (homeListFilterBean == null) {
+            shotsFragmentView.showBottomSheet(new HomeListFilterBean(AppConstants.NOW, AppConstants.SHOTS, AppConstants.POPULARITY));
+        } else {
+            shotsFragmentView.showBottomSheet(homeListFilterBean);
+        }
+
     }
 }
