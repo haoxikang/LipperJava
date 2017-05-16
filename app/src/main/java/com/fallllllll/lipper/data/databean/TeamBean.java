@@ -1,14 +1,48 @@
-package com.fallllllll.lipper.data.local.user;
+package com.fallllllll.lipper.data.databean;
 
+import com.fallllllll.lipper.data.local.user.LinksBean;
 
 import java.io.Serializable;
 
 /**
- * Created by fallllllll on 2017/3/16.
+ * Created by Administrator on 2017/5/16/016.
  */
 
-public class LipperUser implements Serializable{
-    private String UserID = "user";
+public class TeamBean implements Serializable{
+
+    /**
+     * id : 39
+     * name : Dribbble
+     * username : dribbble
+     * html_url : https://dribbble.com/dribbble
+     * avatar_url : https://d13yacurqjgara.cloudfront.net/users/39/avatars/normal/apple-flat-precomposed.png?1388527574
+     * bio : Show and tell for designers. This is Dribbble on Dribbble.
+     * location : Salem, MA
+     * links : {"web":"http://dribbble.com","twitter":"https://twitter.com/dribbble"}
+     * buckets_count : 1
+     * comments_received_count : 2037
+     * followers_count : 25011
+     * followings_count : 6120
+     * likes_count : 44
+     * likes_received_count : 15811
+     * members_count : 7
+     * projects_count : 4
+     * rebounds_received_count : 416
+     * shots_count : 91
+     * can_upload_shot : true
+     * type : Team
+     * pro : false
+     * buckets_url : https://dribbble.com/v1/users/39/buckets
+     * followers_url : https://dribbble.com/v1/users/39/followers
+     * following_url : https://dribbble.com/v1/users/39/following
+     * likes_url : https://dribbble.com/v1/users/39/likes
+     * members_url : https://dribbble.com/v1/teams/39/members
+     * shots_url : https://dribbble.com/v1/users/39/shots
+     * team_shots_url : https://dribbble.com/v1/users/39/teams
+     * created_at : 2009-08-18T18:34:31Z
+     * updated_at : 2014-02-14T22:32:11Z
+     */
+
     private int id;
     private String name;
     private String username;
@@ -23,10 +57,10 @@ public class LipperUser implements Serializable{
     private int followings_count;
     private int likes_count;
     private int likes_received_count;
+    private int members_count;
     private int projects_count;
     private int rebounds_received_count;
     private int shots_count;
-    private int teams_count;
     private boolean can_upload_shot;
     private String type;
     private boolean pro;
@@ -34,8 +68,9 @@ public class LipperUser implements Serializable{
     private String followers_url;
     private String following_url;
     private String likes_url;
+    private String members_url;
     private String shots_url;
-    private String teams_url;
+    private String team_shots_url;
     private String created_at;
     private String updated_at;
 
@@ -151,6 +186,14 @@ public class LipperUser implements Serializable{
         this.likes_received_count = likes_received_count;
     }
 
+    public int getMembers_count() {
+        return members_count;
+    }
+
+    public void setMembers_count(int members_count) {
+        this.members_count = members_count;
+    }
+
     public int getProjects_count() {
         return projects_count;
     }
@@ -173,14 +216,6 @@ public class LipperUser implements Serializable{
 
     public void setShots_count(int shots_count) {
         this.shots_count = shots_count;
-    }
-
-    public int getTeams_count() {
-        return teams_count;
-    }
-
-    public void setTeams_count(int teams_count) {
-        this.teams_count = teams_count;
     }
 
     public boolean isCan_upload_shot() {
@@ -239,6 +274,14 @@ public class LipperUser implements Serializable{
         this.likes_url = likes_url;
     }
 
+    public String getMembers_url() {
+        return members_url;
+    }
+
+    public void setMembers_url(String members_url) {
+        this.members_url = members_url;
+    }
+
     public String getShots_url() {
         return shots_url;
     }
@@ -247,12 +290,12 @@ public class LipperUser implements Serializable{
         this.shots_url = shots_url;
     }
 
-    public String getTeams_url() {
-        return teams_url;
+    public String getTeam_shots_url() {
+        return team_shots_url;
     }
 
-    public void setTeams_url(String teams_url) {
-        this.teams_url = teams_url;
+    public void setTeam_shots_url(String team_shots_url) {
+        this.team_shots_url = team_shots_url;
     }
 
     public String getCreated_at() {

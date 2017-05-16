@@ -28,6 +28,7 @@
             android:name=".ui.main.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme"></activity>
+        <activity android:name=".ui.shotbeandetail.ShotBeanDetailActivity" />
     </application>
 
 </manifest>

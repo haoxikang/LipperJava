@@ -19,7 +19,10 @@ public class BindingUtils {
         FrescoUtils.display( simpleDraweeView,url,false);
     }
 
-
+    @BindingAdapter("frescoImageWithGif")
+    public static void showImageByUrlWithGif(final SimpleDraweeView simpleDraweeView, String url) {
+        FrescoUtils.display( simpleDraweeView,url,true);
+    }
 
     @BindingAdapter("frescoImageUriWithTinySize")
     public static void showImageByUrlWithTinySize(final SimpleDraweeView simpleDraweeView, String url) {

@@ -2,13 +2,14 @@ package com.fallllllll.lipper.data.databean;
 
 import com.fallllllll.lipper.data.local.user.LipperUser;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by fallllllll on 2017/3/8.
  */
 
-public class ShotBean {
+public class ShotBean implements Serializable{
 
 
     /**
@@ -67,7 +68,7 @@ public class ShotBean {
     private String rebounds_url;
     private boolean animated;
     private LipperUser user;
-    private Object team;
+    private TeamBean team;
     private String rebound_source_url;
     private List<String> tags;
 
@@ -255,11 +256,11 @@ public class ShotBean {
         this.user = user;
     }
 
-    public Object getTeam() {
+    public TeamBean getTeam() {
         return team;
     }
 
-    public void setTeam(Object team) {
+    public void setTeam(TeamBean team) {
         this.team = team;
     }
 

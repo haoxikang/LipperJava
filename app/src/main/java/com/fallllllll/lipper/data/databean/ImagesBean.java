@@ -1,9 +1,11 @@
 package com.fallllllll.lipper.data.databean;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2017/4/28/028.
  */
-public class ImagesBean {
+public class ImagesBean implements Serializable {
     /**
      * hidpi : https://d13yacurqjgara.cloudfront.net/users/244516/screenshots/3332372/running_on_empty_eran_mendel_dribbble_gif.gif
      * normal : https://d13yacurqjgara.cloudfront.net/users/244516/screenshots/3332372/running_on_empty_eran_mendel_dribbble_gif_1x.gif

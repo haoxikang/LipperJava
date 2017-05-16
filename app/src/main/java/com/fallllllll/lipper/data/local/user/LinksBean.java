@@ -1,10 +1,12 @@
 package com.fallllllll.lipper.data.local.user;
 
 
+import java.io.Serializable;
+
 /**
  * Created by fallllllll on 2017/3/16.
  */
-public class LinksBean {
+public class LinksBean implements Serializable{
 
 
     private String web;

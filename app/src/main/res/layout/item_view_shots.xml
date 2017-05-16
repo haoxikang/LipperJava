@@ -33,6 +33,8 @@
             app:cardUseCompatPadding="true">
 
             <LinearLayout
+                android:id="@+id/item_shot_layout"
+                android:transitionName="layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -85,10 +87,11 @@
                     android:layout_centerHorizontal="true">
 
                     <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/item_image"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
                         app:actualImageScaleType="centerCrop"
-                        app:frescoImageUri="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT?shotBean.images.normal:shotBean.images.teaser}" />
+                        app:frescoImageUri="@{(shotBean.images.hidpi!=null&amp;&amp;!shotBean.animated)?shotBean.images.hidpi:shotBean.images.normal}" />
 
                     <ImageView
                         android:visibility="@{shotBean.animated?View.VISIBLE:View.GONE}"

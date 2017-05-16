@@ -2,6 +2,7 @@ package com.fallllllll.lipper.ui.login;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
 import android.support.v7.widget.Toolbar;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
@@ -27,8 +28,7 @@ public class LoginWebActivity extends BaseActivity {
     private WebView mWebView;
     private ProgressBar mProgressBar;
     private Toolbar mToolbar;
-
-
+    private boolean isLoadUrl = false;
 
 
     @Override
@@ -55,7 +55,7 @@ public class LoginWebActivity extends BaseActivity {
 
     private String getURl() {
         String url = BaseUrl.LOGIN_URL;
-        url = url + "authorize?client_id=" + DribbbleID.CLIENT_ID + "&redirect_uri=" + DribbbleID.CALLBACK_URL + "&state=" + RandomUtils.getRandomString(6)+"&scope=public+write+comment+upload";
+        url = url + "authorize?client_id=" + DribbbleID.CLIENT_ID + "&redirect_uri=" + DribbbleID.CALLBACK_URL + "&state=" + RandomUtils.getRandomString(6) + "&scope=public+write+comment+upload";
         return url;
     }
 
@@ -79,21 +79,27 @@ public class LoginWebActivity extends BaseActivity {
 
     private class WebClient extends WebViewClient {
 
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-            String url = request.getUrl().toString();
 
-            if (!url.contains(DribbbleID.CALLBACK_URL+"/?code")) {
-                view.loadUrl(url);
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            loadingUrl(view,url);
+            return false;
+        }
+    }
+
+    private void loadingUrl(WebView webView,String url){
+        if (!isLoadUrl) {
+            if (!url.contains(DribbbleID.CALLBACK_URL + "/?code")) {
+                webView.loadUrl(url);
             } else {
+                isLoadUrl = true;
                 Intent intent = new Intent();
                 intent.putExtra(LoginActivity.LOGIN_CODE_KEY, url);
                 setResult(RESULT_OK, intent);
                 finish();
             }
-            return true;
         }
-
     }
 
 }
