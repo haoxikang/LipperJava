@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
-import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -25,6 +24,7 @@ import static com.fallllllll.lipper.core.constants.TimeConstants.ACTIVITY_TRANSI
 
 /**
  * Created by fallllllll on 2017/3/8.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class LoginPresenterImpl extends BasePresenter implements LoginContract.LoginPresenter {
@@ -46,13 +46,7 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> {
 
-                }, throwable -> {
-                    mLoginView.finishActivity();
-
-                }, () -> {
-                    mLoginView.finishActivity();
-
-                }));
+                }, throwable -> mLoginView.finishActivity(), () -> mLoginView.finishActivity()));
     }
 
     @Override

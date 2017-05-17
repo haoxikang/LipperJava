@@ -6,7 +6,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,12 +15,9 @@ import com.fallllllll.lipper.core.presenter.Contract;
 import com.fallllllll.lipper.core.presenter.PresenterLifecycleHelper;
 import com.fallllllll.lipper.utils.BaseViewUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.Inflater;
-
 /**
  * Created by fallllllll on 2017/4/27/027.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public abstract class BaseListFragment extends GeneralRecyclerViewFragment implements Contract.BaseView {

@@ -1,7 +1,6 @@
 package com.fallllllll.lipper.ui.main.home;
 
 import android.app.Activity;
-import android.database.DatabaseUtils;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -21,14 +20,14 @@ import static com.fallllllll.lipper.core.constants.AppConstants.SHOTS_LAYOUT_ONL
 import static com.fallllllll.lipper.core.constants.AppConstants.SHOTS_LAYOUT_SMALL;
 
 /**
- * Created by Administrator on 2017/5/5/005.
+ * Created by fallllllll on 2017/5/5/005.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class HomeItemLayoutPopWindow extends PopupWindow {
-    ViewHomeItemPopupWindowBinding binding;
 
     public HomeItemLayoutPopWindow(Activity activity) {
-        binding = DataBindingUtil.inflate(LayoutInflater.from(activity), R.layout.view_home_item_popup_window, null, false);
+        ViewHomeItemPopupWindowBinding binding = DataBindingUtil.inflate(LayoutInflater.from(activity), R.layout.view_home_item_popup_window, null, false);
         this.setContentView(binding.getRoot());
         this.setFocusable(true);
         this.update();
@@ -41,7 +40,7 @@ public class HomeItemLayoutPopWindow extends PopupWindow {
 
     public void showPopupWindow(View parent) {
         if (!this.isShowing()) {
-            this.showAsDropDown(parent, 0, 0, Gravity.RIGHT);
+            this.showAsDropDown(parent, 0, 0, Gravity.END);
         } else {
             this.dismiss();
         }

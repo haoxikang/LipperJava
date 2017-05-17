@@ -5,6 +5,7 @@ import com.fallllllll.lipper.data.local.datatank.DataTank;
 import java.io.IOException;
 /**
  * Created by fallllllll on 2017/3/16.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class UserHelper {
@@ -15,8 +16,7 @@ public class UserHelper {
 
     public LipperUser getUserData() throws IOException {
         if (isLogin()) {
-            LipperUser lipperUser = DataTank.getSynchronization(KEY_USER_DATA, LipperUser.class);
-            return lipperUser;
+            return DataTank.getSynchronization(KEY_USER_DATA, LipperUser.class);
         } else {
             return null;
         }
@@ -37,9 +37,8 @@ public class UserHelper {
     }
 
     public UserToken getToken() throws IOException {
-        UserToken userToken = DataTank.getSynchronization(KEY_USER_TOKEN, UserToken.class);
 
-        return userToken;
+        return DataTank.getSynchronization(KEY_USER_TOKEN, UserToken.class);
 
     }
 

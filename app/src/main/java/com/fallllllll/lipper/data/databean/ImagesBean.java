@@ -3,7 +3,8 @@ package com.fallllllll.lipper.data.databean;
 import java.io.Serializable;
 
 /**
- * Created by Administrator on 2017/4/28/028.
+ * Created by fallllllll on 2017/4/28/028.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 public class ImagesBean implements Serializable {
     /**

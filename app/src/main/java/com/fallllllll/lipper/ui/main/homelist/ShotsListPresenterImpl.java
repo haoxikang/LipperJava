@@ -2,20 +2,21 @@ package com.fallllllll.lipper.ui.main.homelist;
 
 import com.fallllllll.lipper.core.constants.AppConstants;
 import com.fallllllll.lipper.core.presenter.BaseListPresenter;
+import com.fallllllll.lipper.core.rxjava.RxBus;
 import com.fallllllll.lipper.data.databean.HomeListFilterBean;
 import com.fallllllll.lipper.data.databean.eventBean.ShotsListFilterEvent;
 import com.fallllllll.lipper.data.databean.eventBean.ShotsMenuLayoutEvent;
 import com.fallllllll.lipper.data.local.datatank.DataTank;
 import com.fallllllll.lipper.data.network.model.DribbbleModel;
 import com.fallllllll.lipper.utils.LogUtils;
-import com.fallllllll.lipper.core.rxjava.RxBus;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by qqq34 on 2017/2/4.
+ * Created by fallllllll on 2017/2/4.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsListContract.ShotsListPresenter {
@@ -167,11 +168,7 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
         loadNextDisposable = model.getShot(TYPE, TIME, SORT, page + "")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(shotBeans -> {
-                    loadNextPageFinish(shotBeans);
-                }, throwable -> {
-                    onLoadNextError();
-                });
+                .subscribe(this::loadNextPageFinish, throwable -> onLoadNextError());
 
     }
 

@@ -5,7 +5,6 @@ import com.fallllllll.lipper.utils.LogUtils;
 import java.io.IOException;
 
 import okhttp3.FormBody;
-import okhttp3.Headers;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.Request;
@@ -13,6 +12,7 @@ import okhttp3.Response;
 
 /**
  * Created by fallllllll on 2017/4/28/028.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class LogInterceptor implements Interceptor {
@@ -26,7 +26,6 @@ public class LogInterceptor implements Interceptor {
         long duration = endTime - startTime;
         MediaType mediaType = response.body().contentType();
         String content = response.body().string();
-        Headers requestHeaders = request.headers();
         LogUtils.d("\n");
         LogUtils.d("----------Start----------------");
         LogUtils.d("|" + request.toString());
@@ -36,7 +35,7 @@ public class LogInterceptor implements Interceptor {
             if (request.body() instanceof FormBody) {
                 FormBody body = (FormBody) request.body();
                 for (int i = 0; i < body.size(); i++) {
-                    sb.append(body.encodedName(i) + "=" + body.encodedValue(i) + ",");
+                    sb.append(body.encodedName(i)).append("=").append(body.encodedValue(i)).append(",");
                 }
                 sb.delete(sb.length() - 1, sb.length());
                 LogUtils.d("| RequestParams:{" + sb.toString() + "}");

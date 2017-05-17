@@ -5,7 +5,8 @@ import com.fallllllll.lipper.data.local.user.LinksBean;
 import java.io.Serializable;
 
 /**
- * Created by Administrator on 2017/5/16/016.
+ * Created by fallllllll on 2017/5/16/016.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class TeamBean implements Serializable{

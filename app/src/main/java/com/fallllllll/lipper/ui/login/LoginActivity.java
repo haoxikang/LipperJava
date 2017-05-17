@@ -25,8 +25,6 @@ public class LoginActivity extends BaseActivity {
     public static final String LOGIN_CODE_KEY = "LoginActivity.code.key";
 
 
-    private LoginViewModel mLoginViewModel;
-
     ActivityLoginBinding mActivityLoginBinding;
     @Inject
     LoginContract.LoginPresenter loginPresenter;
@@ -39,7 +37,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initViewAndData() {
-        mLoginViewModel = new LoginViewModel(this);
+        LoginViewModel mLoginViewModel = new LoginViewModel(this);
         if (mLoginModule == null) {
             mLoginModule = new LoginModule(mLoginViewModel);
         }
@@ -55,16 +53,14 @@ public class LoginActivity extends BaseActivity {
 
         mRelativeLayout = mActivityLoginBinding.rlLayout;
 
-        mRotateButton.post(() -> startAnimation());
+        mRotateButton.post(this::startAnimation);
         presenterLifecycleHelper.onPresenterCreate();
     }
 
 
     @Override
     protected void initListeners() {
-        mLoginButton.setOnClickListener(v -> {
-            loginPresenter.onLoginClick();
-        });
+        mLoginButton.setOnClickListener(v -> loginPresenter.onLoginClick());
 
     }
 

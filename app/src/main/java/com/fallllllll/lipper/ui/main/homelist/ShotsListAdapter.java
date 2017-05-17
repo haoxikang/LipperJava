@@ -20,7 +20,8 @@ import com.fallllllll.lipper.ui.shotbeandetail.ShotBeanDetailActivity;
 
 
 /**
- * Created by qqq34 on 2017/2/4.
+ * Created by fallllllll on 2017/2/4.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class ShotsListAdapter extends RecyclerView.Adapter<ShotsListAdapter.ShotsListViewHolder> implements GeneralAdapter {

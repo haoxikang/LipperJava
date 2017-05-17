@@ -4,7 +4,8 @@ package com.fallllllll.lipper.utils;
 import android.text.TextUtils;
 
 /**
- * Created by Administrator on 2017/5/3/003.
+ * Created by fallllllll on 2017/5/3/003.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class StringUtils {

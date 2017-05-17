@@ -2,6 +2,7 @@ package com.fallllllll.lipper.core.constants;
 
 /**
  * Created by fallllllll on 2017/3/11.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class BaseUrl {

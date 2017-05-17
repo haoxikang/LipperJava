@@ -13,6 +13,7 @@ import com.fallllllll.lipper.core.fragment.BaseFragment;
 
 /**
  * Created by fallllllll on 2017/4/21/021.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class SearchFragment extends BaseFragment {

@@ -10,12 +10,12 @@ import com.fall.generalrecyclerviewfragment.GeneralContract;
 import com.fallllllll.lipper.DribbbleApplication;
 import com.fallllllll.lipper.core.constants.AppConstants;
 import com.fallllllll.lipper.core.fragment.BaseListFragment;
-import com.fallllllll.lipper.data.databean.eventBean.ShotsMenuLayoutEvent;
 
 import javax.inject.Inject;
 
 /**
  * Created by fallllllll on 2017/4/27/027.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class ShotsListFragment extends BaseListFragment implements ShotsListContract.ShotsListView {
@@ -77,15 +77,19 @@ public class ShotsListFragment extends BaseListFragment implements ShotsListCont
     @Override
     public void changeRecyclerViewLayout(String layoutType) {
         GridLayoutManager gridLayoutManager = (GridLayoutManager) recyclerView.getLayoutManager();
-        if (layoutType.equals(AppConstants.SHOTS_LAYOUT_LARGE)) {
-            shotsListItemViewModel.setLayout(ShotsListItemViewModel.LINEAR_LAYOUT);
-            gridLayoutManager.setSpanCount(1);
-        } else if (layoutType.equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE)) {
-            shotsListItemViewModel.setLayout(ShotsListItemViewModel.ONLY_IMAGE_LAYOUT);
-            gridLayoutManager.setSpanCount(2);
-        } else if (layoutType.equals(AppConstants.SHOTS_LAYOUT_SMALL)) {
-            shotsListItemViewModel.setLayout(ShotsListItemViewModel.GRID_LAYOUT);
-            gridLayoutManager.setSpanCount(2);
+        switch (layoutType) {
+            case AppConstants.SHOTS_LAYOUT_LARGE:
+                shotsListItemViewModel.setLayout(ShotsListItemViewModel.LINEAR_LAYOUT);
+                gridLayoutManager.setSpanCount(1);
+                break;
+            case AppConstants.SHOTS_LAYOUT_ONLY_IMAGE:
+                shotsListItemViewModel.setLayout(ShotsListItemViewModel.ONLY_IMAGE_LAYOUT);
+                gridLayoutManager.setSpanCount(2);
+                break;
+            case AppConstants.SHOTS_LAYOUT_SMALL:
+                shotsListItemViewModel.setLayout(ShotsListItemViewModel.GRID_LAYOUT);
+                gridLayoutManager.setSpanCount(2);
+                break;
         }
         getAdapter().notifyItemRangeChanged(0, getAdapter().getItemCount());
     }

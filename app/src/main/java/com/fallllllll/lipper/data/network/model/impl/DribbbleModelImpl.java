@@ -13,6 +13,7 @@ import io.reactivex.Flowable;
 
 /**
  * Created by fallllllll on 2017/3/8.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class DribbbleModelImpl implements DribbbleModel {

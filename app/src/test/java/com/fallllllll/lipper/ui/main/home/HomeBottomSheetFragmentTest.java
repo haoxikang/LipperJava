@@ -16,7 +16,8 @@ import static org.junit.Assert.*;
 import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFragment;
 
 /**
- * Created by Administrator on 2017/5/12/012.
+ * Created by fallllllll on 2017/5/12/012.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 @RunWith(MyRobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23, application = TestApplication.class)

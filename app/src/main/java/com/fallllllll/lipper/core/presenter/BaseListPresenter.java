@@ -1,13 +1,12 @@
 package com.fallllllll.lipper.core.presenter;
 
 import com.fall.generalrecyclerviewfragment.GeneralPresenter;
-import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ApiException;
-import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ERROR;
 
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by fallllllll on 2017/4/27/027.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public abstract class BaseListPresenter extends GeneralPresenter implements Contract.Presenter {

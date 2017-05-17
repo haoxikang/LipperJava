@@ -1,7 +1,5 @@
 package com.fallllllll.lipper.data.local.datatank;
 
-import android.content.Context;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -9,13 +7,11 @@ import java.util.Collection;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
-import io.reactivex.FlowableEmitter;
-import io.reactivex.FlowableOnSubscribe;
-import io.reactivex.internal.operators.flowable.FlowableCreate;
 
 
 /**
- * Created by 康颢曦 on 2017/5/8.
+ * Created by fallllllll on 2017/5/8.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class DataTank {

@@ -12,6 +12,7 @@ import dagger.Provides;
 
 /**
  * Created by fallllllll on 2017/3/8.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 @Module

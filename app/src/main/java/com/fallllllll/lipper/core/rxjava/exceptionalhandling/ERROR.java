@@ -2,6 +2,7 @@ package com.fallllllll.lipper.core.rxjava.exceptionalhandling;
 
 /**
  * Created by fallllllll on 2017/3/13.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class ERROR {

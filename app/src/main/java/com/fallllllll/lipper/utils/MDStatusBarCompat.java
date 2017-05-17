@@ -9,14 +9,13 @@ import com.fallllllll.lipper.R;
 
 /**
  * Created by fallllllll on 2017/3/8.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 public class MDStatusBarCompat {
 
 
     /**
      * 简单型状态栏(ToolBar)
-     *
-     * @param activity
      */
     public static void setOrdinaryToolBar(Activity activity) {
             activity.getWindow().setStatusBarColor(ContextCompat.getColor(activity, R.color.primary_dark));
@@ -24,8 +23,6 @@ public class MDStatusBarCompat {
 
     /**
      * 图片全屏透明状态栏（图片位于状态栏下面）
-     *
-     * @param activity
      */
     public static void setImageTransparent(Activity activity) {
             activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -33,8 +30,6 @@ public class MDStatusBarCompat {
 
     /**
      * 图片全屏半透明状态栏（图片位于状态栏下面）
-     *
-     * @param activity
      */
     public static void setImageTranslucent(Activity activity) {
             activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);

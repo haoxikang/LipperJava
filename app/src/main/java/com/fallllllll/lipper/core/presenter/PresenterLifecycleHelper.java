@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by fallllllll on 2017/1/17.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class PresenterLifecycleHelper {
@@ -44,8 +45,7 @@ public class PresenterLifecycleHelper {
     }
 
     private boolean checkList() {
-        if (mPresenterList != null && mPresenterList.size() > 0) return true;
-        return false;
+        return mPresenterList != null && mPresenterList.size() > 0;
     }
 
 }

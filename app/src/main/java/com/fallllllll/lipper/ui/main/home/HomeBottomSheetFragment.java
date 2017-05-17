@@ -3,7 +3,6 @@ package com.fallllllll.lipper.ui.main.home;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialogFragment;
-import android.support.v7.widget.AppCompatRadioButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +10,14 @@ import android.view.ViewGroup;
 import com.fallllllll.lipper.core.rxjava.RxBus;
 import com.fallllllll.lipper.data.databean.eventBean.ShotsListFilterEvent;
 import com.fallllllll.lipper.databinding.FragmentHomeBottomSheetBinding;
-import com.fallllllll.lipper.utils.LogUtils;
 
 /**
- * Created by Administrator on 2017/5/10/010.
+ * Created by fallllllll on 2017/5/10/010.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class HomeBottomSheetFragment extends BottomSheetDialogFragment {
     private FragmentHomeBottomSheetBinding bottomSheetBinding;
-    private HomeBottomSheetFragmentViewModel viewModel;
     private static final String TIME_KEY = "HomeBottomSheetFragment.time";
     private static final String TYPE_KEY = "HomeBottomSheetFragment.type";
     private static final String SORT_KEY = "HomeBottomSheetFragment.sort";
@@ -48,11 +46,11 @@ public class HomeBottomSheetFragment extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        HomeBottomSheetFragmentViewModel viewModel = new HomeBottomSheetFragmentViewModel(getContext(), time, sort, type);
         this.time = getArguments().getString(TIME_KEY);
         this.type = getArguments().getString(TYPE_KEY);
         this.sort = getArguments().getString(SORT_KEY);
         bottomSheetBinding = FragmentHomeBottomSheetBinding.inflate(inflater, container, false);
-        viewModel = new HomeBottomSheetFragmentViewModel(getContext(), time, sort, type);
         bottomSheetBinding.setViewModel(viewModel);
         initListener();
         return bottomSheetBinding.getRoot();

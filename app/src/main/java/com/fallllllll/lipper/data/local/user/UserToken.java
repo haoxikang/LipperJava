@@ -3,10 +3,10 @@ package com.fallllllll.lipper.data.local.user;
 
 /**
  * Created by fallllllll on 2017/3/16.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class UserToken{
-    private String id = "token";
     private String access_token;
     private String token_type;
     private String scope;

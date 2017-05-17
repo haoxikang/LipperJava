@@ -21,6 +21,7 @@ import com.fallllllll.lipper.ui.main.homelist.ShotsListFragment;
 
 /**
  * Created by fallllllll on 2017/4/20/020.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class ShotsFragment extends BaseFragment implements ShotsFragmentContract.ShotsFragmentView {

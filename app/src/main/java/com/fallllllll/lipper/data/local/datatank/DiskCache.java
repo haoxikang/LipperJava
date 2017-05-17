@@ -88,7 +88,7 @@ public class DiskCache {
         diskLruCache.remove(getNormalKey(key));
     }
 
-    public void destroy() throws IOException {
+    void destroy() throws IOException {
         diskLruCache.delete();
     }
 
@@ -146,9 +146,7 @@ public class DiskCache {
             byte[] digest = m.digest();
             BigInteger bigInt = new BigInteger(1, digest);
             return bigInt.toString(16);
-        } catch (NoSuchAlgorithmException e) {
-            throw new AssertionError();
-        } catch (UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             throw new AssertionError();
         }
     }

@@ -3,7 +3,8 @@ package com.fallllllll.lipper.data.local.datatank;
 import java.lang.reflect.Type;
 
 /**
- * Created by 康颢曦 on 2017/5/8.
+ * Created by fallllllll on 2017/5/8.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public interface JsonAdapter {

@@ -13,6 +13,7 @@ import retrofit2.HttpException;
 
 /**
  * Created by fallllllll on 2017/3/13.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class NetworkException {

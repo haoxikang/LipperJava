@@ -5,6 +5,7 @@ import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ERROR;
 
 /**
  * Created by fallllllll on 2017/4/28/028.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class LipperHttpErrorUtils {

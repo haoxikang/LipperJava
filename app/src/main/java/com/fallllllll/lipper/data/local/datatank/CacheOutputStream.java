@@ -1,5 +1,7 @@
 package com.fallllllll.lipper.data.local.datatank;
 
+import android.support.annotation.NonNull;
+
 import com.jakewharton.disklrucache.DiskLruCache;
 
 import java.io.FilterOutputStream;
@@ -7,7 +9,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- * Created by Administrator on 2017/5/9/009.
+ * Created by fallllllll on 2017/5/9/009.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 class CacheOutputStream extends FilterOutputStream {
 
@@ -60,7 +63,7 @@ class CacheOutputStream extends FilterOutputStream {
     }
 
     @Override
-    public void write(byte[] buffer) throws IOException {
+    public void write(@NonNull byte[] buffer) throws IOException {
         try {
             super.write(buffer);
         } catch (IOException e) {
@@ -70,7 +73,7 @@ class CacheOutputStream extends FilterOutputStream {
     }
 
     @Override
-    public void write(byte[] buffer, int offset, int length) throws IOException {
+    public void write(@NonNull byte[] buffer, int offset, int length) throws IOException {
         try {
             super.write(buffer, offset, length);
         } catch (IOException e) {

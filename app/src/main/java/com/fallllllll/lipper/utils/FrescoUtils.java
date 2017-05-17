@@ -33,7 +33,8 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 
 /**
- * Created by Administrator on 2017/4/28/028.
+ * Created by fallllllll on 2017/4/28/028.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class FrescoUtils {

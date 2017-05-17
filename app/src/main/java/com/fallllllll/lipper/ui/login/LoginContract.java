@@ -5,6 +5,7 @@ import com.fallllllll.lipper.data.databean.ShotBean;
 
 /**
  * Created by fallllllll on 2017/4/14/014.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public interface LoginContract {

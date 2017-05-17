@@ -18,20 +18,19 @@ import com.fallllllll.lipper.data.databean.ShotBean;
 import com.fallllllll.lipper.databinding.ActivityShotDetailBinding;
 
 /**
- * Created by Administrator on 2017/5/16/016.
+ * Created by fallllllll on 2017/5/16/016.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class ShotBeanDetailActivity extends BaseActivity {
-    private Transition transition;
-    private ActivityShotDetailBinding binding;
     private ShotBean shotBean;
     private SimpleDraweeView simpleDraweeView;
     private Animatable animatable;
     private boolean canPlayGif;
-private   ControllerListener controllerListener;
+
     @Override
     protected void initViewAndData() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_shot_detail);
+        ActivityShotDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_shot_detail);
         shotBean = (ShotBean) getIntent().getSerializableExtra("shotss");
         binding.setShot(shotBean);
         simpleDraweeView = binding.imageDetail;
@@ -41,14 +40,14 @@ private   ControllerListener controllerListener;
     @Override
     protected void initListeners() {
 
-         controllerListener = new BaseControllerListener<ImageInfo>() {
+        ControllerListener controllerListener = new BaseControllerListener<ImageInfo>() {
             @Override
             public void onFinalImageSet(
                     String id,
                     @Nullable ImageInfo imageInfo,
                     @Nullable Animatable anim) {
                 if (canPlayGif) {
-                    if (anim!=null){
+                    if (anim != null) {
                         anim.start();
                     }
 
@@ -65,7 +64,7 @@ private   ControllerListener controllerListener;
                 .build();
         simpleDraweeView.setController(controller);
 
-        transition = getWindow().getSharedElementEnterTransition();
+        Transition transition = getWindow().getSharedElementEnterTransition();
         transition.addListener(new Transition.TransitionListener() {
             @Override
             public void onTransitionStart(Transition transition) {

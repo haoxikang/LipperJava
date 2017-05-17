@@ -10,6 +10,7 @@ import com.tapadoo.alerter.Alerter;
 
 /**
  * Created by fallllllll on 2017/5/3/003.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class BaseViewUtils {

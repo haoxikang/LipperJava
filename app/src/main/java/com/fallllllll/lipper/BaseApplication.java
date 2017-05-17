@@ -16,6 +16,7 @@ import java.io.IOException;
 
 /**
  * Created by fallllllll on 2017/4/13/013.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class BaseApplication extends Application {

@@ -3,18 +3,13 @@ package com.fallllllll.lipper.core.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.fallllllll.lipper.core.presenter.Contract;
 import com.fallllllll.lipper.core.presenter.PresenterLifecycleHelper;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by fallllllll on 2017/3/8.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public abstract class BaseFragment extends Fragment {

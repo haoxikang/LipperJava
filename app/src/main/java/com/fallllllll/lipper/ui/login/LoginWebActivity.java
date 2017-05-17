@@ -21,11 +21,10 @@ import com.fallllllll.lipper.utils.RandomUtils;
 
 /**
  * Created by fallllllll on 2017/3/11.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class LoginWebActivity extends BaseActivity {
-    private ActivityLoginWebBinding mActivityLoginWebBinding;
-    private WebView mWebView;
     private ProgressBar mProgressBar;
     private Toolbar mToolbar;
     private boolean isLoadUrl = false;
@@ -33,13 +32,13 @@ public class LoginWebActivity extends BaseActivity {
 
     @Override
     protected void initViewAndData() {
-        mActivityLoginWebBinding = DataBindingUtil.setContentView(this, R.layout.activity_login_web);
+        ActivityLoginWebBinding mActivityLoginWebBinding = DataBindingUtil.setContentView(this, R.layout.activity_login_web);
         MDStatusBarCompat.setOrdinaryToolBar(this);
         mToolbar = mActivityLoginWebBinding.toolbar;
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mWebView = mActivityLoginWebBinding.webView;
+        WebView mWebView = mActivityLoginWebBinding.webView;
         mProgressBar = mActivityLoginWebBinding.progressbar;
 
         WebSettings settings = mWebView.getSettings();
@@ -61,9 +60,7 @@ public class LoginWebActivity extends BaseActivity {
 
     @Override
     protected void initListeners() {
-        mToolbar.setNavigationOnClickListener(v -> {
-            finish();
-        });
+        mToolbar.setNavigationOnClickListener(v -> finish());
     }
 
 

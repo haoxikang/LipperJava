@@ -5,7 +5,8 @@ import com.google.gson.Gson;
 import java.lang.reflect.Type;
 
 /**
- * Created by Administrator on 2017/5/9/009.
+ * Created by fallllllll on 2017/5/9/009.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class GsonAdapter implements JsonAdapter {

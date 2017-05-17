@@ -12,6 +12,7 @@ import com.fallllllll.lipper.ui.main.MainActivity;
 
 /**
  * Created by fallllllll on 2017/3/10.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class LoginViewModel extends BaseViewModel implements LoginContract.LoginView {

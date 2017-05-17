@@ -5,6 +5,7 @@ import com.fallllllll.lipper.data.network.service.OauthService;
 
 /**
  * Created by fallllllll on 2017/3/20.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class OauthHttpMethods extends BaseHttpMethods<OauthService> {

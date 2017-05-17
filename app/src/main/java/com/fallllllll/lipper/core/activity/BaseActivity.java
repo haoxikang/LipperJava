@@ -10,6 +10,7 @@ import com.fallllllll.lipper.core.presenter.PresenterLifecycleHelper;
 
 /**
  * Created by fallllllll on 2017/3/8.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -33,10 +34,10 @@ protected abstract  void  initViewAndData();
         presenterLifecycleHelper.destroyPresenter();
     }
 
-    protected void setDarkStatusBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }
-    }
+//    protected void setDarkStatusBar() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+//        }
+//    }
 
 }

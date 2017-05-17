@@ -15,11 +15,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by fallllllll on 2017/3/8.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public abstract class BaseHttpMethods<S> {
     private static final int DEFAULT_TIMEOUT = 15;
-    private Retrofit retrofit;
     private S mService;
 
 
@@ -36,7 +36,7 @@ public abstract class BaseHttpMethods<S> {
 
         OkHttpClient.Builder localBuilder = new OkHttpClient.Builder();
         localBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
-        return retrofit = new Retrofit.Builder().client(localBuilder
+        return  new Retrofit.Builder().client(localBuilder
                 .cache(cache)
                 .addNetworkInterceptor(new LipperInterceptor())
                 .addNetworkInterceptor(new LogInterceptor())

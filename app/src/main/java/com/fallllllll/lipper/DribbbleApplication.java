@@ -1,15 +1,8 @@
 package com.fallllllll.lipper;
 
-import com.fallllllll.lipper.data.local.datatank.DataTank;
-import com.fallllllll.lipper.data.local.datatank.GsonAdapter;
-import com.fallllllll.lipper.data.local.user.UserManager;
-import com.facebook.drawee.backends.pipeline.Fresco;
-
-import java.io.IOException;
-
-
 /**
  * Created by fallllllll on 2017/3/8.
+ * GitHub :  https://github.com/348476129/Lipper
  */
 
 public class DribbbleApplication extends BaseApplication {
