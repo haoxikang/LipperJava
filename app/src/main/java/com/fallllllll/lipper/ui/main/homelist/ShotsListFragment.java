@@ -5,11 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.fall.generalrecyclerviewfragment.GeneralContract;
 import com.fallllllll.lipper.DribbbleApplication;
 import com.fallllllll.lipper.core.constants.AppConstants;
 import com.fallllllll.lipper.core.fragment.BaseListFragment;
+import com.fallllllll.lipper.utils.UIUtils;
 
 import javax.inject.Inject;
 
@@ -33,6 +35,12 @@ public class ShotsListFragment extends BaseListFragment implements ShotsListCont
 
     private ShotsListAdapter shotsListAdapter;
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        recyclerView.setClipToPadding(false);
+        recyclerView.setPadding(0, 0, 0, UIUtils.getNavigationBarHeight(getActivity()));
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -104,6 +112,14 @@ public class ShotsListFragment extends BaseListFragment implements ShotsListCont
         }
     }
 
+    @Override
+    public void setErrorViewVisible(boolean isShow) {
+        if (isShow) {
+            errorLayout.setVisibility(View.VISIBLE);
+        } else {
+            errorLayout.setVisibility(View.GONE);
+        }
+    }
 
 
 }

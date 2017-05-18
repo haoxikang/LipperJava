@@ -25,9 +25,8 @@
             android:name=".ui.login.LoginWebActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ui.main.MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme"></activity>
+            android:name=".ui.main.home.ShotsActivity"
+            android:theme="@style/ShotsActivityTheme" />
         <activity android:name=".ui.shotbeandetail.ShotBeanDetailActivity" />
     </application>
 

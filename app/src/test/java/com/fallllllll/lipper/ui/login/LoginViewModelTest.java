@@ -7,7 +7,7 @@ import com.fallllllll.lipper.TestApplication;
 import com.fallllllll.lipper.core.MyRobolectricTestRunner;
 import com.fallllllll.lipper.data.network.model.DribbbleModel;
 import com.fallllllll.lipper.data.network.model.OauthModel;
-import com.fallllllll.lipper.ui.main.MainActivity;
+import com.fallllllll.lipper.ui.main.home.ShotsActivity;
 import com.fallllllll.lipper.utils.BaseRule;
 
 import org.junit.Before;
@@ -78,7 +78,7 @@ public class LoginViewModelTest {
     @Test
     public void goMainActivity() {
         loginViewModel.goMainActivity();
-        Intent intent = new Intent(loginActivity, MainActivity.class);
+        Intent intent = new Intent(loginActivity, ShotsActivity.class);
         ShadowActivity shadowActivity = shadowOf(loginActivity);
         Intent actualIntent = shadowActivity.getNextStartedActivity();
         assertEquals(intent.toString(), actualIntent.toString());

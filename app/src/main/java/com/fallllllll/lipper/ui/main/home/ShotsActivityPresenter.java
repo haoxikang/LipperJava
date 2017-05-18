@@ -4,7 +4,6 @@ import com.fallllllll.lipper.core.constants.AppConstants;
 import com.fallllllll.lipper.core.presenter.BasePresenter;
 import com.fallllllll.lipper.data.databean.HomeListFilterBean;
 import com.fallllllll.lipper.data.local.datatank.DataTank;
-import com.fallllllll.lipper.utils.LogUtils;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -14,11 +13,11 @@ import io.reactivex.schedulers.Schedulers;
  * GitHub :  https://github.com/348476129/Lipper
  */
 
-public class ShotsFragmentPresenter extends BasePresenter implements ShotsFragmentContract.ShotsFragmentPresenter {
-    private ShotsFragmentContract.ShotsFragmentView shotsFragmentView;
+public class ShotsActivityPresenter extends BasePresenter implements ShotsActivityContract.ShotsActivityPresenter {
+    private ShotsActivityContract.ShotsActivityView shotsActivityView;
 
-    public ShotsFragmentPresenter(ShotsFragmentContract.ShotsFragmentView shotsFragmentView) {
-        this.shotsFragmentView = shotsFragmentView;
+    public ShotsActivityPresenter(ShotsActivityContract.ShotsActivityView shotsActivityView) {
+        this.shotsActivityView = shotsActivityView;
     }
 
     @Override
@@ -34,7 +33,7 @@ public class ShotsFragmentPresenter extends BasePresenter implements ShotsFragme
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(homeListFilterBean -> {
                     if (homeListFilterBean != null) {
-                        shotsFragmentView.showBottomSheet(homeListFilterBean);
+                        shotsActivityView.showBottomSheet(homeListFilterBean);
                     } else {
                         showDefaultBottomSheet(null);
                     }
@@ -43,9 +42,9 @@ public class ShotsFragmentPresenter extends BasePresenter implements ShotsFragme
 
     private void showDefaultBottomSheet(HomeListFilterBean homeListFilterBean) {
         if (homeListFilterBean == null) {
-            shotsFragmentView.showBottomSheet(new HomeListFilterBean(AppConstants.NOW, AppConstants.SHOTS, AppConstants.POPULARITY));
+            shotsActivityView.showBottomSheet(new HomeListFilterBean(AppConstants.NOW, AppConstants.SHOTS, AppConstants.POPULARITY));
         } else {
-            shotsFragmentView.showBottomSheet(homeListFilterBean);
+            shotsActivityView.showBottomSheet(homeListFilterBean);
         }
 
     }

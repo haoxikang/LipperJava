@@ -9,9 +9,6 @@ import com.fallllllll.lipper.core.rxjava.RxBus;
 import com.fallllllll.lipper.data.databean.eventBean.ShotsListFilterEvent;
 import com.fallllllll.lipper.data.databean.eventBean.ShotsMenuLayoutEvent;
 import com.fallllllll.lipper.data.network.model.impl.DribbbleModelImpl;
-import com.fallllllll.lipper.data.network.model.impl.OauthModelImpl;
-import com.fallllllll.lipper.ui.login.LoginPresenterImpl;
-import com.fallllllll.lipper.ui.main.home.ShotsFragmentPresenter;
 import com.fallllllll.lipper.utils.BaseRule;
 import com.fallllllll.lipper.utils.RxSchedulersOverrideRule;
 
@@ -21,16 +18,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.robolectric.annotation.Config;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 /**

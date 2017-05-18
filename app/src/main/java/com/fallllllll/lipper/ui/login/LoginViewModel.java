@@ -4,11 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableField;
-import android.text.TextUtils;
 
 import com.fallllllll.lipper.core.viewmodel.BaseViewModel;
 import com.fallllllll.lipper.data.databean.ShotBean;
-import com.fallllllll.lipper.ui.main.MainActivity;
+import com.fallllllll.lipper.ui.main.home.ShotsActivity;
 
 /**
  * Created by fallllllll on 2017/3/10.
@@ -39,7 +38,7 @@ public class LoginViewModel extends BaseViewModel implements LoginContract.Login
 
     @Override
     public void goMainActivity() {
-        Intent intent = new Intent(mContext, MainActivity.class);
+        Intent intent = new Intent(mContext, ShotsActivity.class);
         mContext.startActivity(intent);
     }
 

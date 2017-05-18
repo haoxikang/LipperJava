@@ -109,7 +109,6 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
 
 
         } else {
-            currentLayoutType = AppConstants.SHOTS_LAYOUT_LARGE;
             getData();
         }
 
@@ -117,6 +116,7 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
 
     private void getData() {
         disposeRefresh();
+        shotsListView.setErrorViewVisible(false);
         refreshDisposable = model.getShot(TYPE, TIME, SORT, "1")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

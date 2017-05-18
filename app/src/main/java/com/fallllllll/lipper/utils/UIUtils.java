@@ -2,6 +2,7 @@ package com.fallllllll.lipper.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.TypedValue;
 
 /**
@@ -18,7 +19,12 @@ public class UIUtils {
         }
         return statusBarHeight;
     }
-
+    public static int getNavigationBarHeight(Activity activity) {
+        Resources resources = activity.getResources();
+        int resourceId = resources.getIdentifier("navigation_bar_height","dimen", "android");
+        int height = resources.getDimensionPixelSize(resourceId);
+        return height;
+    }
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
      */

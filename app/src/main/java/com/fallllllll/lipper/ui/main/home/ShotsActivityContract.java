@@ -9,14 +9,14 @@ import com.fallllllll.lipper.data.databean.HomeListFilterBean;
  * GitHub :  https://github.com/348476129/Lipper
  */
 
-public class ShotsFragmentContract {
+public class ShotsActivityContract {
 
-    interface ShotsFragmentView {
+    interface ShotsActivityView {
 
         void showBottomSheet(HomeListFilterBean homeListFilterBean);
     }
 
-    interface ShotsFragmentPresenter extends Contract.Presenter{
+    interface ShotsActivityPresenter extends Contract.Presenter{
         void showBottomSheet();
     }
 }

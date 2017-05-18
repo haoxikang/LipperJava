@@ -19,6 +19,10 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
+    <style name="ShotsActivityTheme" parent="AppTheme">
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
     <style name="homeCheckBox" parent="Theme.AppCompat.Light">
         <item name="colorControlActivated">@color/primary</item>
         <item name="android:paddingLeft">12dp</item>

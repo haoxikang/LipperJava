@@ -1,62 +1,41 @@
 package com.fallllllll.lipper.ui.main.home;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.fallllllll.lipper.R;
-import com.fallllllll.lipper.core.fragment.BaseFragment;
+import com.fallllllll.lipper.core.activity.BaseActivity;
 import com.fallllllll.lipper.data.databean.HomeListFilterBean;
-import com.fallllllll.lipper.databinding.FragmentShotsBinding;
+import com.fallllllll.lipper.databinding.ActivityShotsBinding;
 import com.fallllllll.lipper.ui.main.homelist.ShotsListFragment;
+import com.fallllllll.lipper.utils.MDStatusBarCompat;
+import com.fallllllll.lipper.utils.UIUtils;
 
 /**
  * Created by fallllllll on 2017/4/20/020.
  * GitHub :  https://github.com/348476129/Lipper
  */
 
-public class ShotsFragment extends BaseFragment implements ShotsFragmentContract.ShotsFragmentView {
-    public FragmentShotsBinding binding;
+public class ShotsActivity extends BaseActivity implements ShotsActivityContract.ShotsActivityView {
+    public ActivityShotsBinding binding;
     private Toolbar toolbar;
     public HomeItemLayoutPopWindow popWindow;
     private ShotsListFragment shotsListFragment;
     private HomeBottomSheetFragment homeBottomSheetFragment;
-    private ShotsFragmentContract.ShotsFragmentPresenter presenter;
+    private ShotsActivityContract.ShotsActivityPresenter presenter;
 
 
-    public void setPresenter(ShotsFragmentContract.ShotsFragmentPresenter presenter){
+    public void setPresenter(ShotsActivityContract.ShotsActivityPresenter presenter) {
         this.presenter = presenter;
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentShotsBinding.inflate(inflater, container, false);
-        toolbar = binding.shtosToolar;
-        popWindow = new HomeItemLayoutPopWindow(getActivity());
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        setHasOptionsMenu(true);
-        showFragment();
-        if (presenter==null){
-            presenter = new ShotsFragmentPresenter(this);
-        }
-
-        presenterLifecycleHelper.addPresenter(presenter);
-        return binding.getRoot();
     }
 
 
     private void showFragment() {
-        FragmentManager fragmentManager = getChildFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         if (shotsListFragment == null) {
             shotsListFragment = new ShotsListFragment();
@@ -64,6 +43,22 @@ public class ShotsFragment extends BaseFragment implements ShotsFragmentContract
         fragmentTransaction.replace(R.id.fragment_container, shotsListFragment);
         fragmentTransaction.commit();
 
+    }
+
+    @Override
+    protected void initViewAndData() {
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_shots);
+        toolbar = binding.shotsToolbar;
+        toolbar.setPadding(0, UIUtils.getStatusBarHeight(this),0,0);
+        MDStatusBarCompat.setImageTranslucent(this);
+        popWindow = new HomeItemLayoutPopWindow(this);
+        setSupportActionBar(toolbar);
+        showFragment();
+        if (presenter == null) {
+            presenter = new ShotsActivityPresenter(this);
+        }
+
+        presenterLifecycleHelper.addPresenter(presenter);
     }
 
     @Override
@@ -89,9 +84,11 @@ public class ShotsFragment extends BaseFragment implements ShotsFragmentContract
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.shots_menu, menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.shots_menu, menu);
+        return true;
     }
+
 
     @Override
     public void showBottomSheet(HomeListFilterBean homeListFilterBean) {
@@ -100,6 +97,6 @@ public class ShotsFragment extends BaseFragment implements ShotsFragmentContract
         } else {
             homeBottomSheetFragment.updateCheckStatus(homeListFilterBean.getTime(), homeListFilterBean.getType(), homeListFilterBean.getSort());
         }
-        homeBottomSheetFragment.show(getChildFragmentManager(), "bottomSheet");
+        homeBottomSheetFragment.show(getSupportFragmentManager(), "bottomSheet");
     }
 }

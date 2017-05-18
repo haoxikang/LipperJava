@@ -16,6 +16,7 @@ public class ShotsListContract {
 
         void changeItemViewLayout(String layoutType);
 
+        void setErrorViewVisible(boolean isShow);
 
     }
     interface ShotsListPresenter extends Contract.Presenter{
