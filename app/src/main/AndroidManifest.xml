@@ -27,7 +27,10 @@
         <activity
             android:name=".ui.main.home.ShotsActivity"
             android:theme="@style/ShotsActivityTheme" />
-        <activity android:name=".ui.shotbeandetail.ShotBeanDetailActivity" />
+        <activity android:name=".ui.shotbeandetail.ShotBeanDetailActivity"
+            android:theme="@style/ShotsDetailTheme"/>
+        <activity android:name=".ui.search.SearchActivity"
+            android:theme="@style/SearchActivityTheme"/>
     </application>
 
 </manifest>

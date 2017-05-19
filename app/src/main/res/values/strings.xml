@@ -54,4 +54,8 @@
         <item>一年</item>
         <item>所有</item>
     </string-array>
+
+
+    <string name="transition_search_back" translatable="false">transition_search_back</string>
+
 </resources>

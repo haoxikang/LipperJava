@@ -27,6 +27,8 @@ public class ShotBeanDetailActivity extends BaseActivity {
     private SimpleDraweeView simpleDraweeView;
     private Animatable animatable;
     private boolean canPlayGif;
+    private Transition transition;
+    private Transition.TransitionListener transitionListener;
 
     @Override
     protected void initViewAndData() {
@@ -64,8 +66,8 @@ public class ShotBeanDetailActivity extends BaseActivity {
                 .build();
         simpleDraweeView.setController(controller);
 
-        Transition transition = getWindow().getSharedElementEnterTransition();
-        transition.addListener(new Transition.TransitionListener() {
+
+        transitionListener = new Transition.TransitionListener() {
             @Override
             public void onTransitionStart(Transition transition) {
 
@@ -73,12 +75,14 @@ public class ShotBeanDetailActivity extends BaseActivity {
 
             @Override
             public void onTransitionEnd(Transition transition) {
-                if (animatable != null) {
-                    animatable.start();
-                } else {
-                    canPlayGif = true;
+                    if (animatable != null) {
+                        animatable.start();
+                    } else {
+                        canPlayGif = true;
+                    }
+
                 }
-            }
+
 
             @Override
             public void onTransitionCancel(Transition transition) {
@@ -94,6 +98,16 @@ public class ShotBeanDetailActivity extends BaseActivity {
             public void onTransitionResume(Transition transition) {
 
             }
-        });
+        };
+        transition = getWindow().getSharedElementEnterTransition();
+        transition.addListener(transitionListener);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (transition != null) {
+            transition.removeListener(transitionListener);
+        }
     }
 }
