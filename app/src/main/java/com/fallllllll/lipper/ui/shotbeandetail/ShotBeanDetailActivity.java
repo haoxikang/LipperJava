@@ -32,10 +32,9 @@ public class ShotBeanDetailActivity extends BaseActivity {
 
     @Override
     protected void initViewAndData() {
-        ActivityShotDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_shot_detail);
+    setContentView(R.layout.activity_shot_detail);
         shotBean = (ShotBean) getIntent().getSerializableExtra("shotss");
-        binding.setShot(shotBean);
-        simpleDraweeView = binding.imageDetail;
+        simpleDraweeView = (SimpleDraweeView) findViewById(R.id.image_detail);
 
     }
 

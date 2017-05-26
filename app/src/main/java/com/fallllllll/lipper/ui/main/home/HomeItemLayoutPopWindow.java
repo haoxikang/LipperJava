@@ -27,15 +27,15 @@ import static com.fallllllll.lipper.core.constants.AppConstants.SHOTS_LAYOUT_SMA
 public class HomeItemLayoutPopWindow extends PopupWindow {
 
     public HomeItemLayoutPopWindow(Activity activity) {
-        ViewHomeItemPopupWindowBinding binding = DataBindingUtil.inflate(LayoutInflater.from(activity), R.layout.view_home_item_popup_window, null, false);
-        this.setContentView(binding.getRoot());
+        View view = LayoutInflater.from(activity).inflate(R.layout.view_home_item_popup_window, null, false);
+        this.setContentView(view);
         this.setFocusable(true);
         this.update();
         this.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         this.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         ColorDrawable dw = new ColorDrawable(Color.parseColor("#00000000"));
         this.setBackgroundDrawable(dw);
-        initListener(binding);
+        initListener(view);
     }
 
     public void showPopupWindow(View parent) {
@@ -46,16 +46,16 @@ public class HomeItemLayoutPopWindow extends PopupWindow {
         }
     }
 
-    private void initListener(ViewHomeItemPopupWindowBinding binding) {
-        binding.homePopupLargeLayout.setOnClickListener(v -> {
+    private void initListener(View view) {
+        view.findViewById(R.id.home_popup_large_layout).setOnClickListener(v -> {
             RxBus.get().post(new ShotsMenuLayoutEvent(SHOTS_LAYOUT_LARGE));
             this.dismiss();
         });
-        binding.homePopupSmallLayout.setOnClickListener(v -> {
+        view.findViewById(R.id.home_popup_small_layout).setOnClickListener(v -> {
             RxBus.get().post(new ShotsMenuLayoutEvent(SHOTS_LAYOUT_SMALL));
             this.dismiss();
         });
-        binding.homePopupOnlyImageLayout.setOnClickListener(v -> {
+        view.findViewById(R.id.home_popup_only_image_layout).setOnClickListener(v -> {
             RxBus.get().post(new ShotsMenuLayoutEvent(SHOTS_LAYOUT_ONLY_IMAGE));
             this.dismiss();
         });

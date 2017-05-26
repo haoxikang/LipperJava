@@ -1,22 +1,16 @@
 package com.fallllllll.lipper.ui.search;
 
-import android.app.SharedElementCallback;
-import android.databinding.DataBindingUtil;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.transition.Transition;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.activity.BaseActivity;
-import com.fallllllll.lipper.databinding.ActivitySearchBinding;
 import com.fallllllll.lipper.utils.ImeUtils;
 import com.fallllllll.lipper.utils.LogUtils;
 import com.fallllllll.lipper.utils.MDStatusBarCompat;
 import com.fallllllll.lipper.utils.UIUtils;
-
-import java.util.List;
 
 /**
  * Created by fallllllll on 2017/5/19/019.
@@ -24,7 +18,6 @@ import java.util.List;
  */
 
 public class SearchActivity extends BaseActivity {
-    private ActivitySearchBinding binding;
     private SearchView searchView;
     private ImageButton searchBack;
     private Transition transitionEnter;
@@ -35,11 +28,11 @@ public class SearchActivity extends BaseActivity {
 
     @Override
     protected void initViewAndData() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_search);
+setContentView(R.layout.activity_search);
         MDStatusBarCompat.setImageTranslucent(this);
-        binding.searchToolbar.setPadding(0, UIUtils.getStatusBarHeight(this), 0, 0);
-        searchView = binding.searchView;
-        searchBack = binding.searchback;
+        findViewById(R.id.search_toolbar).setPadding(0, UIUtils.getStatusBarHeight(this), 0, 0);
+        searchView = (SearchView) findViewById(R.id.search_view);
+        searchBack = (ImageButton) findViewById(R.id.searchback);
 
     }
 

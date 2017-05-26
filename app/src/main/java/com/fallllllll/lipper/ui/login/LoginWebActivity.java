@@ -1,11 +1,8 @@
 package com.fallllllll.lipper.ui.login;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
-import android.graphics.Bitmap;
 import android.support.v7.widget.Toolbar;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -15,7 +12,6 @@ import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.activity.BaseActivity;
 import com.fallllllll.lipper.core.constants.BaseUrl;
 import com.fallllllll.lipper.core.constants.DribbbleID;
-import com.fallllllll.lipper.databinding.ActivityLoginWebBinding;
 import com.fallllllll.lipper.utils.MDStatusBarCompat;
 import com.fallllllll.lipper.utils.RandomUtils;
 
@@ -32,14 +28,14 @@ public class LoginWebActivity extends BaseActivity {
 
     @Override
     protected void initViewAndData() {
-        ActivityLoginWebBinding mActivityLoginWebBinding = DataBindingUtil.setContentView(this, R.layout.activity_login_web);
+        setContentView(R.layout.activity_login_web);
         MDStatusBarCompat.setOrdinaryToolBar(this);
-        mToolbar = mActivityLoginWebBinding.toolbar;
+        mToolbar = (Toolbar) findViewById(R.id.webActivityToolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        WebView mWebView = mActivityLoginWebBinding.webView;
-        mProgressBar = mActivityLoginWebBinding.progressbar;
+        WebView mWebView = (WebView) findViewById(R.id.webView);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressbar);
 
         WebSettings settings = mWebView.getSettings();
         settings.setJavaScriptEnabled(true);

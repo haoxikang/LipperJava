@@ -26,7 +26,6 @@ import com.fallllllll.lipper.utils.UIUtils;
  */
 
 public class ShotsActivity extends BaseActivity implements ShotsActivityContract.ShotsActivityView {
-    public ActivityShotsBinding binding;
     private Toolbar toolbar;
     public HomeItemLayoutPopWindow popWindow;
     private ShotsListFragment shotsListFragment;
@@ -52,9 +51,9 @@ public class ShotsActivity extends BaseActivity implements ShotsActivityContract
 
     @Override
     protected void initViewAndData() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_shots);
-        toolbar = binding.shotsToolbar;
-        toolbar.setPadding(0, UIUtils.getStatusBarHeight(this),0,0);
+        setContentView(R.layout.activity_shots);
+        toolbar = (Toolbar) findViewById(R.id.shots_toolbar);
+        toolbar.setPadding(0, UIUtils.getStatusBarHeight(this), 0, 0);
         MDStatusBarCompat.setImageTranslucent(this);
         popWindow = new HomeItemLayoutPopWindow(this);
         setSupportActionBar(toolbar);

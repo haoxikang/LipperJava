@@ -26,7 +26,7 @@ import static org.mockito.Mockito.verify;
  * GitHub :  https://github.com/348476129/Lipper
  */
 @RunWith(MyRobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 23, application = TestApplication.class)
+@Config(constants = BuildConfig.class, sdk = 21, application = TestApplication.class)
 public class ShotsActivityTest {
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
