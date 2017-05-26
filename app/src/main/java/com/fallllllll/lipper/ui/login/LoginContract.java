@@ -11,7 +11,6 @@ import com.fallllllll.lipper.data.databean.ShotBean;
 public interface LoginContract {
     interface  LoginView extends Contract.BaseView{
 
-        void onDataFetch(ShotBean test);
         void goWebActivityForResult();
 
         void setButtonEnable(boolean isEnable);

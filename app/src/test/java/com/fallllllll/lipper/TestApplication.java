@@ -1,7 +1,5 @@
 package com.fallllllll.lipper;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-
 /**
  * Created by fallllllll on 2017/4/13/013.
  */

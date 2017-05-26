@@ -22,13 +22,11 @@ public class LoginViewModel extends BaseViewModel implements LoginContract.Login
         super(context);
     }
 
-    @Override
-    public void onDataFetch(ShotBean test) {
-    }
+
 
     @Override
     public void goWebActivityForResult() {
-        ((LoginActivity) mContext).startActivityForResult(new Intent(mContext, LoginWebActivity.class), LoginActivity.LOGIN_REQUEST_CODE);
+
     }
 
     @Override

@@ -1,79 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<data>
-    <variable
-        name="loginModel"
-        type="com.fallllllll.lipper.ui.login.LoginViewModel"/>
-</data>
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/rl_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@mipmap/login_bg"
-        android:fitsSystemWindows="false"
-        tools:context=".ui.login.LoginActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login_bg"
+    android:fitsSystemWindows="false"
+    tools:context=".ui.login.LoginActivity">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
-            android:padding="@dimen/short_distance">
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="@dimen/short_distance">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/login_e"
-                android:textColor="@color/secondary_text"
-
-                android:textSize="24sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_distance"
-                android:gravity="center"
-                android:text="@string/need_login"
-                android:textColor="@color/secondary_text"
-                android:textSize="12sp"/>
-
-        </LinearLayout>
-
-        <android.support.design.widget.FloatingActionButton
-            android:src="@mipmap/login_float_bg"
-            app:backgroundTint="@android:color/white"
-            android:id="@+id/rotate_button"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="48dp"
-            android:elevation="4dp"
-            app:fabSize="normal"
-            android:layout_above="@+id/linearLayout"
-            android:layout_centerHorizontal="true"/>
-
-
-        <Button
-            android:enabled="@{loginModel.isEnable}"
-            android:textSize="12sp"
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/normal_button_height"
-            android:layout_below="@+id/linearLayout"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/big_distance"
-            android:background="@drawable/button_ripple_oval"
-            android:paddingLeft="@dimen/longer_distance"
-            android:paddingRight="@dimen/longer_distance"
-            android:text="@string/sign_in_now"
+            android:text="@string/login_e"
             android:textColor="@color/secondary_text"
-            android:translationZ="4dp"
-            android:visibility="invisible"/>
-    </RelativeLayout>
-</layout>
+
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_distance"
+            android:gravity="center"
+            android:text="@string/need_login"
+            android:textColor="@color/secondary_text"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/rotate_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="48dp"
+        android:elevation="4dp"
+        android:src="@mipmap/login_float_bg"
+        app:backgroundTint="@android:color/white"
+        app:fabSize="normal" />
+
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/normal_button_height"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/big_distance"
+        android:background="@drawable/button_ripple_oval"
+        android:paddingLeft="@dimen/longer_distance"
+        android:paddingRight="@dimen/longer_distance"
+        android:text="@string/sign_in_now"
+        android:textColor="@color/secondary_text"
+        android:textSize="12sp"
+        android:translationZ="4dp"
+        android:visibility="invisible" />
+</RelativeLayout>

@@ -1,5 +1,7 @@
 package com.fallllllll.lipper.core;
 
+import com.fallllllll.lipper.BuildConfig;
+
 import org.junit.runners.model.InitializationError;
 import org.robolectric.RoboSettings;
 import org.robolectric.RobolectricTestRunner;

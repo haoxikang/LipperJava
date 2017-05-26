@@ -2,7 +2,6 @@ package com.fallllllll.lipper.ui.login;
 
 import android.animation.ValueAnimator;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,18 +13,17 @@ import android.widget.RelativeLayout;
 import com.fallllllll.lipper.BaseApplication;
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.activity.BaseActivity;
-import com.fallllllll.lipper.databinding.ActivityLoginBinding;
+import com.fallllllll.lipper.ui.main.home.ShotsActivity;
 import com.fallllllll.lipper.utils.MDStatusBarCompat;
 
 import javax.inject.Inject;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements LoginContract.LoginView {
 
     public static final int LOGIN_REQUEST_CODE = 100;
     public static final String LOGIN_CODE_KEY = "LoginActivity.code.key";
 
 
-    ActivityLoginBinding mActivityLoginBinding;
     @Inject
     LoginContract.LoginPresenter loginPresenter;
 
@@ -37,21 +35,19 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initViewAndData() {
-        LoginViewModel mLoginViewModel = new LoginViewModel(this);
         if (mLoginModule == null) {
-            mLoginModule = new LoginModule(mLoginViewModel);
+            mLoginModule = new LoginModule(this);
         }
         DaggerLoginComponent.builder().appComponent(((BaseApplication) getApplication())
                 .getAppComponent())
                 .loginModule(mLoginModule).build().inject(this);
         presenterLifecycleHelper.addPresenter(loginPresenter);
-        mActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        setContentView(R.layout.activity_login);
         MDStatusBarCompat.setImageTranslucent(this);
-        mActivityLoginBinding.setLoginModel(mLoginViewModel);
-        mRotateButton = mActivityLoginBinding.rotateButton;
-        mLoginButton = mActivityLoginBinding.loginButton;
+        mRotateButton = (FloatingActionButton) findViewById(R.id.rotate_button);
+        mLoginButton = (Button) findViewById(R.id.login_button);
 
-        mRelativeLayout = mActivityLoginBinding.rlLayout;
+        mRelativeLayout = (RelativeLayout) findViewById(R.id.rl_layout);
 
         mRotateButton.post(this::startAnimation);
         presenterLifecycleHelper.onPresenterCreate();
@@ -137,5 +133,26 @@ public class LoginActivity extends BaseActivity {
             }
         }
 
+    }
+
+    @Override
+    public void goWebActivityForResult() {
+        startActivityForResult(new Intent(this, LoginWebActivity.class), LOGIN_REQUEST_CODE);
+    }
+
+    @Override
+    public void setButtonEnable(boolean isEnable) {
+        mLoginButton.setEnabled(isEnable);
+    }
+
+    @Override
+    public void goMainActivity() {
+        Intent intent = new Intent(this, ShotsActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void finishActivity() {
+        finish();
     }
 }
