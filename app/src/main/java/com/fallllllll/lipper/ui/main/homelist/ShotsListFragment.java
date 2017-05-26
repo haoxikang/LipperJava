@@ -23,7 +23,7 @@ import javax.inject.Inject;
 public class ShotsListFragment extends BaseListFragment implements ShotsListContract.ShotsListView {
 
     private ShotsListModule shotsListModule;
-    private ShotsListItemViewModel shotsListItemViewModel;
+    private ShotsListLayoutEnum shotsListLayoutEnum;
 
     public void setShotsListModule(ShotsListModule shotsListModule) {
         this.shotsListModule = shotsListModule;
@@ -68,8 +68,8 @@ public class ShotsListFragment extends BaseListFragment implements ShotsListCont
     @Override
     protected RecyclerView.Adapter getAdapter() {
         if (shotsListAdapter == null) {
-            shotsListItemViewModel = new ShotsListItemViewModel(ShotsListItemViewModel.LINEAR_LAYOUT);
-            shotsListAdapter = new ShotsListAdapter(shotsListItemViewModel);
+            shotsListLayoutEnum = new ShotsListLayoutEnum(ShotsListLayoutEnum.LINEAR_LAYOUT);
+            shotsListAdapter = new ShotsListAdapter(shotsListLayoutEnum);
         }
         return shotsListAdapter;
     }
@@ -87,15 +87,15 @@ public class ShotsListFragment extends BaseListFragment implements ShotsListCont
         GridLayoutManager gridLayoutManager = (GridLayoutManager) recyclerView.getLayoutManager();
         switch (layoutType) {
             case AppConstants.SHOTS_LAYOUT_LARGE:
-                shotsListItemViewModel.setLayout(ShotsListItemViewModel.LINEAR_LAYOUT);
+                shotsListLayoutEnum.setLayout(ShotsListLayoutEnum.LINEAR_LAYOUT);
                 gridLayoutManager.setSpanCount(1);
                 break;
             case AppConstants.SHOTS_LAYOUT_ONLY_IMAGE:
-                shotsListItemViewModel.setLayout(ShotsListItemViewModel.ONLY_IMAGE_LAYOUT);
+                shotsListLayoutEnum.setLayout(ShotsListLayoutEnum.ONLY_IMAGE_LAYOUT);
                 gridLayoutManager.setSpanCount(2);
                 break;
             case AppConstants.SHOTS_LAYOUT_SMALL:
-                shotsListItemViewModel.setLayout(ShotsListItemViewModel.GRID_LAYOUT);
+                shotsListLayoutEnum.setLayout(ShotsListLayoutEnum.GRID_LAYOUT);
                 gridLayoutManager.setSpanCount(2);
                 break;
         }
@@ -105,10 +105,10 @@ public class ShotsListFragment extends BaseListFragment implements ShotsListCont
     @Override
     public void changeItemViewLayout(String layoutType) {
         if (layoutType.equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE)) {
-            shotsListItemViewModel.setLayout(ShotsListItemViewModel.ONLY_IMAGE_LAYOUT);
+            shotsListLayoutEnum.setLayout(ShotsListLayoutEnum.ONLY_IMAGE_LAYOUT);
         }
         if (layoutType.equals(AppConstants.SHOTS_LAYOUT_SMALL)) {
-            shotsListItemViewModel.setLayout(ShotsListItemViewModel.GRID_LAYOUT);
+            shotsListLayoutEnum.setLayout(ShotsListLayoutEnum.GRID_LAYOUT);
         }
     }
 

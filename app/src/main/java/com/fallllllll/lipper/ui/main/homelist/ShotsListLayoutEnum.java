@@ -13,19 +13,22 @@ import com.fallllllll.lipper.utils.UIUtils;
  * GitHub :  https://github.com/348476129/Lipper
  */
 
-public class ShotsListItemViewModel {
+public class ShotsListLayoutEnum {
     public static int GRID_LAYOUT = 0;
     public static int ONLY_IMAGE_LAYOUT = 1;
     public static int LINEAR_LAYOUT = 2;
-    public ObservableInt currentLayout = new ObservableInt(LINEAR_LAYOUT);
+    private int currentLayout = LINEAR_LAYOUT;
 
 
-    public ShotsListItemViewModel(int currentLayout) {
-        this.currentLayout.set(currentLayout);
+    public ShotsListLayoutEnum(int currentLayout) {
+        this.currentLayout = currentLayout;
     }
 
-    public void setLayout(int layout) {
-        currentLayout.set(layout);
+    public int getCurrentLayout() {
+        return currentLayout;
+    }
 
+    public void setCurrentLayout(int currentLayout) {
+        this.currentLayout = currentLayout;
     }
 }

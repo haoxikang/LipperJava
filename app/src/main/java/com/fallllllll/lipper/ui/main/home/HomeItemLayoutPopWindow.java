@@ -13,7 +13,6 @@ import android.widget.PopupWindow;
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.rxjava.RxBus;
 import com.fallllllll.lipper.data.databean.eventBean.ShotsMenuLayoutEvent;
-import com.fallllllll.lipper.databinding.ViewHomeItemPopupWindowBinding;
 
 import static com.fallllllll.lipper.core.constants.AppConstants.SHOTS_LAYOUT_LARGE;
 import static com.fallllllll.lipper.core.constants.AppConstants.SHOTS_LAYOUT_ONLY_IMAGE;

@@ -1,63 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
 
-    <data>
 
-        <import type="com.fallllllll.lipper.ui.main.homelist.ShotsListItemViewModel" />
-
-        <import type="android.view.View" />
-
-        <variable
-            name="shotBean"
-            type="com.fallllllll.lipper.data.databean.ShotBean" />
-
-        <variable
-            name="itemViewModel"
-            type="com.fallllllll.lipper.ui.main.homelist.ShotsListItemViewModel" />
-    </data>
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+    android:transitionName="layout"
+        android:id="@+id/itemShotRootLayout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT?@dimen/shots_padding_top_large:@dimen/shots_padding_top_small}">
+        android:orientation="vertical">
 
         <android.support.v7.widget.CardView
+            android:id="@+id/itemShotCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/background"
-            app:cardElevation="@{itemViewModel.currentLayout==ShotsListItemViewModel.ONLY_IMAGE_LAYOUT?@dimen/shots_card_elevation_image:@dimen/shots_card_elevation}"
             app:cardMaxElevation="2dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
-                android:id="@+id/item_shot_layout"
                 android:transitionName="layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/itemShotTopLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingBottom="8dp"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="8dp"
-                    android:visibility="@{itemViewModel.currentLayout==ShotsListItemViewModel.ONLY_IMAGE_LAYOUT?View.GONE:View.VISIBLE}">
+                    android:paddingTop="8dp">
 
                     <com.facebook.drawee.view.SimpleDraweeView
-                        android:id="@+id/shots_user_iamge"
+                        android:id="@+id/itemShotUserImage"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         app:actualImageScaleType="centerCrop"
-                        app:frescoImageUriWithTinySize="@{shotBean.user.avatar_url}"
                         app:roundAsCircle="true" />
 
                     <TextView
+                        android:id="@+id/itemShotUserName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -65,36 +51,32 @@
                         android:layout_weight="1"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="@{shotBean.user.name}"
                         android:textColor="@color/primary_text"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
 
                     <ImageView
+                        android:id="@+id/itemShotReboundImage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="12dp"
-                        android:src="@mipmap/rebound_icon"
-                        android:visibility="@{shotBean.rebound_source_url!=null?View.VISIBLE:View.GONE}" />
+                        android:src="@mipmap/rebound_icon" />
                 </LinearLayout>
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true">
+                    android:layout_height="wrap_content">
 
                     <com.facebook.drawee.view.SimpleDraweeView
-                        android:id="@+id/item_image"
+                        android:id="@+id/itemShotImage"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
-                        app:actualImageScaleType="centerCrop"
-                        app:frescoImageUri="@{(shotBean.images.hidpi!=null&amp;&amp;!shotBean.animated)?shotBean.images.hidpi:shotBean.images.normal}" />
+                        app:actualImageScaleType="centerCrop"/>
 
                     <ImageView
-                        android:visibility="@{shotBean.animated?View.VISIBLE:View.GONE}"
+                        android:id="@+id/itemShotGIFImage"
                         android:layout_width="18dp"
                         android:layout_height="11dp"
                         android:layout_gravity="right"
@@ -105,24 +87,24 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/itemShotBottomLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:visibility="@{itemViewModel.currentLayout==ShotsListItemViewModel.ONLY_IMAGE_LAYOUT?View.GONE:View.VISIBLE}">
+                    android:padding="12dp">
 
                     <LinearLayout
+                        android:id="@+id/itemShotCommentsLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:visibility="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT?View.VISIBLE:View.GONE}">
+                        android:layout_centerVertical="true">
 
                         <TextView
+                            android:id="@+id/itemShotCommentsNum"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="@{shotBean.comments_count}"
                             android:textColor="@color/primary_text"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -145,6 +127,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/itemShotViewsCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -152,46 +135,44 @@
                             android:drawablePadding="8dp"
                             android:textColor="@color/primary_text"
                             android:textSize="10sp"
-                            android:textStyle="bold"
-                            app:setTextNumber="@{shotBean.views_count}" />
+                            android:textStyle="bold"/>
 
                         <TextView
+                            android:id="@+id/itemShotViewsText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="2dp"
                             android:text="VIEWS"
                             android:textColor="@color/secondary_text"
-                            android:textSize="10sp"
-                            android:visibility="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT?View.VISIBLE:View.GONE}" />
+                            android:textSize="10sp"/>
 
                         <TextView
+                            android:id="@+id/itemShotLikeCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:drawableLeft="@drawable/ic_favorite_pink"
                             android:drawablePadding="8dp"
-                            android:paddingLeft="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT? @dimen/shots_item_padding_left_large:@dimen/shots_item_padding_left_small}"
                             android:textColor="@color/primary_text"
                             android:textSize="10sp"
-                            android:textStyle="bold"
-                            app:setTextNumber="@{shotBean.likes_count}" />
+                            android:textStyle="bold"/>
 
                         <TextView
+                            android:id="@+id/itemShotLikeText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="2dp"
                             android:text="LIKES"
                             android:textColor="@color/secondary_text"
-                            android:textSize="10sp"
-                            android:visibility="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT?View.VISIBLE:View.GONE}" />
+                            android:textSize="10sp"/>
 
                         <TextView
+                            android:id="@+id/itemShotReplay"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:paddingLeft="@{itemViewModel.currentLayout==ShotsListItemViewModel.LINEAR_LAYOUT? @dimen/shots_item_padding_left_large:@dimen/shots_item_padding_left_small}"
                             android:text="REPLY"
                             android:textColor="@color/primary_text"
                             android:textSize="10sp"
@@ -202,4 +183,3 @@
 
         </android.support.v7.widget.CardView>
     </LinearLayout>
-</layout>

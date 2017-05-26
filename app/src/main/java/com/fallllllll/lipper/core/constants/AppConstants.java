@@ -34,5 +34,7 @@ public class AppConstants {
     public static final String DATA_TANK_HOME_FILTER_KEY="data_tank_home_filter_key";
     public static final String SHOTS_HOME_LAYOUT_KEY = "shots_home_layout_key";
 
+    public static final int USER_IMAGE_SIZE = 50;
+
 
 }
