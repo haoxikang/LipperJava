@@ -73,10 +73,10 @@ public class ShotsListPresenterImplTest {
     @Test
     public void RxBuxTest(){
         presenter.initRxBus();
-        RxBus.get().post(new ShotsListFilterEvent(AppConstants.NOW,AppConstants.POPULARITY,AppConstants.SHOTS));
+        RxBus.get().post(new ShotsListFilterEvent(AppConstants.INSTANCE.getNOW(), AppConstants.INSTANCE.getPOPULARITY(), AppConstants.INSTANCE.getSHOTS()));
         verify(presenter).checkAndRefreshData();
         verify(presenter).stopLoading();
-        RxBus.get().post(new ShotsMenuLayoutEvent(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE));
+        RxBus.get().post(new ShotsMenuLayoutEvent(AppConstants.INSTANCE.getSHOTS_LAYOUT_ONLY_IMAGE()));
         verify(presenter).setListLayout(any());
     }
     @After

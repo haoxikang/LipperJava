@@ -24,22 +24,22 @@ import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFr
 public class HomeBottomSheetFragmentTest {
     @Test
     public void testHomeBottomSheetFragment() {
-        HomeBottomSheetFragment homeBottomSheetFragment = HomeBottomSheetFragment.newInstance(AppConstants.NOW, AppConstants.SHOTS, AppConstants.POPULARITY);
+        HomeBottomSheetFragment homeBottomSheetFragment = HomeBottomSheetFragment.newInstance(AppConstants.INSTANCE.getNOW(), AppConstants.INSTANCE.getSHOTS(), AppConstants.INSTANCE.getPOPULARITY());
         startFragment(homeBottomSheetFragment);
-        AppCompatRadioButton appCompatRadioButtonTime = (AppCompatRadioButton) homeBottomSheetFragment.getView().findViewById(R.id.time_radio_1);
-        AppCompatRadioButton appCompatRadioButtonType= (AppCompatRadioButton) homeBottomSheetFragment.getView().findViewById(R.id.type_radio_1);
-        AppCompatRadioButton appCompatRadioButtonSort= (AppCompatRadioButton) homeBottomSheetFragment.getView().findViewById(R.id.sort_radio_1);
+        AppCompatRadioButton appCompatRadioButtonTime = (AppCompatRadioButton) homeBottomSheetFragment.getView().findViewById(R.id.timeRadio1);
+        AppCompatRadioButton appCompatRadioButtonType= (AppCompatRadioButton) homeBottomSheetFragment.getView().findViewById(R.id.typeRadio1);
+        AppCompatRadioButton appCompatRadioButtonSort= (AppCompatRadioButton) homeBottomSheetFragment.getView().findViewById(R.id.sortRadio1);
         assertTrue(appCompatRadioButtonTime.isChecked());
         assertTrue(appCompatRadioButtonType.isChecked());
         assertTrue(appCompatRadioButtonSort.isChecked());
     }
     @Test
     public void testHomeBottomSheetFragment2() {
-        HomeBottomSheetFragment homeBottomSheetFragment = HomeBottomSheetFragment.newInstance(AppConstants.WEEK, AppConstants.DEBUTS, AppConstants.RECENT);
+        HomeBottomSheetFragment homeBottomSheetFragment = HomeBottomSheetFragment.newInstance(AppConstants.INSTANCE.getWEEK(), AppConstants.INSTANCE.getDEBUTS(), AppConstants.INSTANCE.getRECENT());
         startFragment(homeBottomSheetFragment);
-        AppCompatRadioButton radioButtonTime = (AppCompatRadioButton) homeBottomSheetFragment.getView().findViewById(R.id.time_radio_2);
-        AppCompatRadioButton radioButtonType= (AppCompatRadioButton) homeBottomSheetFragment.getView().findViewById(R.id.type_radio_2);
-        AppCompatRadioButton radioButtonSort= (AppCompatRadioButton) homeBottomSheetFragment.getView().findViewById(R.id.sort_radio_2);
+        AppCompatRadioButton radioButtonTime = (AppCompatRadioButton) homeBottomSheetFragment.getView().findViewById(R.id.timeRadio2);
+        AppCompatRadioButton radioButtonType= (AppCompatRadioButton) homeBottomSheetFragment.getView().findViewById(R.id.typeRadio2);
+        AppCompatRadioButton radioButtonSort= (AppCompatRadioButton) homeBottomSheetFragment.getView().findViewById(R.id.sortRadio2);
         assertTrue(radioButtonTime.isChecked());
         assertTrue(radioButtonType.isChecked());
         assertTrue(radioButtonSort.isChecked());

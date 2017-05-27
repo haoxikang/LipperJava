@@ -39,6 +39,6 @@ public class OauthHttpMethods extends BaseHttpMethods<OauthService> {
 
     @Override
     String getBaseUrl() {
-        return BaseUrl.LOGIN_URL;
+        return BaseUrl.INSTANCE.getLOGIN_URL();
     }
 }

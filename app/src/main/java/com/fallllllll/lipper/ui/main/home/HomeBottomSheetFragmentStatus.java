@@ -12,7 +12,7 @@ import java.util.List;
  * GitHub :  https://github.com/348476129/Lipper
  */
 
-public class HomeBottomSheetFragmentViewModel {
+public class HomeBottomSheetFragmentStatus {
     public List<String> listTime;
     public List<String> listSort;
     public List<String> listType;
@@ -22,7 +22,7 @@ public class HomeBottomSheetFragmentViewModel {
     public String sort;
     public String type;
 
-    public HomeBottomSheetFragmentViewModel(Context context, String time, String sort, String type) {
+    public HomeBottomSheetFragmentStatus(Context context, String time, String sort, String type) {
         listTime = Arrays.asList(context.getResources().getStringArray(R.array.time));
         listSort = Arrays.asList(context.getResources().getStringArray(R.array.sort));
         listType = Arrays.asList(context.getResources().getStringArray(R.array.type));

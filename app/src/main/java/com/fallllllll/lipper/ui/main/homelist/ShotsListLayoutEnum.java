@@ -1,13 +1,5 @@
 package com.fallllllll.lipper.ui.main.homelist;
 
-import android.content.Context;
-import android.databinding.BaseObservable;
-import android.databinding.ObservableBoolean;
-import android.databinding.ObservableInt;
-
-import com.fallllllll.lipper.DribbbleApplication;
-import com.fallllllll.lipper.utils.UIUtils;
-
 /**
  * Created by fallllllll on 2017/5/3/003.
  * GitHub :  https://github.com/348476129/Lipper

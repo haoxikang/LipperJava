@@ -1,6 +1,7 @@
 package com.fallllllll.lipper.ui.login;
 
 import com.fallllllll.lipper.R;
+import com.fallllllll.lipper.core.constants.TimeConstants;
 import com.fallllllll.lipper.core.presenter.BasePresenter;
 import com.fallllllll.lipper.core.rxjava.exceptionalhandling.ConvertToApiException;
 import com.fallllllll.lipper.data.local.user.UserManager;
@@ -41,7 +42,7 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.L
 
     private void finishActivity() {
 
-        mCompositeDisposable.add(Flowable.timer(ACTIVITY_TRANSITIONS_TIME, TimeUnit.MILLISECONDS)
+        mCompositeDisposable.add(Flowable.timer(TimeConstants.INSTANCE.getACTIVITY_TRANSITIONS_TIME(), TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> {

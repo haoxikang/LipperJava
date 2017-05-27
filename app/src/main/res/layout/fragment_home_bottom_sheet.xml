@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
 
-        <import type="com.fallllllll.lipper.core.constants.AppConstants" />
-
-        <variable
-            name="viewModel"
-            type="com.fallllllll.lipper.ui.main.home.HomeBottomSheetFragmentViewModel" />
-    </data>
 
     <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -20,7 +12,7 @@
         android:paddingTop="24dp">
 
         <com.fallllllll.lipper.ui.view.widget.MultiLineRadioGroup
-            android:id="@+id/time_group"
+            android:id="@+id/timeGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -32,22 +24,18 @@
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/time_radio_1"
+                    android:id="@+id/timeRadio1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.time==AppConstants.NOW}"
-                    android:text="@{viewModel.listTime.get(0)}"
                     android:theme="@style/homeCheckBox" />
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/time_radio_2"
+                    android:id="@+id/timeRadio2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.time.equals(AppConstants.WEEK)}"
                     android:tag="week"
-                    android:text="@{viewModel.listTime.get(1)}"
                     android:theme="@style/homeCheckBox" />
             </LinearLayout>
 
@@ -58,34 +46,28 @@
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/time_radio_3"
+                    android:id="@+id/timeRadio3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.time.equals(AppConstants.MONTH)}"
                     android:tag="month"
-                    android:text="@{viewModel.listTime.get(2)}"
                     android:theme="@style/homeCheckBox" />
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/time_radio_4"
+                    android:id="@+id/timeRadio4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.time.equals(AppConstants.YEAR)}"
                     android:tag="year"
-                    android:text="@{viewModel.listTime.get(3)}"
                     android:theme="@style/homeCheckBox" />
             </LinearLayout>
 
             <android.support.v7.widget.AppCompatRadioButton
-                android:id="@+id/time_radio_5"
+                android:id="@+id/timeRadio5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:checked="@{viewModel.time.equals(AppConstants.EVER)}"
                 android:tag="ever"
-                android:text="@{viewModel.listTime.get(4)}"
                 android:theme="@style/homeCheckBox" />
 
             <View
@@ -96,7 +78,7 @@
         </com.fallllllll.lipper.ui.view.widget.MultiLineRadioGroup>
 
         <com.fallllllll.lipper.ui.view.widget.MultiLineRadioGroup
-            android:id="@+id/sort_group"
+            android:id="@+id/sortGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -108,22 +90,18 @@
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/sort_radio_1"
+                    android:id="@+id/sortRadio1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.sort==AppConstants.POPULARITY}"
-                    android:text="@{viewModel.listSort.get(0)}"
                     android:theme="@style/homeCheckBox" />
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/sort_radio_2"
+                    android:id="@+id/sortRadio2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.sort.equals(AppConstants.RECENT)}"
                     android:tag="recent"
-                    android:text="@{viewModel.listSort.get(1)}"
                     android:theme="@style/homeCheckBox" />
             </LinearLayout>
 
@@ -134,23 +112,19 @@
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/sort_radio_3"
+                    android:id="@+id/sortRadio3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.sort.equals(AppConstants.VIEWS)}"
                     android:tag="views"
-                    android:text="@{viewModel.listSort.get(2)}"
                     android:theme="@style/homeCheckBox" />
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/sort_radio_4"
+                    android:id="@+id/sortRadio4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.sort.equals(AppConstants.COMENTS)}"
                     android:tag="comments"
-                    android:text="@{viewModel.listSort.get(3)}"
                     android:theme="@style/homeCheckBox" />
             </LinearLayout>
 
@@ -162,7 +136,7 @@
         </com.fallllllll.lipper.ui.view.widget.MultiLineRadioGroup>
 
         <com.fallllllll.lipper.ui.view.widget.MultiLineRadioGroup
-            android:id="@+id/type_group"
+            android:id="@+id/typeGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -174,22 +148,18 @@
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/type_radio_1"
+                    android:id="@+id/typeRadio1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.type==AppConstants.SHOTS}"
-                    android:text="@{viewModel.listType.get(0)}"
                     android:theme="@style/homeCheckBox" />
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/type_radio_2"
+                    android:id="@+id/typeRadio2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.type.equals(AppConstants.DEBUTS)}"
                     android:tag="debuts"
-                    android:text="@{viewModel.listType.get(1)}"
                     android:theme="@style/homeCheckBox" />
             </LinearLayout>
 
@@ -200,23 +170,19 @@
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/type_radio_3"
+                    android:id="@+id/typeRadio3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.type.equals(AppConstants.TEAMS)}"
                     android:tag="teams"
-                    android:text="@{viewModel.listType.get(2)}"
                     android:theme="@style/homeCheckBox" />
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/type_radio_4"
+                    android:id="@+id/typeRadio4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.type.equals(AppConstants.PLAYOFFS)}"
                     android:tag="playoffs"
-                    android:text="@{viewModel.listType.get(3)}"
                     android:theme="@style/homeCheckBox" />
             </LinearLayout>
 
@@ -227,48 +193,28 @@
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/type_radio_5"
+                    android:id="@+id/typeRadio5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.type.equals(AppConstants.ANIMATED)}"
                     android:tag="animated"
-                    android:text="@{viewModel.listType.get(4)}"
                     android:theme="@style/homeCheckBox" />
 
                 <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/type_radio_6"
+                    android:id="@+id/typeRadio6"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.type.equals(AppConstants.ATTACHMENTS)}"
                     android:tag="attachments"
-                    android:text="@{viewModel.listType.get(5)}"
                     android:theme="@style/homeCheckBox" />
             </LinearLayout>
             <android.support.v7.widget.AppCompatRadioButton
                 android:layout_marginBottom="12dp"
-                android:id="@+id/type_radio_7"
+                android:id="@+id/typeRadio7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:checked="@{viewModel.type.equals(AppConstants.REBOUNDS)}"
                 android:tag="rebounds"
-                android:text="@{viewModel.listType.get(6)}"
                 android:theme="@style/homeCheckBox" />
         </com.fallllllll.lipper.ui.view.widget.MultiLineRadioGroup>
-
-        <TextView
-            android:id="@+id/apply_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="24dp"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:text="@string/apply_filters"
-            android:textColor="@color/primary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
     </LinearLayout>
-
-</layout>

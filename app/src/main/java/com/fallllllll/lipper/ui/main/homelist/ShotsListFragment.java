@@ -86,16 +86,16 @@ public class ShotsListFragment extends BaseListFragment implements ShotsListCont
     public void changeRecyclerViewLayout(String layoutType) {
         GridLayoutManager gridLayoutManager = (GridLayoutManager) recyclerView.getLayoutManager();
         switch (layoutType) {
-            case AppConstants.SHOTS_LAYOUT_LARGE:
-                shotsListLayoutEnum.setLayout(ShotsListLayoutEnum.LINEAR_LAYOUT);
+            case AppConstants.INSTANCE.getSHOTS_LAYOUT_LARGE():
+                shotsListLayoutEnum.setCurrentLayout(ShotsListLayoutEnum.LINEAR_LAYOUT);
                 gridLayoutManager.setSpanCount(1);
                 break;
-            case AppConstants.SHOTS_LAYOUT_ONLY_IMAGE:
-                shotsListLayoutEnum.setLayout(ShotsListLayoutEnum.ONLY_IMAGE_LAYOUT);
+            case AppConstants.INSTANCE.getSHOTS_LAYOUT_ONLY_IMAGE():
+                shotsListLayoutEnum.setCurrentLayout(ShotsListLayoutEnum.ONLY_IMAGE_LAYOUT);
                 gridLayoutManager.setSpanCount(2);
                 break;
-            case AppConstants.SHOTS_LAYOUT_SMALL:
-                shotsListLayoutEnum.setLayout(ShotsListLayoutEnum.GRID_LAYOUT);
+            case AppConstants.INSTANCE.getSHOTS_LAYOUT_SMALL():
+                shotsListLayoutEnum.setCurrentLayout(ShotsListLayoutEnum.GRID_LAYOUT);
                 gridLayoutManager.setSpanCount(2);
                 break;
         }
@@ -104,12 +104,13 @@ public class ShotsListFragment extends BaseListFragment implements ShotsListCont
 
     @Override
     public void changeItemViewLayout(String layoutType) {
-        if (layoutType.equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE)) {
-            shotsListLayoutEnum.setLayout(ShotsListLayoutEnum.ONLY_IMAGE_LAYOUT);
+        if (layoutType.equals(AppConstants.INSTANCE.getSHOTS_LAYOUT_ONLY_IMAGE())) {
+            shotsListLayoutEnum.setCurrentLayout(ShotsListLayoutEnum.ONLY_IMAGE_LAYOUT);
         }
-        if (layoutType.equals(AppConstants.SHOTS_LAYOUT_SMALL)) {
-            shotsListLayoutEnum.setLayout(ShotsListLayoutEnum.GRID_LAYOUT);
+        if (layoutType.equals(AppConstants.INSTANCE.getSHOTS_LAYOUT_SMALL())) {
+            shotsListLayoutEnum.setCurrentLayout(ShotsListLayoutEnum.GRID_LAYOUT);
         }
+        getAdapter().notifyItemRangeChanged(0, getAdapter().getItemCount());
     }
 
     @Override

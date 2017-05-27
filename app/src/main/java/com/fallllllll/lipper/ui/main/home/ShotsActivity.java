@@ -2,7 +2,6 @@ package com.fallllllll.lipper.ui.main.home;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,7 +13,6 @@ import android.view.View;
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.activity.BaseActivity;
 import com.fallllllll.lipper.data.databean.HomeListFilterBean;
-import com.fallllllll.lipper.databinding.ActivityShotsBinding;
 import com.fallllllll.lipper.ui.main.homelist.ShotsListFragment;
 import com.fallllllll.lipper.ui.search.SearchActivity;
 import com.fallllllll.lipper.utils.MDStatusBarCompat;
@@ -102,9 +100,10 @@ public class ShotsActivity extends BaseActivity implements ShotsActivityContract
     public void showBottomSheet(HomeListFilterBean homeListFilterBean) {
         if (homeBottomSheetFragment == null) {
             homeBottomSheetFragment = HomeBottomSheetFragment.newInstance(homeListFilterBean.getTime(), homeListFilterBean.getType(), homeListFilterBean.getSort());
-        } else {
-            homeBottomSheetFragment.updateCheckStatus(homeListFilterBean.getTime(), homeListFilterBean.getType(), homeListFilterBean.getSort());
         }
-        homeBottomSheetFragment.show(getSupportFragmentManager(), "bottomSheet");
+        if (!homeBottomSheetFragment.isAdded()){
+            homeBottomSheetFragment.show(getSupportFragmentManager(), "bottomSheet");
+        }
+
     }
 }

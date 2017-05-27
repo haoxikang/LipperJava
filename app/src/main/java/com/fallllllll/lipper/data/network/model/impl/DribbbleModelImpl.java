@@ -40,7 +40,7 @@ public class DribbbleModelImpl implements DribbbleModel {
 
     @Override
     public Flowable<List<ShotBean>> getShot(String list, String timeframe, String sort, String page) {
-        return mDribbbleService.getShot(list, timeframe, sort, page, AppConstants.PAGE_COUNT);
+        return mDribbbleService.getShot(list, timeframe, sort, page, AppConstants.INSTANCE.getPAGE_COUNT());
     }
 
     @Override

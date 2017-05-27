@@ -38,9 +38,9 @@ public class OauthModelImpl implements OauthModel {
 
     @Override
     public Flowable<UserToken> getToken(String code) {
-        RequestBody client_id = RequestBody.create(MediaType.parse("multipart/form-data"), DribbbleID.CLIENT_ID);
-        RequestBody client_secret = RequestBody.create(MediaType.parse("multipart/form-data"), DribbbleID.CLIENT_SECRET);
-        RequestBody redirect_uri = RequestBody.create(MediaType.parse("multipart/form-data"), DribbbleID.CALLBACK_URL);
+        RequestBody client_id = RequestBody.create(MediaType.parse("multipart/form-data"), DribbbleID.INSTANCE.getCLIENT_ID());
+        RequestBody client_secret = RequestBody.create(MediaType.parse("multipart/form-data"), DribbbleID.INSTANCE.getCLIENT_SECRET());
+        RequestBody redirect_uri = RequestBody.create(MediaType.parse("multipart/form-data"), DribbbleID.INSTANCE.getCALLBACK_URL());
         RequestBody  oauthCode= RequestBody.create(MediaType.parse("multipart/form-data"), code);
 
         return mOauthService.getToken(client_id, client_secret, redirect_uri, oauthCode);

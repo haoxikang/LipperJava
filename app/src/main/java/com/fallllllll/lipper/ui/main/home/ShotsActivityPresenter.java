@@ -28,7 +28,7 @@ public class ShotsActivityPresenter extends BasePresenter implements ShotsActivi
     @Override
     public void showBottomSheet() {
 
-        mCompositeDisposable.add(DataTank.get(AppConstants.DATA_TANK_HOME_FILTER_KEY,HomeListFilterBean.class)
+        mCompositeDisposable.add(DataTank.get(AppConstants.INSTANCE.getDATA_TANK_HOME_FILTER_KEY(),HomeListFilterBean.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(homeListFilterBean -> {
@@ -42,7 +42,7 @@ public class ShotsActivityPresenter extends BasePresenter implements ShotsActivi
 
     private void showDefaultBottomSheet(HomeListFilterBean homeListFilterBean) {
         if (homeListFilterBean == null) {
-            shotsActivityView.showBottomSheet(new HomeListFilterBean(AppConstants.NOW, AppConstants.SHOTS, AppConstants.POPULARITY));
+            shotsActivityView.showBottomSheet(new HomeListFilterBean(AppConstants.INSTANCE.getNOW(), AppConstants.INSTANCE.getSHOTS(), AppConstants.INSTANCE.getPOPULARITY()));
         } else {
             shotsActivityView.showBottomSheet(homeListFilterBean);
         }

@@ -53,11 +53,12 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
         mCompositeDisposable.add(RxBus.get().toFlowable(ShotsListFilterEvent.class)
                 .subscribe(shotsListFilterEvent -> {
                     stopLoading();
+
                     TIME = shotsListFilterEvent.getTime();
                     SORT = shotsListFilterEvent.getSort();
                     TYPE = shotsListFilterEvent.getType();
                     checkAndRefreshData();
-                    DataTank.put(AppConstants.DATA_TANK_HOME_FILTER_KEY, new HomeListFilterBean(TIME, TYPE, SORT))
+                    DataTank.put(AppConstants.INSTANCE.getDATA_TANK_HOME_FILTER_KEY(), new HomeListFilterBean(TIME, TYPE, SORT))
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(aBoolean -> {
@@ -70,7 +71,7 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
         mCompositeDisposable.add(RxBus.get().toFlowable(ShotsMenuLayoutEvent.class)
                 .subscribe(shotsMenuLayoutEvent -> {
                     setListLayout(shotsMenuLayoutEvent);
-                    DataTank.put(AppConstants.SHOTS_HOME_LAYOUT_KEY, shotsMenuLayoutEvent)
+                    DataTank.put(AppConstants.INSTANCE.getSHOTS_HOME_LAYOUT_KEY(), shotsMenuLayoutEvent)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(aBoolean -> {
@@ -81,9 +82,9 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
 
     public void setListLayout(ShotsMenuLayoutEvent shotsMenuLayoutEvent) {
         if (!currentLayoutType.equals(shotsMenuLayoutEvent.getShotLayoutType())) {
-            if ((currentLayoutType.equals(AppConstants.SHOTS_LAYOUT_SMALL) || currentLayoutType.equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE))
+            if ((currentLayoutType.equals(AppConstants.INSTANCE.getSHOTS_LAYOUT_SMALL()) || currentLayoutType.equals(AppConstants.INSTANCE.getSHOTS_LAYOUT_ONLY_IMAGE()))
                     &&
-                    (shotsMenuLayoutEvent.getShotLayoutType().equals(AppConstants.SHOTS_LAYOUT_SMALL) || shotsMenuLayoutEvent.getShotLayoutType().equals(AppConstants.SHOTS_LAYOUT_ONLY_IMAGE))) {
+                    (shotsMenuLayoutEvent.getShotLayoutType().equals(AppConstants.INSTANCE.getSHOTS_LAYOUT_SMALL()) || shotsMenuLayoutEvent.getShotLayoutType().equals(AppConstants.INSTANCE.getSHOTS_LAYOUT_ONLY_IMAGE()))) {
                 shotsListView.changeItemViewLayout(shotsMenuLayoutEvent.getShotLayoutType());
             } else {
                 shotsListView.changeRecyclerViewLayout(shotsMenuLayoutEvent.getShotLayoutType());
@@ -95,7 +96,7 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
 
     private void getLayout() {
         if (currentLayoutType == null) {
-            mCompositeDisposable.add(DataTank.get(AppConstants.SHOTS_HOME_LAYOUT_KEY, ShotsMenuLayoutEvent.class)
+            mCompositeDisposable.add(DataTank.get(AppConstants.INSTANCE.getSHOTS_HOME_LAYOUT_KEY(), ShotsMenuLayoutEvent.class)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(shotsMenuLayoutEvent -> {
@@ -103,7 +104,7 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
                         shotsListView.changeRecyclerViewLayout(shotsMenuLayoutEvent.getShotLayoutType());
                         getData();
                     }, throwable -> {
-                        currentLayoutType = AppConstants.SHOTS_LAYOUT_LARGE;
+                        currentLayoutType = AppConstants.INSTANCE.getSHOTS_LAYOUT_LARGE();
                         getData();
                     }));
 
@@ -137,7 +138,7 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
     @Override
     public void refreshData() {
         if ("".equals(TIME)) {
-            mCompositeDisposable.add(DataTank.get(AppConstants.DATA_TANK_HOME_FILTER_KEY, HomeListFilterBean.class)
+            mCompositeDisposable.add(DataTank.get(AppConstants.INSTANCE.getDATA_TANK_HOME_FILTER_KEY(), HomeListFilterBean.class)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(homeListFilterBean -> {
@@ -146,15 +147,15 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
                             SORT = homeListFilterBean.getSort();
                             TYPE = homeListFilterBean.getType();
                         } else {
-                            TIME = AppConstants.NOW;
-                            SORT = AppConstants.POPULARITY;
-                            TYPE = AppConstants.SHOTS;
+                            TIME = AppConstants.INSTANCE.getNOW();
+                            SORT = AppConstants.INSTANCE.getPOPULARITY();
+                            TYPE = AppConstants.INSTANCE.getSHOTS();
                         }
                         getLayout();
                     }, throwable -> {
-                        TIME = AppConstants.NOW;
-                        SORT = AppConstants.POPULARITY;
-                        TYPE = AppConstants.SHOTS;
+                        TIME = AppConstants.INSTANCE.getNOW();
+                        SORT = AppConstants.INSTANCE.getPOPULARITY();
+                        TYPE = AppConstants.INSTANCE.getSHOTS();
                         getLayout();
                     }));
         } else {
@@ -191,4 +192,5 @@ public class ShotsListPresenterImpl extends BaseListPresenter implements ShotsLi
             refreshDisposable.dispose();
         }
     }
+
 }

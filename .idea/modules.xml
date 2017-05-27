@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Dribbble.iml" filepath="$PROJECT_DIR$/Dribbble.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lipper.iml" filepath="$PROJECT_DIR$/Lipper.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

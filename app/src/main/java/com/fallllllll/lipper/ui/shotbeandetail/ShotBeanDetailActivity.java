@@ -1,6 +1,5 @@
 package com.fallllllll.lipper.ui.shotbeandetail;
 
-import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Animatable;
 import android.support.annotation.Nullable;
 import android.transition.Transition;
@@ -15,7 +14,6 @@ import com.facebook.imagepipeline.request.ImageRequest;
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.activity.BaseActivity;
 import com.fallllllll.lipper.data.databean.ShotBean;
-import com.fallllllll.lipper.databinding.ActivityShotDetailBinding;
 
 /**
  * Created by fallllllll on 2017/5/16/016.

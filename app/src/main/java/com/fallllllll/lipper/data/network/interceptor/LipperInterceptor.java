@@ -31,7 +31,7 @@ public class LipperInterceptor implements Interceptor {
                     .header("Authorization", "Bearer " + UserManager.INSTANCE.getUserToken().getAccess_token());
         } else {
             requestBuilder = original.newBuilder()
-                    .header("Authorization", "Bearer " + DribbbleID.CLIENT_ACCESS_TOKEN);
+                    .header("Authorization", "Bearer " + DribbbleID.INSTANCE.getCLIENT_ACCESS_TOKEN());
         }
 
         Request request = requestBuilder.build();

@@ -1,11 +1,8 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
-    dataBinding {
-        enabled = true
-    }
     defaultConfig {
         applicationId "com.fallllllll.lipper"
         minSdkVersion 21
@@ -64,7 +61,7 @@ dependencies {
     testCompile 'org.mockito:mockito-core:2.7.22'
     testCompile "org.robolectric:robolectric:3.3.2"
     testCompile "org.robolectric:shadows-support-v4:3.0"
- //   compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+  compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 repositories {
     mavenCentral()

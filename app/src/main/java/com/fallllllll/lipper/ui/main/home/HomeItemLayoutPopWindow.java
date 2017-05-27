@@ -1,7 +1,6 @@
 package com.fallllllll.lipper.ui.main.home;
 
 import android.app.Activity;
-import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
@@ -47,15 +46,15 @@ public class HomeItemLayoutPopWindow extends PopupWindow {
 
     private void initListener(View view) {
         view.findViewById(R.id.home_popup_large_layout).setOnClickListener(v -> {
-            RxBus.get().post(new ShotsMenuLayoutEvent(SHOTS_LAYOUT_LARGE));
+            RxBus.get().post(new ShotsMenuLayoutEvent(INSTANCE.getSHOTS_LAYOUT_LARGE()));
             this.dismiss();
         });
         view.findViewById(R.id.home_popup_small_layout).setOnClickListener(v -> {
-            RxBus.get().post(new ShotsMenuLayoutEvent(SHOTS_LAYOUT_SMALL));
+            RxBus.get().post(new ShotsMenuLayoutEvent(INSTANCE.getSHOTS_LAYOUT_SMALL()));
             this.dismiss();
         });
         view.findViewById(R.id.home_popup_only_image_layout).setOnClickListener(v -> {
-            RxBus.get().post(new ShotsMenuLayoutEvent(SHOTS_LAYOUT_ONLY_IMAGE));
+            RxBus.get().post(new ShotsMenuLayoutEvent(INSTANCE.getSHOTS_LAYOUT_ONLY_IMAGE()));
             this.dismiss();
         });
     }

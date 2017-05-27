@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -25,7 +23,6 @@ import com.fall.generalrecyclerviewfragment.GeneralDataController;
 import com.fallllllll.lipper.R;
 import com.fallllllll.lipper.core.constants.AppConstants;
 import com.fallllllll.lipper.data.databean.ShotBean;
-import com.fallllllll.lipper.databinding.ItemViewShotsBinding;
 import com.fallllllll.lipper.ui.shotbeandetail.ShotBeanDetailActivity;
 import com.fallllllll.lipper.utils.FrescoUtils;
 import com.fallllllll.lipper.utils.StringUtils;
@@ -115,7 +112,7 @@ public class ShotsListAdapter extends RecyclerView.Adapter<ShotsListAdapter.Shot
 
         public void bindView(ShotBean shotBean) {
 
-            FrescoUtils.displayWithResize(AppConstants.USER_IMAGE_SIZE, AppConstants.USER_IMAGE_SIZE
+            FrescoUtils.displayWithResize(AppConstants.INSTANCE.getUSER_IMAGE_SIZE(), AppConstants.INSTANCE.getUSER_IMAGE_SIZE()
                     , Uri.parse(shotBean.getUser().getAvatar_url()), itemShotUserImage);
             itemShotUserName.setText(shotBean.getUser().getName());
 

@@ -38,6 +38,6 @@ public class DribbbleHttpMethods extends BaseHttpMethods<DribbbleService> {
 
     @Override
     String getBaseUrl() {
-        return BaseUrl.BASE_URL;
+        return BaseUrl.INSTANCE.getBASE_URL();
     }
 }

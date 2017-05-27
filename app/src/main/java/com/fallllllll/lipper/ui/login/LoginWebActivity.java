@@ -49,8 +49,8 @@ public class LoginWebActivity extends BaseActivity {
     }
 
     private String getURl() {
-        String url = BaseUrl.LOGIN_URL;
-        url = url + "authorize?client_id=" + DribbbleID.CLIENT_ID + "&redirect_uri=" + DribbbleID.CALLBACK_URL + "&state=" + RandomUtils.getRandomString(6) + "&scope=public+write+comment+upload";
+        String url = BaseUrl.INSTANCE.getLOGIN_URL();
+        url = url + "authorize?client_id=" + DribbbleID.INSTANCE.getCLIENT_ID() + "&redirect_uri=" + DribbbleID.INSTANCE.getCALLBACK_URL() + "&state=" + RandomUtils.getRandomString(6) + "&scope=public+write+comment+upload";
         return url;
     }
 
@@ -83,7 +83,7 @@ public class LoginWebActivity extends BaseActivity {
 
     private void loadingUrl(WebView webView,String url){
         if (!isLoadUrl) {
-            if (!url.contains(DribbbleID.CALLBACK_URL + "/?code")) {
+            if (!url.contains(DribbbleID.INSTANCE.getCALLBACK_URL() + "/?code")) {
                 webView.loadUrl(url);
             } else {
                 isLoadUrl = true;

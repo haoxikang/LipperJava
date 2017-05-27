@@ -48,7 +48,7 @@ public class FrescoUtils {
         DraweeController controller = Fresco.newDraweeControllerBuilder()
                 .setOldController(simpleDraweeView.getController())
                 .setImageRequest(request)
-                .setAutoPlayAnimations(SettingConstants.canAutoPlayGif)
+                .setAutoPlayAnimations(SettingConstants.INSTANCE.getCanAutoPlayGif())
                 .build();
         simpleDraweeView.setController(controller);
     }
